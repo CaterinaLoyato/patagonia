@@ -245,3 +245,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // Le decimos al observer que vigile cada uno de los números
   numeros.forEach(num => observer.observe(num));
 });
+document.addEventListener('DOMContentLoaded', () => {
+  // Corregido: Ahora busca los elementos dentro de .faq-lista según tu HTML
+  const faqs = document.querySelectorAll('.faq-lista .faq-item');
+
+  faqs.forEach(item => {
+    const pregunta = item.querySelector('.faq-pregunta');
+    const respuesta = item.querySelector('.faq-respuesta');
+
+    // Estado inicial: si viene con "active" en el HTML, se abre calculando su alto real
+    if (item.classList.contains('active')) {
+      respuesta.style.maxHeight = respuesta.scrollHeight + 'px';
+    }
+
+    pregunta.addEventListener('click', () => {
+      const yaActivo = item.classList.contains('active');
+
+      // Cierra todos los elementos de la lista de preguntas frecuentes
+      faqs.forEach(otro => {
+        otro.classList.remove('active');
+        otro.querySelector('.faq-respuesta').style.maxHeight = null;
+      });
+
+      // Si el que se clickeó no estaba activo, lo abre
+      if (!yaActivo) {
+        item.classList.add('active');
+        respuesta.style.maxHeight = respuesta.scrollHeight + 'px';
+      }
+    });
+  });
+});
