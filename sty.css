@@ -6,14 +6,14 @@
 
 :root {
   /* Pantone 19-5220 Botanical Garden + sistema derivado */
-  --botanical:    #1B4D3E;   /* verde base pantone */
-  --botanical-dk: #102E25;   /* sombra profunda */
-  --botanical-md: #246354;   /* valor medio */
-  --botanical-lt: #4A8C7A;   /* acento claro */
-  --botanical-xs: #7BB3A4;   /* niebla helada */
+  --botanical:    #789cbb;   /* verde base pantone */
+  --botanical-dk: #91afcb;   /* sombra profunda */
+  --botanical-md: #b3c8e0;   /* valor medio */
+  --botanical-lt: #cedeef;   /* acento claro */
+  --botanical-xs: #e8f3fe;   /* niebla helada */
   --white:        #FFFFFF;
   --off-white:    #F2F5F4;
-  --mist:         #9BB5AE;   /* gris-verde para textos secundarios */
+  --mist:         #91afcb;   /* gris-verde para textos secundarios */
 }
 
 html { 
@@ -22,13 +22,10 @@ html {
 
 /* ── CONFIGURACIÓN GLOBAL DE PANTALLA Y SCROLL ── */
 body {
-  background-color: #4A7E74;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"),
-    radial-gradient(ellipse 120% 80% at 70% 55%, #6B9E93 0%, #3D7A6A 20%, #1B4D3E 50%, #102E25 100%);
+  background-color: #FFFFFF;
   background-size: 300px 300px, cover;
   background-attachment: fixed;
-  color: var(--white);
+  color: #789cbb;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   line-height: 1.6;
@@ -36,37 +33,51 @@ body {
   overflow-x: hidden;
   overflow-y: auto; /* LIBERA EL SCROLL VERTICAL GENERAL */
 }
+/* ========================================================================
+   CONFIGURACIÓN GENERAL DE ALTURAS (RESET DE SECCIONES)
+   ======================================================================== */
 
 /* ── NAV FLOTANTE TRANSPARENTE ── */
-nav {
-  position: absolute;
-  top: 0; left: 0; right: 0;
+
+.header {
+  position: fixed;        
+  top: 0;                 
+  left: 0;
+  width: 100%;            
+  background-color: transparent; 
+  backdrop-filter: blur(8px);                  
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribuye: Logo izq / Links centro / Botón der */
+  flex-wrap: nowrap;              /* ← NUEVO: Prohíbe terminantemente que los elementos se vayan abajo */
   padding: 0 2.5rem;
   height: 64px;
-  background: rgba(75, 120, 110, 0.30);
-  backdrop-filter: blur(18px);
+  
+  /* ── EL SALVADOR DEL MAQUETADO ── */
+  box-sizing: border-box;         /* ← NUEVO: Fuerza a que el padding cuente hacia adentro sin romper el 100% */
+  
   -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Cambiado a negro suave porque tu fondo de nav es claro (blanco) */
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
   text-decoration: none;
-  height: 44px;
+  height: 30px;
 }
+
 .logo-img {
-  height: 38px;
+  height: 28px;
   width: auto;
   display: block;
-  filter: brightness(0) invert(1);
+  /* Eliminé el filter: brightness(0) invert(1) porque tu nav es blanca. 
+     Si el logo original tiene color o es oscuro, ahora se va a ver perfecto. */
 }
+
 .logo-img--footer {
-  height: 32px;
+  height: 22px;
   filter: brightness(0) invert(1) opacity(0.7);
 }
 
@@ -74,20 +85,26 @@ nav {
   display: flex;
   gap: 2.2rem;
   list-style: none;
+  padding: 0;                     /* Nuevo: Resetea paddings rebeldes de las listas <ul> */
+  margin: 0;                      /* Nuevo: Resetea márgenes de las listas <ul> */
 }
+
 .nav-links a {
   font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
+  color: #000000;
   text-decoration: none;
   transition: color 0.2s;
+  /* Se eliminó justify-content: right (regla inválida acá) */
 }
-.nav-links a:hover { color: var(--white); }
+.nav-links a:hover { 
+  color: #4e7da9; 
+}
 
 .nav-cta--pill {
-  
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -100,13 +117,15 @@ nav {
   text-decoration: none;
   white-space: nowrap; 
   border-radius: 50px; 
-   background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
-  color: #1a3c2f; 
-  box-shadow: 0 4px 15px #1a3c2f; 
+  background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
+  color: #4e7da9; 
+  box-shadow: 0 4px 15px #4e7da9; /* Suavizada con opacidad */
   transition: transform 0.2s ease, filter 0.2s ease;
   cursor: pointer;
 }
-.nav-cta--pill:hover { filter:brightness(1.1) }
+.nav-cta--pill:hover { 
+  filter: brightness(1.1); 
+}
 
 /* ── LAYOUT DEL HERO (OCUPA EL 100% REAL DE LA PANTALLA) ── */
 /* ==========================================================================
@@ -138,8 +157,9 @@ nav {
   flex-direction: column; 
   justify-content: flex-end; /* Empuja el bloque de descripción hacia abajo */
   align-items: flex-start; 
-  padding: 8% 8% 6% 8%;
-  z-index: 2;/* Espaciado armónico para el texto */
+  padding: 10vh 8vw 6vh 6vw;
+  z-index: 2;
+  box-sizing: border-box;/* Espaciado armónico para el texto */
 }
 
 .hero__half--right {
@@ -147,7 +167,7 @@ nav {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 120vh;
   background-image: url('fotos/fondo3.jpg'); 
   background-size: 100vw 100vh; /* Ocupa el total del viewport */
   background-position: center center;
@@ -160,7 +180,7 @@ nav {
 /* CONTENEDOR DEL BLOQUE DE TÍTULOS (CALIBRADO AL CENTRO) */
 .hero__title-wrapper {
   position: absolute;
-  top: -15%; /* Evita que choque con el Nav superior */
+  top: -10%; /* Evita que choque con el Nav superior */
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -181,17 +201,16 @@ nav {
 }
 
 .hero__title-block h1 {
-  font-size: 11vw;
+  font-size: 10vw;
   font-weight: 700;
-  letter-spacing: 0.1rem;
-  line-height: 0.9;
+  line-height: 0.7;
 }
 
 .hero__title-block h2 {
-  font-size: 8vw; 
-  font-weight: 900; 
-  letter-spacing: -0.02em;
-  margin-top: 5px; 
+  font-size:7vw; 
+  font-weight: 700; 
+  letter-spacing: 0.1Rem;
+  margin-top: 4px;
   line-height: 1;
 }
 
@@ -216,23 +235,23 @@ nav {
 
 /* BLOQUE DE DESCRIPCIÓN */
 .hero__desc {
-  margin-top: 1.8rem;
-  max-width: 430px;
+  top: 20%;
+  max-width: 450px;
   width: 100%;
   font-family: 'Arial', sans-serif; 
 }
 
 .hero__desc-line {
-  width: 280px; /* Línea de acento refinada */
+  width: 330px; /* Línea de acento refinada */
   height: 3px;
-  background-color: #12403d;
-  margin-top: 1.5rem;
+  background-color: #4e7da9;
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 
 .hero__desc p {
   font-size: 1.2rem;
-  line-height: 1.4;
+  line-height: 1.3;
   color: #000000;
 }
 
@@ -260,23 +279,23 @@ nav {
   white-space: nowrap; 
   border-radius: 50px; 
    background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
-  color: #1a3c2f; 
+  color: #4e7da9; 
   filter: brightness(1.1);
-  box-shadow: 0 4px 15px #1a3c2f; 
+  box-shadow: 0 4px 15px #91afcb; 
   transition: transform 0.2s ease, filter 0.2s ease;
   cursor: pointer;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, #1a3c2f 100%);
+  background: linear-gradient(135deg, #91afcb 100%);
   filter: brightness(1.1);
   color:#FFFFFF
 }
 
 .btn--secondary {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, #1a3c2f 100%);
+  background: linear-gradient(135deg, #91afcb 100%);
   filter: brightness(1.1);
   color:#FFFFFF
 }
@@ -285,7 +304,7 @@ nav {
   /* Degradado gris/plateado de la imagen de referencia */
   background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
    filter: brightness(1.1);
-  color: #1a3c2f; 
+  color: #4e7da9; 
   
 }
 
@@ -293,7 +312,7 @@ nav {
 section { 
   position: relative;
   z-index: 30; /* Pasa por encima del fondo fijo al scrolear */
-  background-color: #1a3c2f; 
+  background-color: white; 
   width: 100%;
   height: auto !important;
   min-height: 100vh; 
@@ -314,56 +333,61 @@ section {
   font-size: clamp(2.8rem, 5vw, 4.8rem);
   line-height: 0.95;
   letter-spacing: 0.04em;
-  color: var(--white);
-  margin-bottom: 2.2rem;
+  margin-bottom: 2rem;
+  color: #91afcb;
 }
 
 /* ── SECCIÓN STATS / CATEGORÍAS ── */
 .categories {
   position: relative;
   z-index: 30; 
-  background-color: gradient #1a3c2f; 
+ background: linear-gradient(135deg,  #91afcb 10%, #FFFFFF 30%, #91afcb 50%, #ffffff 70%, #91afcb 90% );
   width: 100%;
   height: auto !important;
   min-height: auto; 
   overflow: visible !important;
   padding: 2.7rem 1rem;
-  border-bottom: 2px solid rgba(255,255,255,0.07);
+  border-bottom: 2px solid #4e7da9;
 }
+
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
 }
+
 .cat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
   cursor: default;
-  border-right: 2px solid rgba(255,255,255,0.07);
+  border-right: 2px solid #4e7da9;
 }
 .cat-item:last-child { border-right: none; }
 
 .cat-circle {
   width: 86px; height: 86px;
   border-radius: 50%;
-  border: 1.5px solid ;
+  border: 3px solid #FFFFFF ;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
+  background-color: transparent;
   transition: background 0.5s, border-color 0.3s;
 }
+
 .cat-item:hover .cat-circle  {
-  background: #1a3c2f ;
-  border-color: #FFFFFF;
+  background: #91afcb ;
+  border-color: #91afcb;
 }
+
 .cat-num {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2rem;
   letter-spacing: 0.04em;
-  color: #1a3c2f;
+  color: #FFFFFF;
   line-height: 1;
 }
+
 .cat-item:hover .cat-num {
 color:#FFFFFF;
 }
@@ -371,81 +395,278 @@ color:#FFFFFF;
 
 .cat-tag {
   font-family: 'Space Mono', monospace;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
+  font-weight: 200;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #4e7da9;
   text-align: center;
-  background: rgba(255,255,255,0.06);
+  background: #FFFFFF;
   padding: 0.3rem 0.55rem;
 }
+
 .cat-label {
   font-family: 'Inter', sans-serif;
   font-size: 1.3rem;
-  font-weight: 300;
-  color: fff;
+  font-weight: 500;
+  color: #4e7da9 ;
   text-align: center;
   line-height: 1;
 }
+/* --seccion 2 -- */
+/* ========================================================================
+   SECCIÓN: VIDEO GRID ASIMÉTRICO (5 SLOTS CON UBICACIÓN)
+   ======================================================================== */
 
-/* ── SECCIÓN VIDEO-GRID ── */
-.para-hacer {
-  position: relative; 
-  z-index: 30; 
+/* ========================================================================
+   SECCIÓN: GALERÍA (ESTRUCTURA DE 4 COLUMNAS ESTILO BENTO SIMÉTRICO)
+   ======================================================================== */
+
+.galeria-seccion {
+  background-color: #FFFFFF; /* Fondo bosque oscuro alpino */
+  padding: 1rem 0.2rem;
   width: 100%;
-  height: auto !important;
-  overflow: visible !important;
-  background: transparent;
+  box-sizing: border-box;
 }
-.para-hacer-header { text-align: center; margin-bottom: 3rem; }
 
-.video-grid {
+.galeria-container {
+  max-width: 1200px;
+  width: 100%;
+  margin:  auto;
+}
+
+.galeria-intro {
+  margin-bottom: 0.2rem;
+}
+
+/* ── LA MATRIZ DE 4 COLUMNAS ── */
+.galeria-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px; 
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas idénticas */
+  grid-auto-rows: 270px;                 /* Altura de fila calculada para lograr los cuadrados */
+  gap: 10px;
 }
-.video-cell {
+
+/* ── COMPORTAMIENTO ESPACIAL DE LOS 5 ELEMENTOS ── */
+
+/* Fitz Roy: Ocupa la primera columna completa (filas 1 y 2) */
+.galeria-item.item-vertical-izq {
+  grid-column: 1;
+  grid-row: span 2;
+}
+
+/* Hielo Continental y Tronador: Quedan flotando arriba en las columnas 2 y 3 */
+.galeria-item.item-cuadrado {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Ushuaia Vivac: Se estira horizontalmente abajo tapando las columnas 2 y 3 */
+.galeria-item.item-ancho-centro {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+/* Domuyo: Cierra la estructura ocupando la cuarta columna completa (filas 1 y 2) */
+.galeria-item.item-vertical-der {
+  grid-column: 4;
+  grid-row: span 2;
+}
+
+/* ── CONTENEDOR INDIVIDUAL DE VIDEO ── */
+.galeria-item {
   position: relative;
+  border-radius: 24px;
   overflow: hidden;
-  cursor: pointer;
-  height: 540px;
+  background-color: #c8d4d0;
+  box-shadow: 0 15px 10px #91afcb;
 }
-.video-cell video {
+
+.galeria-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.5);
-  transition: filter 0.45s, transform 0.55s;
+  filter: brightness(0.75) saturate(0.85);
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s ease;
 }
 
-.video-cell:hover video {
-  filter: saturate(1) brightness(1.2);
+/* ── INTERFAZ DE TEXTO (OVERLAY) ── */
+/* Reducimos el espacio inferior del bloque de introducción */
+.galeria-intro {
+  margin-bottom: 0.7rem; /* ← Bajado de 2.5rem para acercar la cuadrícula */
+}
+
+/* Reseteamos los márgenes por defecto del h2 que suelen inflar el espacio */
+.galeria-intro h2,
+.galeria-intro .section-title {
+  margin-top: 0.2rem;   /* Espacio controlado con el eyebrow de arriba */
+  margin-bottom: 0;     /* Eliminamos el margen de abajo por completo */
+}
+
+.galeria-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #91afcb 0%, #FFFFFF 60%, transparent 100%);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+  
+  /* Animación sutil al pasar el mouse */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.galeria-location {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: #FFFFFF; /* Verde niebla de acento */
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center bottom;
+  gap: 3px;
+}
+
+.geo-icon {
+  width: 14px;
+  height: 14px;
+  fill: #FFFFFF;
+}
+
+.galeria-overlay h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #4e7da9;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* ── EFECTOS DINÁMICOS HOVER ── */
+.galeria-item:hover .galeria-video {
+  transform: scale(1.03);
+  filter: brightness(0.6) saturate(1);
+}
+
+.galeria-item:hover .galeria-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── ADAPTACIÓN CELULARES (RESPONSIVE) ── */
+@media (max-width: 900px) {
+  .galeria-grid {
+    grid-template-columns: 1fr; /* Pasan a ponerse uno abajo del otro en fila única */
+    grid-auto-rows: 280px;      /* Alto fijo cómodo para el dedo en mobile */
+  }
+  
+  .galeria-item.item-vertical-izq, 
+  .galeria-item.item-cuadrado, 
+  .galeria-item.item-ancho-centro, 
+  .galeria-item.item-vertical-der {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+/* ── SECCIÓN VIDEO-GRID ── */
+/* ========================================================================
+   SECCIÓN: ABOUT / FILOSOFÍA (CORREGIDA SIN DESBORDE)
+   ======================================================================== */
+
+.about-seccion {
+  background-color: #FFFFFF; /* Mantenemos blanco (o cambialo a #122820 si preferís oscuro) */
+  padding: 3.5rem 2rem;      /* Sintonizado con el achique general de secciones */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;       /* Alineación vertical central perfecta */
+  gap: 5rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;            /* ← CORREGIDO: Chau margin-left: 10%. Ahora centra perfecto */
+}
+
+/* Columna de Texto */
+.about-left {
+  flex: 1;
+}
+
+.about-content {
+  margin-top: 1.5rem;
+}
+
+.about-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.0rem;        /* Bajado un toque para estilizar la lectura */
+  line-height: 1.2;          /* Más aire de lectura */
+  color: #000000; /* Mayor contraste sobre fondo blanco */
+  margin-bottom: 1.1rem; 
+}
+
+/* Párrafo destacado de Filosofía (Tu blockquote inferior) */
+.about-content p.about-highlight {
+  color: #4e7da9;
+  font-size: 1.05rem;
+  font-weight: 400;
+  border-left: 3px solid #4e7da9; /* Sintonizado con tu azul/verde identitario anterior */
+  padding-left: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+/* Columna de la Imagen */
+.about-right {
+  flex: 1;
+}
+
+.about-img-wrapper {
+  width: 100%;               /* ← CORREGIDO: Bajado de 135% a 100% para que respete su columna */
+  aspect-ratio: 5 / 5;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12); /* Sombra más suave y elegante para fondo claro */
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.05);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.about-img-wrapper:hover .about-img {
   transform: scale(1.03);
 }
 
-.video-label {
-  position: absolute;
-  bottom: 1.2rem; left: 1.2rem;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #ffffffd9;
-  background: #0e1f17d9;
-  padding: 0.35rem 0.65rem;
-  backdrop-filter: blur(4px);
-  z-index: 2;
+/* RESPONSIVE DESIGN: Apilado correcto en celulares */
+@media (max-width: 850px) {
+  .about-seccion {
+    padding: 3rem 1.5rem;
+  }
+  
+  .about-container {
+    flex-direction: column-reverse; /* En mobile, el texto va primero y la foto abajo */
+    gap: 2.5rem;
+  }
 }
+
 
 /* ── SECCIÓN NECESITAS ESTO ── */
 .necesitas {
   position: relative;
   z-index: 30; 
-  background-color: #1a3c2f; 
   width: 100%;
   height: auto !important;
   overflow: visible !important;
-  background: rgba(16,46,37,0.45);
+  background: white;
   border-top: 1px solid rgba(255,255,255,0.07);
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
@@ -491,306 +712,563 @@ color:#FFFFFF;
   flex-direction: column;
   justify-content: flex-end;
   padding: 2rem 1.6rem;
-  background: linear-gradient(to top, rgba(10,32,25,0.92) 0%, rgba(10,32,25,0.6) 50%, rgba(10,32,25,0.0) 100%);
+  background: linear-gradient(to top, #c8d4d0 0%, #b3c8e0 50%, rgba(10,32,25,0.0) 100%);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
 .card-img-wrap:hover .card-hover {
   opacity: 1;
   transform: translateY(0);
 }
+
 .card-num {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 3.5rem;
-  color: rgba(255,255,255,0.12);
+  color: #91afcb;
   line-height: 1;
   margin-bottom: 0.2rem;
   position: absolute;
   top: 1.2rem;
   left: 1.4rem;
 }
+
 .card-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   letter-spacing: 0.05em;
-  color: var(--white);
+  color: #91afcb;
   margin-bottom: 0.7rem;
-  line-height: 1.1;
-}
-.card-text {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.65;
+  line-height: 1;
 }
 
-/* ── SECCIÓN CARRUSEL DE CURSOS ── */
-.cursos-cardss {
-  position: relative; 
-  z-index: 30;
-  background-color: #dce5ec; 
+.card-text {
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.5;
+}
+
+/* ========================================================================
+   SECCIÓN: PROTOCOLOS (CARRUSEL RECTANGULAR DE PANTALLA COMPLETA)
+   ======================================================================== */
+/* ========================================================================
+   SECCIÓN: PROTOCOLOS (MODIFICADA A 50VH)
+   ======================================================================== */
+
+.protocolos-seccion {
   width: 100%;
-  height: auto !important;
-  overflow: visible !important;
+  height: 30%; /* Tu nueva altura de mitad de pantalla */
+  background-color: #b3c8e0; 
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── ¡ESTA REGLA TE FALTABA! El riel que los pone en fila ── */
+.protocolos-slider {
+  display: flex;               /* ← Obliga a los slides a ponerse en línea horizontal */
+  width: 100%;
+  height: 70%;
+  overflow-x: auto;            /* ← Habilita el desplazamiento de costado */
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory; 
+  scroll-behavior: smooth;
+  
+  /* Oculta las barras de scroll nativas */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.protocolos-slider::-webkit-scrollbar {
+  display: none; 
+}
+
+/* Cada tarjeta/slide individual */
+.protocolos-slide {
+  flex: 0 0 100vw; 
+  height: 100%;               /* Solucionado: Ahora hereda los 50vh correctos de la sección */
+  scroll-snap-align: start; 
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 40px 240px 40px; 
+  box-sizing: border-box;
 }
-.cursos-cardss .section-main-title {
-  width: 100%;
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #2b445a;
-  margin-bottom: 70px;
-}
-.cursos-cardss .cards-carousel-container {
+
+/* Contenedor interno estilo "Quiénes Somos" */
+.protocolos-container {
   display: flex;
-  justify-content: center;
   align-items: center; 
-  gap: 35px;
+  gap: 3rem;
+  max-width: 1200px;
   width: 100%;
+  margin: 0 auto;             /* Centrado automático estándar */
 }
-#cursos-cardss .custom-card {
-  position: relative;
-  border-radius: 40px;
-  padding: 45px 30px;
+
+/* Mitad Izquierda: Textos */
+.protocolos-left {
+  flex: 1;
+  margin-left: -10%;
+}
+
+/* Control de ancho para el título de protocolos */
+.protocolos-slide .section-title {
+  max-width: 1000px;      /* ← Modificá este número a gusto para achicarlo o agrandarlo */
+  width: 100%;
+  font-size: 4rem;       /* Ajuste de tamaño opcional por si te queda gigante en los 50vh */
+  line-height: 1;
+  color: #4e7da9;        /* Color oscuro consistente con tus textos actuales */
+  margin-bottom: 0.6rem;
+}
+
+.protocolos-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;          /* Bajado levemente de 1.3rem para que entre bien en 50vh */
+  line-height: 1.3;
+  color: rgba(0, 0, 0, 0.65);
+  margin-top: 0.5rem;
+}
+
+/* Mitad Derecha: Imagen */
+.protocolos-right {
+  flex: 1;
+}
+
+.protocolos-img-wrapper {
+  width: 100%;                /* Ajustado al 100% para que no rompa el contenedor en 50vh */
+  aspect-ratio: 8 / 6;      /* Una proporción un toque más horizontal para que no quede gigante hacia abajo */
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 20px rgba(78, 125, 169, 0.4); /* Sombra azul suavizada con opacidad */
+}
+
+.protocolos-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.05);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.protocolos-img-wrapper:hover .protocolos-img {
+  transform: scale(1.04);
+}
+
+/* ── LISTA DE DETALLES TÉCNICOS INTERNOS ── */
+.protocolos-details {
+  list-style: none; 
+  padding: 0;
+  margin: 1rem 0 0 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-  overflow: visible; 
-  transition: all 0.3s ease;
+  gap: 0.5rem; 
 }
-#cursos-cardss .card-light {
-  background-color: #ffffff;
-  color: #2b445a;
-  width: 280px;  
-  height: 480px; 
-  opacity: 0.85; 
+
+.protocolos-details li {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;         /* Ajustado proporcionalmente para los 50vh */
+  line-height: 1.25;
+  color: #000000;
+  position: relative;
+  padding-left: 1.2rem;
 }
-#cursos-cardss .card-dark {
-  background-color: #3e668a;
+
+.protocolos-details li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #4e7da9; 
+  font-weight: bold;
+}
+
+.protocolos-details li strong {
+  color: #4e7da9;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ── CONTENEDOR DE PUNTOS DE PAGINACIÓN ── */
+.protocolos-dots {
+  position: absolute;
+  top: 93%;               /* Subido a 20px para que no tape los textos en la sección más corta */
+  left: 50%;
+  transform: translateX(-50%); 
+  display: flex;
+  gap: 15px; 
+  z-index: 10; 
+}
+/* Forzamos el tamaño dándole más especificidad al selector */
+.protocolos-seccion .protocolos-dots .dot {
+  width: 13px !important;  /* ← El !important asegura que no se pise con otra cosa */
+  height: 13px !important; /* ← Tienen que ser iguales para mantener el círculo */
+  border-radius: 50% !important;
+  background-color: transparent;
+  border: 2px solid #4e7da9;
+  cursor: pointer;
+  padding: 0; /* Borra cualquier colchón interno que traiga el <button> */
+  box-sizing: border-box;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* El punto activo también lo aseguramos */
+.protocolos-seccion .protocolos-dots .dot.active {
+  background-color: white !important;
+  border-color: #4e7da9 !important;
+  transform: scale(1.25);
+}
+
+.dot:hover {
+  border-color: #4e7da9;
+}
+/* ── COMPONENTES INTERNOS DE LAS TARJETAS DE CURSOS ── */
+/* ========================================================================
+   SECCIÓN: PRE-CARDS (INTRODUCCIÓN AL CATÁLOGO)
+   ======================================================================== */
+
+.precards-seccion {
+  background-color: white; /* Fondo verde bosque idéntico al catálogo de abajo */
+  padding: 3rem 3rem 3rem 3rem; /* Más aire arriba para separar de la sección anterior */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.precards-container {
+  display: flex;
+  align-items: center;      /* Alinea verticalmente la foto con el centro del texto */
+  gap: 4rem;                /* Separación generosa de estilo editorial */
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Distribución proporcional de las dos columnas */
+.precards-left {
+  flex: 0 0 45%;            /* La foto toma un 45% del ancho */
+}
+
+.precards-right {
+  flex: 0 0 55%;            /* El texto toma el 55% restante */
+}
+
+/* ── CONTENEDOR DE LA FOTO (VERTICAL PREMIUM) ── */
+.precards-img-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 5;      /* Proporción marcadamente vertical, muy elegante */
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 20px #4e7da9;
+}
+
+.precards-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) contrast(1.05);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.precards-img-wrapper:hover .precards-img {
+  transform: scale(1.03);
+}
+
+/* ── TIPOGRAFÍAS Y PÁRRAFOS ── */
+.precards-right .section-title{
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.82rem;
+  width: 700px;
+  font-weight: 500;
+  color: #4e7da9;           /* Tu verde niebla destacado */
+  margin: 0.5rem 0 0.3rem 0;
+}
+
+.precards-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #4e7da9;           /* Tu verde niebla destacado */
+  margin: 0.5rem 0 1.rem 0;
+  letter-spacing: 0.01em;
+}
+
+.precards-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.precards-footer-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4rem;
+  color: #4e7da9;
+  font-style: italic;       /* Toque tipográfico de cierre */
+  margin-top: 1.3rem;
+}
+
+/* ── CAJA DE ADVERTENCIA: REGLA EXCLUYENTE ── */
+.precards-regla-box {
+  background: white;
+  border-left: 3px solid #4e7da9; /* Línea de acento rígida en la izquierda */
+  padding: 1rem 1rem;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+
+.regla-tag {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4e7da9;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+}
+
+.precards-regla-box p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.4;
+  color: #000000;
+  margin: 0;
+}
+
+/* ── RESPONSIVE: CELULARES Y TABLETS ── */
+@media (max-width: 900px) {
+  .precards-seccion {
+    padding: 3.0rem 1.5rem;
+  }
+
+  .precards-container {
+    flex-direction: column; /* Apilado vertical automático */
+    gap: 3rem;
+  }
+
+  .precards-left, .precards-right {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .precards-img-wrapper {
+    aspect-ratio: 16 / 10;  /* Cambia a formato apaisado en mobile para no ocupar toda la pantalla */
+  }
+}
+/* ========================================================================
+   SECCIÓN: MULTI-CARD CAROUSEL (3 VISIBLES, 2 OCULTAS)
+   ======================================================================== */
+
+.cards-seccion {
+  background-color: #FFFFFF; /* Fondo verde oscuro integrado */
+  padding: 4rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.cards-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 ;
+  position: relative;
+}
+
+.cards-intro {
+  margin-bottom: -1.8rem;
+}
+
+/* ========================================================================
+   REFACTOR COMPLETO: CAROUSEL CON FOTOS DE FONDO (ANTI-SOLAPAMIENTO)
+   ======================================================================== */
+
+.cards-slider {
+  display: flex !important;
+  gap: 20px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory !important;
+  scroll-behavior: smooth !important;
+  padding: 15px 0 35px 0 !important;
+  width: 100% !important;
+  
+  /* Oculta barras de scroll molestas */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+.cards-slider::-webkit-scrollbar { display: none; }
+
+/* ── LA TARJETA CONTENEDORA (EL ANCLA) ── */
+.card-item {
+  position: relative !important;   /* ← CRÍTICO: Obliga a que los textos se queden ADENTRO de su tarjeta */
+  flex: 0 0 calc((100% - 40px) / 3) !important; /* Mantiene 3 tarjetas perfectas por pantalla */
+  height: 560px !important;        /* ← CRÍTICO: Evita el colapso. Le da el alto estructural a la tarjeta */
+  scroll-snap-align: start !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  background-color: #91afcb;       /* Fondo oscuro de respaldo técnico */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card-item:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ── LA FOTO DE FONDO AL 100% ── */
+.card-img-box {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;          /* Capa base */
+}
+
+.card-img-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;    /* Adapta y recorta la foto sin deformarla */
+}
+
+/* ── EL CONTENIDO EDITORIAL (OVERLAY OSCURO) ── */
+.card-content {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;           /* Se para arriba de la foto */
+  padding: 2.2rem 1.8rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important; /* Envía todos los textos directo al piso de la tarjeta */
+  
+  /* Degradado alpino oscuro para fundir la foto con el texto blanco */
+  background: linear-gradient(to top, rgba(145, 175, 203, 0.65) 0%, #4e7da9a5 55%, transparent 100%) !important;
+  box-sizing: border-box !important;
+}
+
+/* ── ESTILOS TIPOGRÁFICOS INTERNOS (LETRAS BLANCAS) ── */
+.card-content h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem !important;
+  line-height: 1.3 !important;
+  color: white !important;       /* Título blanco para resaltar */
+  font-weight: 600 !important;
+  margin: 0 0 0.4rem 0 !important;
+}
+
+.card-specs {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0.3rem 0 0.5rem 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.4rem !important;
+  border-bottom: 2px solid #91afcb !important; /* Línea divisoria clara traslúcida */
+  padding-bottom: 0.9rem !important;
+}
+
+.card-specs li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem !important;
+  line-height: 1;
+  color: #FFFFFF !important; /* Texto secundario gris claro */
+}
+
+.card-specs li strong {
+  color: #FFFFFF !important;       /* Resalta Duración/Dificultad con tu celeste identitario */
+  font-weight: 700 !important;
+}
+
+.card-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem !important;
+  line-height: 1.3 !important;
+  color: #FFFFFF !important;
+  background: #4e7da9 !important; /* Caja sutil traslúcida */
+  padding: 7px 12px !important;
+  border-radius: 10px !important;
+  border-left: 3px solid #c8d4d0 !important;
+  margin: 0 !important;
+}
+
+/* ── CONTENEDOR DE PUNTOS GUÍA ARRIBA A LA DERECHA ── */
+.cards-wrapper .cards-dots {
+  position: absolute;
+  top: 100%;      
+  right: 50%;
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+.cards-wrapper .card-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid #4e7da9;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cards-wrapper .card-dot.active {
+  background-color: #4e7da9;
+  border-color: #4e7da9;
+  transform: scale(1.25);
+}
+/* ── BOTÓN INTERNO DE LA TARJETA DE CURSOS ── */
+.card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;            /* Ocupa todo el ancho de la tarjeta */
+  padding: 12px 20px;
+  margin-top: 1.2rem;     /* Separa el botón de la nota de admisión de arriba */
+  
+  background-color: #4e7da9; /* Tu azul metálico insignia */
   color: #ffffff;
-  width: 330px;  
-  height: 560px; 
-  z-index: 5;    
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-}
-#cursos-cardss .card-header h3 { font-size: 1.6rem; margin-bottom: 12px; text-align: center; }
-#cursos-cardss .card-header p { font-size: 0.85rem; text-align: center; opacity: 0.7; }
-
-#cursos-cardss .image-container { position: absolute; pointer-events: none; }
-#cursos-cardss .image-container img { width: 100%; height: auto; display: block; }
-#cursos-cardss .img-left-bottom { top: 48%; left: -10%; width: 115%; }
-#cursos-cardss .img-centered { top: 38%; left: 50%; transform: translateX(-50%); width: 130%; }
-#cursos-cardss .img-right-bottom { top: 50%; left: 2%; width: 120%; }
-
-#cursos-cardss .card-footer { display: flex; width: 100%; position: relative; z-index: 20; }
-#cursos-cardss .card-footer a { margin-left: auto; color: inherit; text-decoration: none; font-weight: bold; }
-#cursos-cardss .card-footer button { margin: 0 auto; background-color: #2b445a; color: #ffffff; border: none; padding: 12px 32px; border-radius: 30px; font-weight: bold; cursor: pointer; }
-
-/* Responsive de los cursos */
-@media (max-width: 992px) {
-  .cursos-cardss .cards-carousel-container { flex-direction: column; gap: 140px; }
-  #cursos-cardss .card-light, #cursos-cardss .card-dark { width: 300px; height: 520px; opacity: 1; }
+  
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  
+  border-radius: 12px;    /* Esquinas suavizadas a tono con la tarjeta */
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
-   /* ── EQUIPAMIENTO INTERACTIVO ── */
-    .equipamiento {
-height: 100vh;
-width:100vw;
-background-image: url(fotos/fondoequipoo.png);
-position: relative;
-background-size:  cover;}
+/* Efectos al pasar el mouse por encima del botón */
+.card-btn:hover {
+  background-color: #3b638c; /* Oscurece un toque el azul */
+  color: #ffffff;
+  transform: translateY(-1px); /* Pequeño levante interactivo */
+}
 
-    .equip-header {
-      text-align: center;
-      margin-top: -4.0rem;
-      margin-bottom: 1rem;
-      padding: 0 5rem;
-    }
+/* Evita que el hover general de la tarjeta rompa el comportamiento del botón */
+.card-item:hover .card-btn {
+  box-shadow: 0 4px 15px rgba(78, 125, 169, 0.3);
+}
 
-    .equip-intro {
-      font-size: 1.7rem;
-      font-weight: 400;
-      color: #000;
-      margin-top: -2rem;
-      margin-bottom: -1.2rem;
-    }
-
-    /* Stage: ocupa ancho completo, imagen landscape */
-    .gear-stage {
-      position: relative;
-      width: fit-content;
-      margin: auto;
-      user-select: none;
-    }
-
-    .gear-img {
-      height: 42vw;
-      display: flex;
-      object-fit: cover;
-      filter: brightness(1.1) saturate(0.85);
-      margin-bottom: -7rem;
-    }
-
-    /* Hotspot: punto sobre la imagen */
-    .hotspot {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    .dot-pulse {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: #ffffff;
-      box-shadow: 0 0 0 0 #1a3c2f;
-      animation: pulse-dot 2.4s ease-out infinite;
-      transition: transform 0.2s;
-      position: relative;
-      z-index: 2;
-    }
-    .hotspot:hover .dot-pulse,
-    .hotspot.active .dot-pulse {
-      transform: scale(1.4);
-      animation: none;
-      box-shadow: 0 0 0 4px #1a3c2f;
-    }
-
-    @keyframes pulse-dot {
-      30%   { box-shadow: 0 0 0 0 #1a3c2f; }
-      70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
-      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
-    }
-
-    /* ── LÍNEA CONECTOR: sale del punto hacia el costado ── */
-    .hotspot::after {
-      content: '';
-      position: relative;
-      top: 70%;
-      height: 1px;
-      background: #1a3c2f;
-      transition: opacity 0s;
-      opacity: 0;
-      z-index: 1;
-    }
-    /* Línea hacia la izquierda (tooltips col izquierda) */
-    .hotspot[data-col="left"]::after {
-      right: calc(100% - 6px);
-      width: 8vw;
-      transform: translateY(-50%);
-    }
-    /* Línea hacia la derecha (tooltips col derecha) */
-    .hotspot[data-col="right"]::after {
-      left: calc(100% - 6px);
-      width: 8vw;
-      transform: translateY(-50%);
-    }
-    .hotspot:hover::after,
-    .hotspot.active::after { opacity: 1; }
-
-    /* ── TOOLTIP: card flotante fuera de la imagen ── */
-    .gear-tooltip {
-      position: absolute;
-      top: 50%;
-      width: 300px;
-      background: rgba(16, 46, 37, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid #1a3c2f;
-      padding: 0.9rem 1.05rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.22s ease, transform 0.22s ease;
-      z-index: 30;
-      border-radius: 3px;
-    }
-
-    /* Columna izquierda: tooltip aparece a la izquierda de la imagen */
-    .hotspot[data-col="left"] .gear-tooltip {
-      right: calc(100% + 6vw + 8px);
-      transform: translateY(-50%) translateX(6px);
-    }
-    .hotspot[data-col="left"]:hover .gear-tooltip,
-    .hotspot[data-col="left"].active .gear-tooltip {
-      opacity: 1;
-      transform: translateY(-50%) translateX(0);
-    }
-
-    /* Columna derecha: tooltip aparece a la derecha de la imagen */
-    .hotspot[data-col="right"] .gear-tooltip {
-      left: calc(100% + 6vw + 8px);
-      transform: translateY(-50%) translateX(-6px);
-    }
-    .hotspot[data-col="right"]:hover .gear-tooltip,
-    .hotspot[data-col="right"].active .gear-tooltip {
-      opacity: 1;
-      transform: translateY(-50%) translateX(0);
-    }
-
-    .tooltip-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: 0.07em;
-      color: var(--white);
-      margin-bottom: 0.35rem;
-      line-height: 1.1;
-    }
-    .tooltip-desc {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.55;
-    }
-
-    /* ── OVERLAY imagen superpuesta al hover (botas) ── */
-    .gear-overlay-img {
-      position: absolute;
-      /* centrado sobre la zona de las botas: ~35–62% x, 58–90% y */
-      left: 33%;
-      top: 56%;
-      width: 28%;
-      pointer-events: none;
-      opacity: 0;
-      transform: scale(0.88);
-      transition: opacity 0.32s ease, transform 0.32s ease;
-      z-index: 25;
-      border-radius: 3px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.55);
-    }
-    .gear-overlay-img img {
-      width: 100%;
-      display: block;
-      border-radius: 3px;
-    }
-    /* Se activa cuando el hotspot tiene clase .active */
-    .gear-overlay-img.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Tooltip wide heredado — ya no necesita la img interna */
-    .gear-tooltip--wide { width: 220px; }
-    .tooltip-img { display: none; } /* ocultar si quedó alguna */
-
-    /* Hint */
-    .gear-hint {
-      text-align: center;
-      margin-top: 1.8rem;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #1a3c2f;
-      padding: 0 5rem;
-    }
-
+/* RESPONSIVE DESIGN: 1 tarjeta en pantalla para celulares */
+@media (max-width: 850px) {
+  .card-item {
+    flex: 0 0 100%; /* Toma todo el ancho en mobile */
+  }
+  .cards-wrapper .cards-dots {
+    display: none; /* Simplificamos la UI ocultando puntos en celular */
+  }
+  .cards-wrapper {
+    padding: 0 1.5rem;
+  }
+}
 
     .staff {
       background: rgba(16,46,37,0.45);
@@ -840,7 +1318,81 @@ background-size:  cover;}
       color: var(--botanical-xs);
       text-transform: uppercase;
     }
+/* ========================================================================
+   ESTILOS ADICIONALES: POP-UP DE CAPTURA DEL STAFF (MODAL)
+   ======================================================================== */
 
+/* La ventana contenedora que flota en toda la pantalla */
+.staff-modal {
+  display: none; /* Se activa mediante JavaScript */
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(16, 46, 37, 0.93); /* Sintonizado con tu verde botánico base profunda */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 99999; /* Máxima prioridad sobre la barra fixed y títulos */
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Clase de activación que inyectará JS */
+.staff-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* La imagen ampliada dentro del pop-up */
+.staff-modal-img {
+  max-width: 85%;
+  max-height: 80vh;
+  border-radius: 20px;
+  object-fit: contain;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  transform: scale(0.94);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Animación elástica cuando se despliega el modal */
+.staff-modal.active .staff-modal-img {
+  transform: scale(1);
+}
+
+/* Botón de cierre superior (La X) */
+.staff-modal-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Inter', sans-serif;
+  font-size: 46px;
+  font-weight: 200;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.staff-modal-close:hover {
+  color: #7BB3A4; /* O usa tu variable de color claro si tenés */
+  transform: scale(1.1);
+}
+
+/* Ajuste responsivo para celulares */
+@media (max-width: 850px) {
+  .staff-modal-close {
+    top: 20px;
+    right: 25px;
+    font-size: 38px;
+  }
+  
+  .staff-modal-img {
+    max-width: 90%;
+    max-height: 70vh;
+  }
+}
 
     /* ── BLOG ── */
     .blog { background: transparent; padding: 0; }
@@ -899,7 +1451,147 @@ background-size:  cover;}
       object-fit: cover;
       filter: saturate(0.35) brightness(0.75);
     }
+/* ========================================================================
+   SECCIÓN: FAQ / ACCORDION (ESTILO INTEGRADO CÚSPIDES)
+   ======================================================================== */
 
+.faq-seccion {
+  background-color: #122820; /* Tu fondo oscuro base */
+  padding: 4rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.faq-container {
+  max-width: 850px; /* Contenedor más estrecho para una lectura de texto óptima */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 2.8rem;
+}
+
+.faq-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px; /* Separación sutil entre bloques */
+}
+
+/* ── CADA CONTENEDOR DE PREGUNTA ── */
+.faq-item {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Estado de la caja cuando está abierta */
+.faq-item.active {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(78, 125, 169, 0.35); /* Resalta con tu azul de acento */
+}
+
+/* ── BOTÓN DISPARADOR (FLEXBOX) ── */
+.faq-pregunta {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 1.6rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #ffffff;
+  gap: 20px;
+}
+
+/* ── ICONO INTERACTIVO (+ / -) CON CSS PURO ── */
+.faq-icono {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.faq-icono::before,
+.faq-icono::after {
+  content: '';
+  position: absolute;
+  background-color: #7BB3A4; /* Tu verde niebla insignia */
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s;
+}
+
+/* Línea Horizontal */
+.faq-icono::before {
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+}
+
+/* Línea Vertical */
+.faq-icono::after {
+  top: 0;
+  left: 6px;
+  width: 2px;
+  height: 14px;
+}
+
+/* Animación de giro al abrir: la vertical se esconde y la horizontal cambia a tu azul */
+.faq-item.active .faq-icono::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.faq-item.active .faq-icono::before {
+  transform: rotate(180deg);
+  background-color: #4e7da9; /* Pasa a tu azul metálico */
+}
+
+/* ── CONTENEDOR DESLIZANTE DE LA RESPUESTA ── */
+.faq-respuesta {
+  max-height: 0; /* Cerrado por defecto. JS maneja la apertura fluida */
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.faq-respuesta p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0 1.8rem 1.6rem 1.8rem;
+  margin: 0;
+}
+
+/* DISEÑO RESPONSIVE: Ajustes para pantallas de celulares */
+@media (max-width: 768px) {
+  .faq-seccion {
+    padding: 3rem 1.2rem;
+  }
+  .faq-pregunta {
+    font-size: 0.96rem;
+    padding: 1.3rem 1.4rem;
+  }
+  .faq-respuesta p {
+    font-size: 0.88rem;
+    padding: 0 1.4rem 1.3rem 1.4rem;
+  }
+}
     /* ── FOOTER ── */
     footer {
       background: rgba(10, 30, 24, 0.75);
@@ -1009,20 +1701,22 @@ background-size:  cover;}
   width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background-color: #1a3c2f;
+  background-color: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, #ffffff 0%, #a3a3a3 50%, #5e5e5e 100%);
   border-radius: 50px;
-  border: 3px solid #1a3c2f;
+  border: 3px solid #91afcb;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background-color: transparent;
 }
 
 @supports (scrollbar-color: auto) {
   html {
-    scrollbar-color: #a3a3a3 #1a3c2f;
+    scrollbar-color: #91afcb transparent;
     scrollbar-width: auto;
   }
 }
