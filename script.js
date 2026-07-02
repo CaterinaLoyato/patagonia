@@ -192,3 +192,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+// ========================================================================
+// ANIMACIÓN DE CONTADORES NUMÉRICOS AL HACER SCROLL
+// ========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const numeros = document.querySelectorAll('.cat-num');
+  const duracionAnimacion = 4000; // Duración total del conteo en milisegundos (2 segundos)
+
+  const iniciarConteo = (elemento) => {
+    const valorDestino = parseInt(elemento.getAttribute('data-target'), 10);
+    const valorInicial = 0;
+    let tiempoInicio = null;
+
+    // Función matemática para suavizar el conteo progresivo
+    const animar = (timestamp) => {
+      if (!tiempoInicio) tiempoInicio = timestamp;
+      const progreso = timestamp - tiempoInicio;
+      
+      // Calculamos el valor actual relativo al tiempo transcurrido
+      const porcentajeProgreso = Math.min(progreso / duracionAnimacion, 1);
+      const valorActual = Math.floor(porcentajeProgreso * (valorDestino - valorInicial) + valorInicial);
+      
+      elemento.textContent = valorActual;
+
+      if (porcentajeProgreso < 1) {
+        requestAnimationFrame(animar); // Sigue corriendo de forma ultra fluida
+      } else {
+        elemento.textContent = valorDestino; // Asegura que quede el número exacto al final
+      }
+    };
+
+    requestAnimationFrame(animar);
+  };
+
+  // CONFIGURACIÓN DEL OBSERVER (Monitorea el scroll)
+  const opcionesObserver = {
+    root: null,       // Usa el viewport del navegador
+    threshold: 0.5    // Se dispara cuando el 30% de la sección es visible
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      // Si la sección entró en pantalla...
+      if (entry.isIntersecting) {
+        iniciarConteo(entry.target);
+        observer.unobserve(entry.target); // Deja de vigilarlo para que no vuelva a contar al subir
+      }
+    });
+  }, opcionesObserver);
+
+  // Le decimos al observer que vigile cada uno de los números
+  numeros.forEach(num => observer.observe(num));
+});
