@@ -4,41 +4,25 @@
   padding: 0; 
 }
 
-:root {
-  /* Pantone 19-5220 Botanical Garden + sistema derivado */
-  --botanical:    #789cbb;   /* verde base pantone */
-  --botanical-dk: #91afcb;   /* sombra profunda */
-  --botanical-md: #b3c8e0;   /* valor medio */
-  --botanical-lt: #cedeef;   /* acento claro */
-  --botanical-xs: #e8f3fe;   /* niebla helada */
-  --white:        #FFFFFF;
-  --off-white:    #F2F5F4;
-  --mist:         #91afcb;   /* gris-verde para textos secundarios */
-}
-
 html { 
   scroll-behavior: smooth; 
 }
 
 /* ── CONFIGURACIÓN GLOBAL DE PANTALLA Y SCROLL ── */
 body {
-  background-color: #FFFFFF;
+  background-color: #e4eef0;
   background-size: 300px 300px, cover;
   background-attachment: fixed;
-  color: #789cbb;
+  color: #075058;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   line-height: 1.6;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  overflow-y: auto; /* LIBERA EL SCROLL VERTICAL GENERAL */
+  overflow-y: auto;
 }
-/* ========================================================================
-   CONFIGURACIÓN GENERAL DE ALTURAS (RESET DE SECCIONES)
-   ======================================================================== */
 
 /* ── NAV FLOTANTE TRANSPARENTE ── */
-
 .header {
   position: fixed;        
   top: 0;                 
@@ -49,16 +33,13 @@ body {
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Distribuye: Logo izq / Links centro / Botón der */
-  flex-wrap: nowrap;              /* ← NUEVO: Prohíbe terminantemente que los elementos se vayan abajo */
+  justify-content: space-between;
+  flex-wrap: nowrap;              
   padding: 0 2.5rem;
   height: 64px;
-  
-  /* ── EL SALVADOR DEL MAQUETADO ── */
-  box-sizing: border-box;         /* ← NUEVO: Fuerza a que el padding cuente hacia adentro sin romper el 100% */
-  
+  box-sizing: border-box;         
   -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Cambiado a negro suave porque tu fondo de nav es claro (blanco) */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
 }
 
 .nav-logo {
@@ -72,8 +53,6 @@ body {
   height: 40px;
   width: auto;
   display: block;
-  /* Eliminé el filter: brightness(0) invert(1) porque tu nav es blanca. 
-     Si el logo original tiene color o es oscuro, ahora se va a ver perfecto. */
 }
 
 .logo-img--footer {
@@ -85,8 +64,8 @@ body {
   display: flex;
   gap: 2.2rem;
   list-style: none;
-  padding: 0;                     /* Nuevo: Resetea paddings rebeldes de las listas <ul> */
-  margin: 0;                      /* Nuevo: Resetea márgenes de las listas <ul> */
+  padding: 0;                     
+  margin: 0;                      
 }
 
 .nav-links a {
@@ -95,13 +74,13 @@ body {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #000000;
+  color: #16232a;
   text-decoration: none;
   transition: color 0.2s;
-  /* Se eliminó justify-content: right (regla inválida acá) */
 }
+
 .nav-links a:hover { 
-  color: #4e7da9; 
+  color: #075058; 
 }
 
 .nav-cta--pill {
@@ -117,34 +96,28 @@ body {
   text-decoration: none;
   white-space: nowrap; 
   border-radius: 50px; 
-  background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
-  color: #4e7da9; 
-  box-shadow: 0 4px 15px #4e7da9; /* Suavizada con opacidad */
+  background: #ff5b04;
+  color: #e4eef0; 
+  box-shadow: 0 4px 15px rgba(255, 91, 4, 0.4); 
   transition: transform 0.2s ease, filter 0.2s ease;
   cursor: pointer;
 }
+
 .nav-cta--pill:hover { 
   filter: brightness(1.1); 
 }
 
-/* ── LAYOUT DEL HERO (OCUPA EL 100% REAL DE LA PANTALLA) ── */
-/* ==========================================================================
-   SECCIÓN HERO (DEFINITIVA PARA TU ESTRUCTURA HTML)
-   ========================================================================== */
-
+/* ── LAYOUT DEL HERO ── */
 .hero {
   position: relative;
   width: 100vw;
-  /* CRÍTICO: El !important acá anula el 'height: auto' de la regla general de las secciones */
   height: 100vh !important; 
   display: block;
   margin: 0 !important;   
-  /* CRÍTICO: El !important acá quita el padding de 6rem que te encajonaba el bloque blanco */
   padding: 0 !important; 
   overflow: visible;
 }
 
-/* Estructura de dos mitades de fondo */
 .hero__half {
   width: 50%;
   height: 100%;
@@ -155,11 +128,11 @@ body {
   background-color: #ffffff; 
   display: flex;
   flex-direction: column; 
-  justify-content: flex-end; /* Empuja el bloque de descripción hacia abajo */
+  justify-content: flex-end; 
   align-items: flex-start; 
   padding: 10vh 8vw 6vh 6vw;
   z-index: 2;
-  box-sizing: border-box;/* Espaciado armónico para el texto */
+  box-sizing: border-box;
 }
 
 .hero__half--right {
@@ -169,7 +142,7 @@ body {
   width: 100vw;
   height: 110vh;
   background-image: url('fotos/fondo4.png'); 
-  background-size: 100vw 100vh; /* Ocupa el total del viewport */
+  background-size: 100vw 100vh; 
   background-position: center bottom;
   background-attachment: fixed;
   filter: brightness(0.8) contrast(1.2);
@@ -177,10 +150,9 @@ body {
   z-index: 1;
 }
 
-/* CONTENEDOR DEL BLOQUE DE TÍTULOS (CALIBRADO AL CENTRO) */
 .hero__title-wrapper {
   position: absolute;
-  top: -10%; /* Evita que choque con el Nav superior */
+  top: -10%; 
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -209,17 +181,16 @@ body {
 .hero__title-block h2 {
   font-size:7vw; 
   font-weight: 700; 
-  letter-spacing: 0.1Rem;
+  letter-spacing: 0.1rem;
   margin-top: 4px;
   line-height: 1;
 }
 
-/* CAPA 1: MITAD IZQUIERDA (Sincronización exacta de píxeles con la derecha) */
 .hero__title-block--left {
   background-image: url('fotos/fondo4.png'); 
-  background-size: 100vw 100vh; /* Mismo tamaño que la mitad derecha */
+  background-size: 100vw 100vh; 
   background-position: center bottom;
-  background-attachment: fixed; /* Misma posición que la mitad derecha */
+  background-attachment: fixed; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -227,13 +198,11 @@ body {
   clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
 }
 
-/* CAPA 2: MITAD DERECHA (Color blanco puro) */
 .hero__title-block--right {
   color: #ffffff;
   clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
 }
 
-/* BLOQUE DE DESCRIPCIÓN */
 .hero__desc {
   top: 20%;
   max-width: 450px;
@@ -242,7 +211,7 @@ body {
 }
 
 .hero__desc-line {
-  width: 330px; /* Línea de acento refinada */
+  width: 330px; 
   height: 3px;
   background-color: #4e7da9;
   margin-top: 20px;
@@ -255,16 +224,14 @@ body {
   color: #000000;
 }
 
-/* CONTENEDOR DE BOTONES (DENTRO DE LA DESCRIPCIÓN) */
 .hero-btns {
   display: flex;
   gap: 1.2rem;
   margin-top: 1.8rem;
-  width: 100%; /* Utiliza el 100% del max-width de la descripción sin desbordar */
-  flex-wrap: nowrap; /* Evita que se vayan uno abajo del otro */
+  width: 100%; 
+  flex-wrap: nowrap; 
 }
 
-/* BOTONES ESTILO PÍLDORA METALIZADA CON BORDE BLANCO */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -278,7 +245,7 @@ body {
   text-decoration: none;
   white-space: nowrap; 
   border-radius: 50px; 
-   background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
   color: #4e7da9; 
   filter: brightness(1.1);
   box-shadow: 0 4px 15px #91afcb; 
@@ -290,29 +257,28 @@ body {
   transform: translateY(-2px);
   background: linear-gradient(135deg, #91afcb 100%);
   filter: brightness(1.1);
-  color:#FFFFFF
+  color:#FFFFFF;
 }
 
 .btn--secondary {
   transform: translateY(-2px);
   background: linear-gradient(135deg, #91afcb 100%);
   filter: brightness(1.1);
-  color:#FFFFFF
-}
-.btn--secondary:hover {
-   transform: translateY(-2px);
-  /* Degradado gris/plateado de la imagen de referencia */
-  background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
-   filter: brightness(1.1);
-  color: #4e7da9; 
-  
+  color:#FFFFFF;
 }
 
-/* ── CONFIGURACIÓN GENERAL DE SECCIONES (ACTÚAN COMO PERSIANA SOBRE EL HERO) ── */
+.btn--secondary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #ffffff 0%, #c8d4d0 100%);
+  filter: brightness(1.1);
+  color: #4e7da9; 
+}
+
+/* ── CONFIGURACIÓN DE SECCIONES PERSIANA ── */
 section { 
   position: relative;
-  z-index: 30; /* Pasa por encima del fondo fijo al scrolear */
-  background-color: white; 
+  z-index: 30; 
+  background-color: #e4eef0; 
   width: 100%;
   height: auto !important;
   min-height: 100vh; 
@@ -321,33 +287,36 @@ section {
 }
 
 .section-eyebrow {
+  display: block;             
   font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #000000;
-  margin-bottom: 0.7rem;
+  font-size: 1.1rem;         
+  font-weight: 700;
+  letter-spacing: 0.15em;     
+  text-transform: uppercase;  
+  color: #ff5b04;             
+  margin-bottom: 0.6rem;      
 }
+
 .section-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2.8rem, 5vw, 4.8rem);
   line-height: 0.95;
   letter-spacing: 0.04em;
   margin-bottom: 2rem;
-  color: #91afcb;
+  color: #075058;
 }
 
 /* ── SECCIÓN STATS / CATEGORÍAS ── */
 .categories {
   position: relative;
   z-index: 30; 
- background: linear-gradient(135deg,  #91afcb 10%, #FFFFFF 30%, #91afcb 50%, #ffffff 70%, #91afcb 90% );
+  background: #075058;
   width: 100%;
   height: auto !important;
   min-height: auto; 
   overflow: visible !important;
-  padding: 2.7rem 1rem;
-  border-bottom: 2px solid #4e7da9;
+  padding: 2.7rem 2rem;
+  border-bottom: 2px solid #075058;
 }
 
 .categories-grid {
@@ -362,7 +331,7 @@ section {
   align-items: center;
   gap: 0.6rem;
   cursor: default;
-  border-right: 2px solid #4e7da9;
+  border-right: 2px solid #e4eef0;
 }
 .cat-item:last-child { border-right: none; }
 
@@ -376,8 +345,8 @@ section {
 }
 
 .cat-item:hover .cat-circle  {
-  background: #91afcb ;
-  border-color: #91afcb;
+  background: #e4eef0 ;
+  border-color: #ff5b04;
 }
 
 .cat-num {
@@ -388,10 +357,11 @@ section {
   line-height: 1;
 }
 
-.cat-item:hover .cat-num {
-color:#FFFFFF;
-}
+.cat-item:hover .cat-num  { 
+  color:#FF5b04; }
 
+.cat-item:hover .cat-tag { 
+  color:#FF5b04; }
 
 .cat-tag {
   font-family: 'Space Mono', monospace;
@@ -399,7 +369,7 @@ color:#FFFFFF;
   font-weight: 200;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #4e7da9;
+  color: #075058;
   text-align: center;
   background: #FFFFFF;
   padding: 0.3rem 0.55rem;
@@ -409,21 +379,14 @@ color:#FFFFFF;
   font-family: 'Inter', sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
-  color: #4e7da9 ;
+  color: #e4eef0 ;
   text-align: center;
   line-height: 1;
 }
-/* --seccion 2 -- */
-/* ========================================================================
-   SECCIÓN: VIDEO GRID ASIMÉTRICO (5 SLOTS CON UBICACIÓN)
-   ======================================================================== */
 
-/* ========================================================================
-   SECCIÓN: GALERÍA (ESTRUCTURA DE 4 COLUMNAS ESTILO BENTO SIMÉTRICO)
-   ======================================================================== */
-
+/* ── GALERÍA BENTO SIMÉTRICO ── */
 .galeria-seccion {
-  background-color: #FFFFFF; /* Fondo bosque oscuro alpino */
+  background-color: #FFFFFF; 
   padding: 1rem 0.2rem;
   width: 100%;
   box-sizing: border-box;
@@ -432,48 +395,36 @@ color:#FFFFFF;
 .galeria-container {
   max-width: 1200px;
   width: 100%;
-  margin:  auto;
+  margin: auto;
 }
 
-.galeria-intro {
-  margin-bottom: 0.2rem;
-}
-
-/* ── LA MATRIZ DE 4 COLUMNAS ── */
 .galeria-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas idénticas */
-  grid-auto-rows: 270px;                 /* Altura de fila calculada para lograr los cuadrados */
+  grid-template-columns: repeat(4, 1fr); 
+  grid-auto-rows: 270px;                 
   gap: 10px;
 }
 
-/* ── COMPORTAMIENTO ESPACIAL DE LOS 5 ELEMENTOS ── */
-
-/* Fitz Roy: Ocupa la primera columna completa (filas 1 y 2) */
 .galeria-item.item-vertical-izq {
   grid-column: 1;
   grid-row: span 2;
 }
 
-/* Hielo Continental y Tronador: Quedan flotando arriba en las columnas 2 y 3 */
 .galeria-item.item-cuadrado {
   grid-column: span 1;
   grid-row: span 1;
 }
 
-/* Ushuaia Vivac: Se estira horizontalmente abajo tapando las columnas 2 y 3 */
 .galeria-item.item-ancho-centro {
   grid-column: 2 / span 2;
   grid-row: 2;
 }
 
-/* Domuyo: Cierra la estructura ocupando la cuarta columna completa (filas 1 y 2) */
 .galeria-item.item-vertical-der {
   grid-column: 4;
   grid-row: span 2;
 }
 
-/* ── CONTENEDOR INDIVIDUAL DE VIDEO ── */
 .galeria-item {
   position: relative;
   border-radius: 20px;
@@ -489,30 +440,25 @@ color:#FFFFFF;
   transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s ease;
 }
 
-/* ── INTERFAZ DE TEXTO (OVERLAY) ── */
-/* Reducimos el espacio inferior del bloque de introducción */
 .galeria-intro {
-  margin-bottom: 0.7rem; /* ← Bajado de 2.5rem para acercar la cuadrícula */
+  margin-bottom: 0.7rem; 
 }
 
-/* Reseteamos los márgenes por defecto del h2 que suelen inflar el espacio */
 .galeria-intro h2,
 .galeria-intro .section-title {
-  margin-top: 0.2rem;   /* Espacio controlado con el eyebrow de arriba */
-  margin-bottom: 0;     /* Eliminamos el margen de abajo por completo */
+  margin-top: 0.2rem;   
+  margin-bottom: 0;     
 }
 
 .galeria-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, #91afcb 0%, #FFFFFF 60%, transparent 100%);
+  background: linear-gradient(to top, #075058 0%, #FFFFFF 60%, transparent 100%);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   pointer-events: none;
-  
-  /* Animación sutil al pasar el mouse */
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -523,10 +469,10 @@ color:#FFFFFF;
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.10em;
-  color: #FFFFFF; /* Verde niebla de acento */
+  color: #FFFFFF; 
   margin-bottom: 0.3rem;
   display: flex;
-  align-items: center bottom;
+  align-items: center;
   gap: 3px;
 }
 
@@ -539,13 +485,12 @@ color:#FFFFFF;
 .galeria-overlay h3 {
   font-size: 1.2rem;
   font-weight: 500;
-  color: #4e7da9;
+  color: #075058;
   letter-spacing: 0.01em;
   line-height: 1.25;
   margin: 0;
 }
 
-/* ── EFECTOS DINÁMICOS HOVER ── */
 .galeria-item:hover .galeria-video {
   transform: scale(1.03);
   filter: brightness(0.6) saturate(1);
@@ -556,11 +501,10 @@ color:#FFFFFF;
   transform: translateY(0);
 }
 
-/* ── ADAPTACIÓN CELULARES (RESPONSIVE) ── */
 @media (max-width: 900px) {
   .galeria-grid {
-    grid-template-columns: 1fr; /* Pasan a ponerse uno abajo del otro en fila única */
-    grid-auto-rows: 280px;      /* Alto fijo cómodo para el dedo en mobile */
+    grid-template-columns: 1fr; 
+    grid-auto-rows: 280px;      
   }
   
   .galeria-item.item-vertical-izq, 
@@ -571,66 +515,53 @@ color:#FFFFFF;
     grid-row: span 1;
   }
 }
-/* ── SECCIÓN VIDEO-GRID ── */
-/* ========================================================================
-   SECCIÓN: ABOUT / FILOSOFÍA (CORREGIDA SIN DESBORDE)
-   ======================================================================== */
 
+/* ── SECCIÓN ABOUT / FILOSOFÍA ── */
 .about-seccion {
-  background-color: #FFFFFF; /* Mantenemos blanco (o cambialo a #122820 si preferís oscuro) */
-  padding: 3.5rem 2rem;      /* Sintonizado con el achique general de secciones */
+  background-color: #e4eef0; 
+  padding: 3.5rem 2rem;      
   width: 100%;
   box-sizing: border-box;
 }
 
 .about-container {
   display: flex;
-  align-items: center;       /* Alineación vertical central perfecta */
+  align-items: center;       
   gap: 5rem;
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;            /* ← CORREGIDO: Chau margin-left: 10%. Ahora centra perfecto */
+  margin: 0 auto;            
 }
 
-/* Columna de Texto */
-.about-left {
-  flex: 1;
-}
-
-.about-content {
-  margin-top: 1.5rem;
-}
+.about-left { flex: 1; }
+.about-content { margin-top: 1.5rem; }
 
 .about-content p {
   font-family: 'Inter', sans-serif;
-  font-size: 1.0rem;        /* Bajado un toque para estilizar la lectura */
-  line-height: 1.2;          /* Más aire de lectura */
-  color: #000000; /* Mayor contraste sobre fondo blanco */
+  font-size: 1.0rem;        
+  line-height: 1.2;          
+  color: #000000; 
   margin-bottom: 1.1rem; 
 }
 
-/* Párrafo destacado de Filosofía (Tu blockquote inferior) */
 .about-content p.about-highlight {
-  color: #4e7da9;
+  color: #ff5b04;
   font-size: 1.05rem;
   font-weight: 400;
-  border-left: 3px solid #4e7da9; /* Sintonizado con tu azul/verde identitario anterior */
+  border-left: 3px solid #ff5b04; 
   padding-left: 1.1rem;
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
 }
 
-/* Columna de la Imagen */
-.about-right {
-  flex: 1;
-}
+.about-right { flex: 1; }
 
 .about-img-wrapper {
-  width: 100%;               /* ← CORREGIDO: Bajado de 135% a 100% para que respete su columna */
+  width: 100%;               
   aspect-ratio: 5 / 5;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12); /* Sombra más suave y elegante para fondo claro */
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12); 
 }
 
 .about-img {
@@ -641,22 +572,15 @@ color:#FFFFFF;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.about-img-wrapper:hover .about-img {
-  transform: scale(1.03);
-}
+.about-img-wrapper:hover .about-img { transform: scale(1.03); }
 
-/* RESPONSIVE DESIGN: Apilado correcto en celulares */
 @media (max-width: 850px) {
-  .about-seccion {
-    padding: 3rem 1.5rem;
-  }
-  
+  .about-seccion { padding: 3rem 1.5rem; }
   .about-container {
-    flex-direction: column-reverse; /* En mobile, el texto va primero y la foto abajo */
+    flex-direction: column-reverse; 
     gap: 2.5rem;
   }
 }
-
 
 /* ── SECCIÓN NECESITAS ESTO ── */
 .necesitas {
@@ -665,24 +589,28 @@ color:#FFFFFF;
   width: 100%;
   height: auto !important;
   overflow: visible !important;
-  background: white;
+  background: #e4eef0;
   border-top: 1px solid rgba(255,255,255,0.07);
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
+
 .necesitas-header { 
   text-align: center;
   margin-top: 2rem;    
   margin-bottom: 3rem;
 }
+
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 1.2rem;
 }
+
 .card {
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.08);
 }
+
 .card-img-wrap {
   position: relative;
   border-radius: 20px;
@@ -691,6 +619,7 @@ color:#FFFFFF;
   overflow: hidden;
   cursor: pointer;
 }
+
 .card-img {
   position: absolute;
   inset: 0;
@@ -701,26 +630,31 @@ color:#FFFFFF;
   transition: transform 0.55s ease, filter 0.55s ease;
   filter: saturate(0.7) brightness(0.85);
 }
+
 .card-img-wrap:hover .card-img {
   transform: scale(1.06);
   filter: saturate(0.4) brightness(0.45);
 }
+/* 1. ESTADO INICIAL (Oculto y un poquito hacia abajo) */
+
 .card-hover {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 2rem 1.6rem;
-  background: linear-gradient(to top, #ffffff 0%, #91afcb 20%, rgba(78, 125, 169, 0.53) 40%);
+  padding: 2rem 1.6rem;  
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(7, 80, 88, 0.85) 100%);  
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
+/* 2. ESTADO INTERACTIVO (Cuando pasás el mouse por la tarjeta) */
+/* Asumiendo que tu tarjeta contenedora tiene la clase .card o .card-img-wrap */
 .card-img-wrap:hover .card-hover {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; /* ⬅️ Se vuelve visible */
+  transform: translateY(0); /* ⬅️ Sube de forma fluida a su lugar ideal */
 }
 
 .card-num {
@@ -749,44 +683,32 @@ color:#FFFFFF;
   line-height: 1.2;
 }
 
-/* ========================================================================
-   SECCIÓN: PROTOCOLOS (CARRUSEL RECTANGULAR DE PANTALLA COMPLETA)
-   ======================================================================== */
-/* ========================================================================
-   SECCIÓN: PROTOCOLOS (MODIFICADA A 50VH)
-   ======================================================================== */
-
+/* ── SECCIÓN PROTOCOLOS CARRUSEL ── */
 .protocolos-seccion {
   width: 100%;
-  height: 30%; /* Tu nueva altura de mitad de pantalla */
+  height: 30%; 
   background-color: #b3c8e0; 
   overflow: hidden;
   position: relative;
 }
 
-/* ── ¡ESTA REGLA TE FALTABA! El riel que los pone en fila ── */
 .protocolos-slider {
-  display: flex;               /* ← Obliga a los slides a ponerse en línea horizontal */
+  display: flex;               
   width: 100%;
   height: 70%;
-  overflow-x: auto;            /* ← Habilita el desplazamiento de costado */
+  overflow-x: auto;            
   overflow-y: hidden;
   scroll-snap-type: x mandatory; 
   scroll-behavior: smooth;
-  
-  /* Oculta las barras de scroll nativas */
   -ms-overflow-style: none;  
   scrollbar-width: none;  
 }
 
-.protocolos-slider::-webkit-scrollbar {
-  display: none; 
-}
+.protocolos-slider::-webkit-scrollbar { display: none; }
 
-/* Cada tarjeta/slide individual */
 .protocolos-slide {
   flex: 0 0 100vw; 
-  height: 100%;               /* Solucionado: Ahora hereda los 50vh correctos de la sección */
+  height: 100%;               
   scroll-snap-align: start; 
   display: flex;
   align-items: center;
@@ -794,51 +716,45 @@ color:#FFFFFF;
   box-sizing: border-box;
 }
 
-/* Contenedor interno estilo "Quiénes Somos" */
 .protocolos-container {
   display: flex;
   align-items: center; 
   gap: 3rem;
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;             /* Centrado automático estándar */
+  margin: 0 auto;             
 }
 
-/* Mitad Izquierda: Textos */
 .protocolos-left {
   flex: 1;
   margin-left: -10%;
 }
 
-/* Control de ancho para el título de protocolos */
 .protocolos-slide .section-title {
-  max-width: 1000px;      /* ← Modificá este número a gusto para achicarlo o agrandarlo */
+  max-width: 1000px;      
   width: 100%;
-  font-size: 4rem;       /* Ajuste de tamaño opcional por si te queda gigante en los 50vh */
+  font-size: 4rem;       
   line-height: 1;
-  color: #4e7da9;        /* Color oscuro consistente con tus textos actuales */
+  color: #4e7da9;        
   margin-bottom: 0.6rem;
 }
 
 .protocolos-text {
   font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;          /* Bajado levemente de 1.3rem para que entre bien en 50vh */
+  font-size: 1.1rem;          
   line-height: 1.3;
   color: rgba(0, 0, 0, 0.65);
   margin-top: 0.5rem;
 }
 
-/* Mitad Derecha: Imagen */
-.protocolos-right {
-  flex: 1;
-}
+.protocolos-right { flex: 1; }
 
 .protocolos-img-wrapper {
-  width: 100%;                /* Ajustado al 100% para que no rompa el contenedor en 50vh */
-  aspect-ratio: 8 / 6;      /* Una proporción un toque más horizontal para que no quede gigante hacia abajo */
+  width: 100%;                
+  aspect-ratio: 8 / 6;      
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 20px rgba(78, 125, 169, 0.4); /* Sombra azul suavizada con opacidad */
+  box-shadow: 0 20px 20px rgba(78, 125, 169, 0.4); 
 }
 
 .protocolos-img {
@@ -849,11 +765,8 @@ color:#FFFFFF;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.protocolos-img-wrapper:hover .protocolos-img {
-  transform: scale(1.04);
-}
+.protocolos-img-wrapper:hover .protocolos-img { transform: scale(1.04); }
 
-/* ── LISTA DE DETALLES TÉCNICOS INTERNOS ── */
 .protocolos-details {
   list-style: none; 
   padding: 0;
@@ -865,7 +778,7 @@ color:#FFFFFF;
 
 .protocolos-details li {
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;         /* Ajustado proporcionalmente para los 50vh */
+  font-size: 1rem;         
   line-height: 1.25;
   color: #000000;
   position: relative;
@@ -886,47 +799,40 @@ color:#FFFFFF;
   letter-spacing: 0.02em;
 }
 
-/* ── CONTENEDOR DE PUNTOS DE PAGINACIÓN ── */
 .protocolos-dots {
   position: absolute;
-  top: 93%;               /* Subido a 20px para que no tape los textos en la sección más corta */
+  top: 93%;               
   left: 50%;
   transform: translateX(-50%); 
   display: flex;
   gap: 15px; 
   z-index: 10; 
 }
-/* Forzamos el tamaño dándole más especificidad al selector */
+
 .protocolos-seccion .protocolos-dots .dot {
-  width: 13px !important;  /* ← El !important asegura que no se pise con otra cosa */
-  height: 13px !important; /* ← Tienen que ser iguales para mantener el círculo */
+  width: 13px !important;  
+  height: 13px !important; 
   border-radius: 50% !important;
   background-color: transparent;
   border: 2px solid #4e7da9;
   cursor: pointer;
-  padding: 0; /* Borra cualquier colchón interno que traiga el <button> */
+  padding: 0; 
   box-sizing: border-box;
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* El punto activo también lo aseguramos */
 .protocolos-seccion .protocolos-dots .dot.active {
   background-color: #4e7da9 !important;
   border-color: #4e7da9 !important;
   transform: scale(1.25);
 }
 
-.dot:hover {
-  border-color: #4e7da9;
-}
-/* ── COMPONENTES INTERNOS DE LAS TARJETAS DE CURSOS ── */
-/* ========================================================================
-   SECCIÓN: PRE-CARDS (INTRODUCCIÓN AL CATÁLOGO)
-   ======================================================================== */
+.dot:hover { border-color: #4e7da9; }
 
+/* ── PRE-CARDS CATÁLOGO ── */
 .precards-seccion {
-  background-color: white; /* Fondo verde bosque idéntico al catálogo de abajo */
-  padding: 3rem 3rem 3rem 3rem; /* Más aire arriba para separar de la sección anterior */
+  background-color: white; 
+  padding: 3rem; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -935,26 +841,19 @@ color:#FFFFFF;
 
 .precards-container {
   display: flex;
-  align-items: center;      /* Alinea verticalmente la foto con el centro del texto */
-  gap: 4rem;                /* Separación generosa de estilo editorial */
+  align-items: center;      
+  gap: 4rem;                
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 }
 
-/* Distribución proporcional de las dos columnas */
-.precards-left {
-  flex: 0 0 45%;            /* La foto toma un 45% del ancho */
-}
+.precards-left { flex: 0 0 45%; }
+.precards-right { flex: 0 0 55%; }
 
-.precards-right {
-  flex: 0 0 55%;            /* El texto toma el 55% restante */
-}
-
-/* ── CONTENEDOR DE LA FOTO (VERTICAL PREMIUM) ── */
 .precards-img-wrapper {
   width: 100%;
-  aspect-ratio: 4 / 5;      /* Proporción marcadamente vertical, muy elegante */
+  aspect-ratio: 4 / 5;      
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 20px #4e7da9;
@@ -968,17 +867,14 @@ color:#FFFFFF;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.precards-img-wrapper:hover .precards-img {
-  transform: scale(1.03);
-}
+.precards-img-wrapper:hover .precards-img { transform: scale(1.03); }
 
-/* ── TIPOGRAFÍAS Y PÁRRAFOS ── */
-.precards-right .section-title{
+.precards-right .section-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 4.82rem;
   width: 700px;
   font-weight: 500;
-  color: #4e7da9;           /* Tu verde niebla destacado */
+  color: #4e7da9;           
   margin: 0.5rem 0 0.3rem 0;
 }
 
@@ -986,8 +882,8 @@ color:#FFFFFF;
   font-family: 'Inter', sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
-  color: #4e7da9;           /* Tu verde niebla destacado */
-  margin: 0.5rem 0 1.rem 0;
+  color: #4e7da9;           
+  margin: 0.5rem 0 1rem 0;
   letter-spacing: 0.01em;
 }
 
@@ -1005,15 +901,14 @@ color:#FFFFFF;
   font-weight: 500;
   line-height: 1.4rem;
   color: #4e7da9;
-  font-style: italic;       /* Toque tipográfico de cierre */
+  font-style: italic;       
   margin-top: 1.3rem;
 }
 
-/* ── CAJA DE ADVERTENCIA: REGLA EXCLUYENTE ── */
 .precards-regla-box {
   background: white;
-  border-left: 3px solid #4e7da9; /* Línea de acento rígida en la izquierda */
-  padding: 1rem 1rem;
+  border-left: 3px solid #4e7da9; 
+  padding: 1rem;
   border-radius: 20px;
   margin-bottom: 1rem;
 }
@@ -1037,32 +932,22 @@ color:#FFFFFF;
   margin: 0;
 }
 
-/* ── RESPONSIVE: CELULARES Y TABLETS ── */
 @media (max-width: 900px) {
-  .precards-seccion {
-    padding: 3.0rem 1.5rem;
-  }
-
+  .precards-seccion { padding: 3.0rem 1.5rem; }
   .precards-container {
-    flex-direction: column; /* Apilado vertical automático */
+    flex-direction: column; 
     gap: 3rem;
   }
-
   .precards-left, .precards-right {
     flex: 0 0 100%;
     width: 100%;
   }
-
-  .precards-img-wrapper {
-    aspect-ratio: 16 / 10;  /* Cambia a formato apaisado en mobile para no ocupar toda la pantalla */
-  }
+  .precards-img-wrapper { aspect-ratio: 16 / 10; }
 }
-/* ========================================================================
-   SECCIÓN: MULTI-CARD CAROUSEL (3 VISIBLES, 2 OCULTAS)
-   ======================================================================== */
 
+/* ── CAROUSEL DE CURSOS MULTI-CARD ── */
 .cards-seccion {
-  background-color: #FFFFFF; /* Fondo verde oscuro integrado */
+  background-color: #FFFFFF; 
   padding: 4rem 0;
   overflow: hidden;
   position: relative;
@@ -1075,13 +960,7 @@ color:#FFFFFF;
   position: relative;
 }
 
-.cards-intro {
-  margin-bottom: -1.8rem;
-}
-
-/* ========================================================================
-   REFACTOR COMPLETO: CAROUSEL CON FOTOS DE FONDO (ANTI-SOLAPAMIENTO)
-   ======================================================================== */
+.cards-intro { margin-bottom: -1.8rem; }
 
 .cards-slider {
   display: flex !important;
@@ -1092,23 +971,20 @@ color:#FFFFFF;
   scroll-behavior: smooth !important;
   padding: 15px 0 35px 0 !important;
   width: 100% !important;
-  
-  /* Oculta barras de scroll molestas */
   -ms-overflow-style: none;  
   scrollbar-width: none;  
 }
 .cards-slider::-webkit-scrollbar { display: none; }
 
-/* ── LA TARJETA CONTENEDORA (EL ANCLA) ── */
 .card-item {
-  position: relative !important;   /* ← CRÍTICO: Obliga a que los textos se queden ADENTRO de su tarjeta */
-  flex: 0 0 calc((100% - 40px) / 3) !important; /* Mantiene 3 tarjetas perfectas por pantalla */
-  height: 560px !important;        /* ← CRÍTICO: Evita el colapso. Le da el alto estructural a la tarjeta */
+  position: relative !important;   
+  flex: 0 0 calc((100% - 40px) / 3) !important; 
+  height: 560px !important;        
   scroll-snap-align: start !important;
   border-radius: 20px !important;
   overflow: hidden !important;
   box-sizing: border-box !important;
-  background-color: #91afcb;       /* Fondo oscuro de respaldo técnico */
+  background-color: #91afcb;       
   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2) !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
@@ -1118,42 +994,37 @@ color:#FFFFFF;
   box-shadow: 0 20px 10px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* ── LA FOTO DE FONDO AL 100% ── */
 .card-img-box {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  z-index: 1 !important;          /* Capa base */
+  z-index: 1 !important;          
 }
 
 .card-img-box img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;    /* Adapta y recorta la foto sin deformarla */
+  object-fit: cover !important;    
 }
 
-/* ── EL CONTENIDO EDITORIAL (OVERLAY OSCURO) ── */
 .card-content {
   position: absolute !important;
   inset: 0 !important;
-  z-index: 2 !important;           /* Se para arriba de la foto */
+  z-index: 2 !important;           
   padding: 2.2rem 1.8rem !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-end !important; /* Envía todos los textos directo al piso de la tarjeta */
-  
-  /* Degradado alpino oscuro para fundir la foto con el texto blanco */
+  justify-content: flex-end !important; 
   background: linear-gradient(to top, rgba(145, 175, 203, 0.65) 0%, #4e7da9a5 55%, transparent 100%) !important;
   box-sizing: border-box !important;
 }
 
-/* ── ESTILOS TIPOGRÁFICOS INTERNOS (LETRAS BLANCAS) ── */
 .card-content h3 {
   font-family: 'Inter', sans-serif;
   font-size: 1.1rem !important;
   line-height: 1.3 !important;
-  color: white !important;       /* Título blanco para resaltar */
+  color: white !important;       
   font-weight: 600 !important;
   margin: 0 0 0.4rem 0 !important;
 }
@@ -1165,7 +1036,7 @@ color:#FFFFFF;
   display: flex !important;
   flex-direction: column !important;
   gap: 0.4rem !important;
-  border-bottom: 2px solid #91afcb !important; /* Línea divisoria clara traslúcida */
+  border-bottom: 2px solid #91afcb !important; 
   padding-bottom: 0.9rem !important;
 }
 
@@ -1173,11 +1044,11 @@ color:#FFFFFF;
   font-family: 'Inter', sans-serif;
   font-size: 0.82rem !important;
   line-height: 1;
-  color: #FFFFFF !important; /* Texto secundario gris claro */
+  color: #FFFFFF !important; 
 }
 
 .card-specs li strong {
-  color: #FFFFFF !important;       /* Resalta Duración/Dificultad con tu celeste identitario */
+  color: #FFFFFF !important;       
   font-weight: 700 !important;
 }
 
@@ -1186,14 +1057,13 @@ color:#FFFFFF;
   font-size: 0.78rem !important;
   line-height: 1.3 !important;
   color: #FFFFFF !important;
-  background: #4e7da9 !important; /* Caja sutil traslúcida */
+  background: #4e7da9 !important; 
   padding: 7px 12px !important;
   border-radius: 10px !important;
   border-left: 3px solid #c8d4d0 !important;
   margin: 0 !important;
 }
 
-/* ── CONTENEDOR DE PUNTOS GUÍA ARRIBA A LA DERECHA ── */
 .cards-wrapper .cards-dots {
   position: absolute;
   top: 100%;      
@@ -1220,134 +1090,122 @@ color:#FFFFFF;
   border-color: #4e7da9;
   transform: scale(1.25);
 }
-/* ── BOTÓN INTERNO DE LA TARJETA DE CURSOS ── */
+
 .card-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;            /* Ocupa todo el ancho de la tarjeta */
+  width: 100%;            
   padding: 12px 20px;
-  margin-top: 1.2rem;     /* Separa el botón de la nota de admisión de arriba */
-  
-  background-color: #FFFFFF; /* Tu azul metálico insignia */
+  margin-top: 1.2rem;     
+  background-color: #FFFFFF; 
   color: #4e7da9;
-  
   font-family: 'Inter', sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   text-decoration: none;
-  
-  border-radius: 12px;    /* Esquinas suavizadas a tono con la tarjeta */
+  border-radius: 12px;    
   box-sizing: border-box;
   transition: background-color 0.3s ease, transform 0.2s ease;
   cursor: pointer;
 }
 
-/* Efectos al pasar el mouse por encima del botón */
 .card-btn:hover {
-  background-color: #91afcb; /* Oscurece un toque el azul */
+  background-color: #91afcb; 
   color: #FFFFFF;
-  transform: translateY(-1px); /* Pequeño levante interactivo */
+  transform: translateY(-1px); 
 }
 
-/* Evita que el hover general de la tarjeta rompa el comportamiento del botón */
-.card-item:hover .card-btn {
-  box-shadow: 0 4px 10px #91afcb;
-}
+.card-item:hover .card-btn { box-shadow: 0 4px 10px #91afcb; }
 
-/* RESPONSIVE DESIGN: 1 tarjeta en pantalla para celulares */
 @media (max-width: 850px) {
-  .card-item {
-    flex: 0 0 100%; /* Toma todo el ancho en mobile */
-  }
-  .cards-wrapper .cards-dots {
-    display: none; /* Simplificamos la UI ocultando puntos en celular */
-  }
-  .cards-wrapper {
-    padding: 0 1.5rem;
-  }
+  .card-item { flex: 0 0 100%; }
+  .cards-wrapper .cards-dots { display: none; }
+  .cards-wrapper { padding: 0 1.5rem; }
 }
 
-    .staff {
-      background: #91afcb;
-    }
-.staff-header .section-title{color: #FFFFFF}   
+/* ── STAFF MOSAICO ── */
+.staff { background: #91afcb; }
+.staff-header .section-title { color: #FFFFFF; }   
 .staff-header { color: #ffffff; text-align: center; margin-bottom: -1.3rem; }
-    .staff-mosaic {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      grid-template-rows: 240px 260px;
-      gap: 5px;
-      border-radius: 50px;
-    }
-    .staff-cell { position: relative; overflow: hidden; cursor: pointer;border-radius: 20px; }
-    .staff-cell:nth-child(1) { grid-column:1; grid-row:1/3; }
-    .staff-cell:nth-child(5) { grid-column:4; grid-row:1/3; }
-    .staff-cell img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      filter: brightness(0.5);
-      transition: filter 0.4s, transform 0.45s;
-    }
-    .staff-cell:hover img {
-      filter: brightness(0.9);
-      transform: scale(1.06);
-    }
-    .staff-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, #4e7da9 0%, transparent 55%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      display: flex; align-items: flex-end;
-      padding: 0.5rem;
-    }
-    .staff-cell:hover .staff-overlay { opacity: 1; }
-    .staff-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem;
-      letter-spacing: 0.07em;
-      color: #FFFFFF;
-      margin-bottom: -0.4rem;
-    }
-    .staff-role {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.66rem;
-      letter-spacing: 0.09em;
-      color: var(--botanical-xs);
-      text-transform: uppercase;
-    }
-/* ========================================================================
-   ESTILOS ADICIONALES: POP-UP DE CAPTURA DEL STAFF (MODAL)
-   ======================================================================== */
 
-/* La ventana contenedora que flota en toda la pantalla */
+.staff-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: 240px 260px;
+  gap: 5px;
+  border-radius: 50px;
+}
+
+.staff-cell { position: relative; overflow: hidden; cursor: pointer; border-radius: 20px; }
+.staff-cell:nth-child(1) { grid-column:1; grid-row:1/3; }
+.staff-cell:nth-child(5) { grid-column:4; grid-row:1/3; }
+
+.staff-cell img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: brightness(0.5);
+  transition: filter 0.4s, transform 0.45s;
+}
+
+.staff-cell:hover img {
+  filter: brightness(0.9);
+  transform: scale(1.06);
+}
+
+.staff-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, #4e7da9 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex; align-items: flex-end;
+  padding: 0.5rem;
+}
+
+.staff-cell:hover .staff-overlay { opacity: 1; }
+
+.staff-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.07em;
+  color: #FFFFFF;
+  margin-bottom: -0.4rem;
+}
+
+.staff-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
+  color: var(--color-accent); /* Mapeado a la nueva variable */
+  text-transform: uppercase;
+}
+
+/* ── STAFF MODAL ── */
 .staff-modal {
-  display: none; /* Se activa mediante JavaScript */
+  display: none; 
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   top: 10%;
-  background-color: transparent; /* Sintonizado con tu verde botánico base profunda */
+  background-color: transparent; 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  z-index: 100; /* Máxima prioridad sobre la barra fixed y títulos */
-  align-items: center bottom;
-  justify-content: center bottom;
+  z-index: 100; 
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transition: opacity 0.35s ease;
 }
 
-/* Clase de activación que inyectará JS */
 .staff-modal.active {
   display: flex;
   opacity: 1;
 }
 
-/* La imagen ampliada dentro del pop-up */
 .staff-modal-img {
   max-width: 50%;
   max-height: 80vh;
@@ -1358,12 +1216,8 @@ color:#FFFFFF;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Animación elástica cuando se despliega el modal */
-.staff-modal.active .staff-modal-img {
-  transform: scale(1);
-}
+.staff-modal.active .staff-modal-img { transform: scale(1); }
 
-/* Botón de cierre superior (La X) */
 .staff-modal-close {
   position: absolute;
   top: 5%;
@@ -1378,93 +1232,85 @@ color:#FFFFFF;
 }
 
 .staff-modal-close:hover {
-  color: #7BB3A4; /* O usa tu variable de color claro si tenés */
+  color: #7BB3A4; 
   transform: scale(1.1);
 }
 
-/* Ajuste responsivo para celulares */
 @media (max-width: 850px) {
   .staff-modal-close {
     top: 20px;
     right: 25px;
     font-size: 38px;
   }
-  
   .staff-modal-img {
     max-width: 90%;
     max-height: 70vh;
   }
 }
 
-    /* ── BLOG ── */
-    .blog { background: transparent; padding: 0; }
-    .blog-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 600px;
-    }
-    .blog-content {
-      padding: 3rem 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: white;
-    }
-    .blog-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 4rem;
-      width: 580px;
-      line-height: 1.0;
-      color: #4e7da9;
-      margin-bottom: 1rem;
-    }
-    .blog-text {
-      font-size: 1rem;
-      color: #000000;
-      line-height: 1.5;
-      max-width: 460px;
-      margin-bottom: 2.2rem;
-    }
-    .blog-dots { display:flex; gap:0.4rem; margin-bottom:2rem; }
-    .dot {
-      width:12px; height:12px; border-radius:50%;
-      border-color: #4e7da9;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .dot.active {
-      background:#4e7da9 ; 
-      transform: scale(1.35);
+/* ── BLOG SECCIÓN ── */
+.blog { background: transparent; padding: 0; }
+
+.blog-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
 }
 
-    .blog-link {
-      display: inline-block;
-      font-family: 'inter', monospace;
-      font-size: 0.86rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #000000;
-      text-decoration: none;
-      border-bottom: 1px solid #4e7da9;
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
-    }
-    .blog-link:hover { border-color: #4e7da9; }
-    .blog-img { position: relative; overflow: hidden; }
-    .blog-img img {
-      margin-top: 50px;
-      align-content: center;
-      width: 90%; height: 90%;
-      object-fit: cover;
-      border-radius: 20px;
-      filter: brightness(0.75);
-    }
-/* ========================================================================
-   SECCIÓN: FAQ / ACCORDION (ESTILO INTEGRADO CÚSPIDES)
-   ======================================================================== */
+.blog-content {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+}
 
+.blog-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  width: 580px;
+  line-height: 1.0;
+  color: #4e7da9;
+  margin-bottom: 1rem;
+}
+
+.blog-text {
+  font-size: 1rem;
+  color: #000000;
+  line-height: 1.5;
+  max-width: 460px;
+  margin-bottom: 2.2rem;
+}
+
+.blog-dots { display:flex; gap:0.4rem; margin-bottom:2rem; }
+
+.blog-link {
+  display: inline-block;
+  font-family: 'inter', monospace;
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  border-bottom: 1px solid #4e7da9;
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.blog-link:hover { border-color: #4e7da9; }
+
+.blog-img { position: relative; overflow: hidden; }
+.blog-img img {
+  margin-top: 50px;
+  align-content: center;
+  width: 90%; height: 90%;
+  object-fit: cover;
+  border-radius: 20px;
+  filter: brightness(0.75);
+}
+
+/* ── FAQ ACCORDION ── */
 .faq-seccion {
-  background-color: #FFFFFF; /* Tu fondo oscuro base */
+  background-color: #FFFFFF; 
   padding: 4rem 2rem;
   width: 100%;
   box-sizing: border-box;
@@ -1472,7 +1318,7 @@ color:#FFFFFF;
 }
 
 .faq-container {
-  max-width: 850px; /* Contenedor más estrecho para una lectura de texto óptima */
+  max-width: 850px; 
   width: 100%;
   margin: 0 auto;
 }
@@ -1486,10 +1332,9 @@ color:#FFFFFF;
 .faq-lista {
   display: flex;
   flex-direction: column;
-  gap: 14px; /* Separación sutil entre bloques */
+  gap: 14px; 
 }
 
-/* ── CADA CONTENEDOR DE PREGUNTA ── */
 .faq-item {
   background: #91afcb;
   border: 3px solid #4e7da9;
@@ -1498,14 +1343,11 @@ color:#FFFFFF;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-
-/* Estado de la caja cuando está abierta */
 .faq-item.active {
   background: white; 
-  border: 3px solid #4e7da9;/* Resalta con tu azul de acento */
+  border: 3px solid #4e7da9;
 }
 
-/* ── BOTÓN DISPARADOR (FLEXBOX) ── */
 .faq-pregunta {
   width: 100%;
   background-color: #4e7da9;
@@ -1524,7 +1366,6 @@ color:#FFFFFF;
   gap: 20px;
 }
 
-/* ── ICONO INTERACTIVO (+ / -) CON CSS PURO ── */
 .faq-icono {
   position: relative;
   width: 14px;
@@ -1536,11 +1377,10 @@ color:#FFFFFF;
 .faq-icono::after {
   content: '';
   position: absolute;
-  background-color: white; /* Tu verde niebla insignia */
+  background-color: white; 
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s;
 }
 
-/* Línea Horizontal */
 .faq-icono::before {
   top: 6px;
   left: 0;
@@ -1548,7 +1388,6 @@ color:#FFFFFF;
   height: 2px;
 }
 
-/* Línea Vertical */
 .faq-icono::after {
   top: 0;
   left: 6px;
@@ -1556,7 +1395,6 @@ color:#FFFFFF;
   height: 14px;
 }
 
-/* Animación de giro al abrir: la vertical se esconde y la horizontal cambia a tu azul */
 .faq-item.active .faq-icono::after {
   transform: rotate(90deg);
   opacity: 0;
@@ -1564,14 +1402,13 @@ color:#FFFFFF;
 
 .faq-item.active .faq-icono::before {
   transform: rotate(180deg);
-  background-color: #FFFFFF; /* Pasa a tu azul metálico */
+  background-color: #FFFFFF; 
 }
 
-/* ── CONTENEDOR DESLIZANTE DE LA RESPUESTA ── */
 .faq-respuesta {
   margin-top: 10px;
   margin-bottom: -10px;
-  max-height: 0; /* Cerrado por defecto. JS maneja la apertura fluida */
+  max-height: 0; 
   overflow: hidden;
   transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -1585,11 +1422,8 @@ color:#FFFFFF;
   margin: 0;
 }
 
-/* DISEÑO RESPONSIVE: Ajustes para pantallas de celulares */
 @media (max-width: 768px) {
-  .faq-seccion {
-    padding: 3rem 1.2rem;
-  }
+  .faq-seccion { padding: 3rem 1.2rem; }
   .faq-pregunta {
     font-size: 0.96rem;
     padding: 1.3rem 1.4rem;
@@ -1599,126 +1433,130 @@ color:#FFFFFF;
     padding: 0 1.4rem 1.3rem 1.4rem;
   }
 }
-    /* ── FOOTER ── */
-    footer {
-      background: #91afcb;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 4rem 5rem 2rem;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      gap: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.22em;
-      color: var(--white);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 1rem;
-    }
-    .footer-tagline {
-      font-size: 1rem;
-      color: #000000;
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-      max-width: 350px;
-    }
-    .footer-newsletter { display:flex; }
-    .footer-input {
-      flex: 1;
-      padding: 0.65rem 1rem;
-      background: rgba(78, 125, 169, 0.38);
-      border: 1px solid #4e7da9;
-      border-right: none;
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.76rem;
-      outline: none;
-    }
-    .footer-input::placeholder { color: #FFFFFF; }
-    .footer-btn {
-      padding: 0.65rem 1rem;
-      background: var(--white);
-      border: none;
-      color: var(--botanical-dk);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .footer-btn:hover { opacity: 0.85; }
-    .footer-col h4 {
-      font-family: 'inter', monospace;
-      font-size: 1rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #4e7da9;
-      margin-bottom: 1rem;
-    }
-    .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
-    .footer-col ul a {
-      font-size: 0.8rem;
-      color: #FFFFFF;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-col ul a:hover { color: var(--white); }
-    .footer-socials { display:flex; gap:0.8rem; margin-top:1.4rem; }
-    .social-icon {
-      width: 32px; height: 32px;
-      border: 1px solid #FFFFFF;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.55rem;
-      color: #FFFFFF;
-      cursor: pointer;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .social-icon:hover { border-color: var(--white); color: var(--white); }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 1.5rem;
-    }
-    .footer-legal {
-      font-family: 'inter', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.06em;
-      color: #FFFFFF;
-    }
-    .footer-warning {
-      font-family: 'inter', monospace;
-      font-size: 0.56rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
 
+/* ── FOOTER ── */
+footer {
+  background: #91afcb;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 4rem 5rem 2rem;
+}
 
-/* ── PERSONALIZACIÓN DE LA BARRA DE SCROLL VERTICAL ── */
-::-webkit-scrollbar {
-  width: 12px;
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-::-webkit-scrollbar-track {
-  background-color: transparent;
+
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.22em;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 1rem;
 }
+
+.footer-tagline {
+  font-size: 1rem;
+  color: #000000;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 350px;
+}
+
+.footer-newsletter { display:flex; }
+
+.footer-input {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  background: rgba(78, 125, 169, 0.38);
+  border: 1px solid #4e7da9;
+  border-right: none;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  outline: none;
+}
+.footer-input::placeholder { color: #FFFFFF; }
+
+.footer-btn {
+  padding: 0.65rem 1rem;
+  background: var(--white);
+  border: none;
+  color: var(--color-dark); /* Mapeado a variable del root */
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.footer-btn:hover { opacity: 0.85; }
+
+.footer-col h4 {
+  font-family: 'inter', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #4e7da9;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+.footer-col ul a {
+  font-size: 0.8rem;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col ul a:hover { color: var(--white); }
+
+.footer-socials { display:flex; gap:0.8rem; margin-top:1.4rem; }
+.social-icon {
+  width: 32px; height: 32px;
+  border: 1px solid #FFFFFF;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.social-icon:hover { border-color: var(--white); color: var(--white); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.footer-legal {
+  font-family: 'inter', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+}
+
+.footer-warning {
+  font-family: 'inter', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+/* ── BARRA DE SCROLL VERTICAL ── */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background-color: transparent; }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, #ffffff 0%, #a3a3a3 50%, #5e5e5e 100%);
   border-radius: 50px;
   border: 3px solid #91afcb;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: transparent;
 }
 
 @supports (scrollbar-color: auto) {
