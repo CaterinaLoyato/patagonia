@@ -2,16 +2,23 @@
    CÚSPIDES — MASTER STYLESHEET (UNIVERSAL)
    Sistema de diseño unificado, optimizado y libre de errores de sintaxis
    ======================================================================== */
-
-*, *::before, *::after { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
+/* 1. RESET Y BLOQUEO DE SCROLL HORIZONTAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html { 
-  scroll-behavior: smooth; 
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Esto mata cualquier desbordamiento horizontal */
+  background-color: #fff;
 }
+
+
+
+
 
 /* ── 1. VARIABLES GLOBALES DE IDENTIDAD VISUAL ── */
 :root {
@@ -44,7 +51,6 @@ body {
   font-weight: 300;
   line-height: 1.6;
   scroll-behavior: smooth;
-  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -211,103 +217,104 @@ section {
   color: var(--color-titles); 
 }
 
-/* ── 6. LAYOUT DEL HERO PRINCIPAL ── */
 .hero {
   position: relative;
-  width: 100vw;
-  height: 100vh !important; 
-  display: block;
-  margin: 0 !important;   
-  padding: 0 !important; 
-  overflow: visible;
-}
-
-.hero__half {
-  width: 50%;
-  height: 100%;
-  position: relative;
-}
-
-.hero__half--left {
-  background-color: var(--color-white); 
+  width: 100%;        /* Usar 100% en lugar de 100vw */
+  height: 100vh;      
+  overflow: hidden;   /* Corta las nubes del 110% para que no se salgan */
   display: flex;
-  flex-direction: column; 
-  justify-content: flex-end; 
-  align-items: flex-start; 
-  padding: 10vh 8vw 6vh 6vw;
-  z-index: 2;
-  box-sizing: border-box;
-}
-
-.hero__half--right {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 110vh;
-  background-image: url('fotos/fondo4.png'); 
-  background-size: 100vw 100vh; 
-  background-position: center bottom;
-  background-attachment: fixed;
-  filter: brightness(0.8) contrast(1.2);
-  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-  z-index: 1;
-}
-
-.hero__title-wrapper {
-  position: absolute;
-  top: -10%; 
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.hero__title-block {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-.hero__title-block h1 { font-size: 10vw; font-weight: 700; line-height: 0.7; }
-.hero__title-block h2 { font-size: 7vw; font-weight: 700; letter-spacing: 0.1rem; margin-top: 4px; line-height: 1; }
-
-.hero__title-block--left {
-  background-image: url('fotos/fondo4.png'); 
-  background-size: 100vw 100vh; 
-  background-position: center bottom;
-  background-attachment: fixed; 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: brightness(0.8) contrast(1.2);
-  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+/* Capa 1: Fondo con Zoom In */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;           /* CAMBIO 2: Lo clavamos a la derecha */
+  bottom: 0;          /* Lo clavamos abajo (reemplaza width y height) */
+  background: url('fotos/3.jpg') center/cover no-repeat;
+  z-index: 1;
+  animation: zoomInBg 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+/* Capa 2: Nubes a prueba de fallos */
+.hero-clouds {
+  position: absolute;
+  /* 1. HACK OVERSIZE: Más ancho que la pantalla para ocultar los bordes */
+  width: 110%;
+  left: -5%;
+  bottom: 0; 
+  height: 60vh; 
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.95) 40%, #fff 100%);
+  z-index: 2;
+  transform: translateY(100%); 
+  animation: subirNubes 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  
+  /* 2. ACELERACIÓN HARDWARE: Evita parpadeos y tirones al recargar */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-.hero__title-block--right {
-  color: var(--color-white);
-  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #075058; 
+  opacity: 0;
+  
+  /* Agrega esta línea para bajar el bloque de texto */
+  margin-top: 50vh; /* Puedes probar con 100px, 150px o 30vh según qué tan abajo lo quieras */
+  
+  animation: fadeInUpText 1.5s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
+}
+.hero-content h1 {
+  font-family: 'Playfair Display', serif; 
+  font-size: 6rem;
+  bottom: 10%;
+  margin: 0;
+  letter-spacing: 1px;
 }
 
-.hero__desc { top: 20%; max-width: 450px; width: 100%; font-family: Arial, sans-serif; }
-
-.hero__desc-line {
-  width: 330px; 
-  height: 3px;
-  background-color: var(--color-accent); 
-  margin-top: 20px;
-  margin-bottom: 15px;
+.hero-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  max-width: 800px;
 }
 
-.hero__desc p { font-size: 1.2rem; line-height: 1.3; color: var(--color-text); }
-.hero-btns { display: flex; gap: 1.2rem; margin-top: 1.8rem; width: 100%; flex-wrap: nowrap; }
+/* --- ANIMACIONES KEYFRAMES --- */
+
+@keyframes zoomInBg {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12); 
+  }
+}
+
+@keyframes subirNubes {
+  from {
+    transform: translateY(100%); 
+  }
+  to {
+    transform: translateY(15%);  
+  }
+}
+
+@keyframes fadeInUpText {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* ── 7. SECCIÓN DETALLE DE PROGRAMAS (TEXTO INTERNO) ── */
 .regla-tag {
