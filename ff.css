@@ -1474,9 +1474,14 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     scrollbar-width: none;
   }
   .cards-grid::-webkit-scrollbar { display: none; }
+  /* --- FORZAR ACTIVACIÓN CON TOQUE RÁPIDO (SECCIÓN NECESITÁS) --- */
+  /* --- TARJETAS NECESITÁS: Tamaño y activación con toque rápido --- */
+  
   .cards-grid .card {
-    flex: 0 0 85%;
-    scroll-snap-align: center;
+    flex: 0 0 85% !important; /* Esto es fundamental para que existan y tengan ancho */
+    scroll-snap-align: center !important; /* Frena en el medio */
+    cursor: pointer !important; /* Activa el toque rápido */
+    -webkit-tap-highlight-color: transparent !important; 
   }
 /* 7. PROTOCOLOS: Scroll vertical natural (sin carrusel ni dots) */
   .protocolos-seccion {
@@ -1501,11 +1506,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     height: auto !important; 
     flex: none !important; 
   }
-  /* El interior de cada protocolo (ya lo tenías, lo mantenemos) */
-  .protocolos-container {
-    flex-direction: column;
-    gap: 2rem;
-  }
 /* Centrar Título, Subtítulo y Párrafo introductorio en Protocolos */
   .protocolos-left {
     display: flex;
@@ -1517,10 +1517,48 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   .eyebrow-accent-line {
     margin: 0 auto 1.5rem auto !important;
   }
-  /* Forzamos a que la lista de íconos de abajo siga alineada a la izquierda para no romper el paso anterior */
+  /* --- CENTRADO ABSOLUTO DE LOS DETALLES --- */
+  /* 1. Achicar espacio entre los ítems (subtítulos verdes) */
+  .protocolos-details li {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 1rem !important; /* Distancia entre el ícono y el texto */
+    margin-bottom: 0.8rem !important; /* Bajamos de 1.5rem a 0.8rem para que los ítems estén más juntos */
+  }
+
+  /* 2. Achicar espacio entre todo el texto y la imagen de abajo */
+  .protocolos-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important; /* Bajamos de 2rem a 1rem para pegar más la imagen al texto */
+  }
+  /* Centramos el contenedor de la lista de íconos para que no toque los bordes */
   .protocolos-details {
-    text-align: left;
-    width: 90%;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 90% !important; /* Le sacamos el 100% para que respire a los lados */
+    margin: 0 auto !important; /* Esto centra la caja entera en el medio de la pantalla */
+    padding: 0 !important;
+  }
+
+  /* Evita que el párrafo de protocolos se corte y forzamos su centrado */
+  .protocolos-text {
+    width: 95% !important;
+    font-size: 1rem;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    margin: 0 auto 1.5rem auto !important; /* El 'auto' a los lados lo centra en su caja */
+    text-align: center !important;
+  }
+  
+  /* Forzamos que el texto interno respete la alineación a la izquierda */
+  .protocolos-detail-text {
+    width: 100%;
+    font-size: 0.8rem !important; 
+    text-align: left !important; 
   }
 /* --- ACHICAR TÍTULOS Y SUBTÍTULOS SOLO EN PROTOCOLOS --- */
   /* 1. Título principal ("LA INDUMENTARIA COMO...") */
@@ -1535,27 +1573,9 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   }
   /* 3. Subtítulos verdes de cada ítem ("GESTIÓN DE HUMEDAD", etc.) */
   .protocolos-detail-title {
-    font-size: 0.9rem !important; 
+    font-size: 0.8rem !important; 
     padding: 0.15rem 0.4rem !important; /* Ajustamos apenitas el fondito verde para que no quede enorme con la letra más chica */
   }
-  /* Alineación de ícono y texto */
-  .protocolos-details li {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 0.7rem; 
-  }
- /* Evita que el párrafo de protocolos se corte en los bordes */
-  .protocolos-text {
-    width: 90% !important;
-    max-width: 100% !important;
-    box-sizing: border-box;
-    padding: 0 0.5rem; /* Le damos un mini margen extra a los lados por las dudas */
-  }
-  .protocolos-detail-text {
-    width: 100%;
-     font-size: 1rem !important; 
-  }
-  /* Ajuste de la imagen para que no desborde */
   .protocolos-right {
     width: 100%;
     box-sizing: border-box;
@@ -1690,6 +1710,13 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     order: 1;
     grid-column: span 1 !important;
     grid-row: span 1 !important;
+  }
+  /* --- FORZAR ACTIVACIÓN CON TOQUE RÁPIDO (TAP) --- */
+  
+  .staff-cell,
+  .staff-overlay { /* Cambiá esto por la clase de tus tarjetas de "Necesitás" */
+    cursor: pointer !important; 
+    -webkit-tap-highlight-color: transparent !important; /* Saca el parpadeo azul nativo del celular */
   }
   /* Los que tienen foto vertical (Martín y Valeria, items 1 y 5) los mandamos abajo */
   .staff-cell:nth-child(1),
