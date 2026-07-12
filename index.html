@@ -7,7 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="ff.css"/>
 <link rel="icon" type="image/png" href="fotos/favicon.png"/>
 </head>
@@ -27,23 +29,58 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero">   
+<section class="hero">   
   <div class="hero-bg"></div>
-  
   <div class="hero-clouds"></div>
   
+  <!-- Todo el texto y botones deben ir agrupados aquí adentro -->
   <div class="hero-content">
     <h1>Patagonia sin filtro</h1>
-    <p>Preparación física y mental de meses antes de
-    pisar la nieve. Si no estás dispuesto a esforzarte, Cúspides no es para vos.</p>
+    <p>Preparación física y mental de meses antes de pisar la nieve. Si no estás dispuesto a esforzarte, Cúspides no es para vos.</p>
+        
+    <!-- Botones dentro del hero-content -->
+    <div class="hero-btns">
+      <a href="#programas" class="btn btn--primary">Inscribirme</a>
+      <a href="#pasos" class="btn btn--secondary">Saber más</a>
+    </div>
   </div>
-
-        <div class="hero-btns">
+</section>
+  
+  
+  
+<!--seccion somos-->
+  <!-- SECCIÓN: QUIÉNES SOMOS -->
+<section class="about-seccion reveal" id="somos">
+  <div class="about-container">
+    
+    <!-- Columna Izquierda: Contenido de texto -->
+    <div class="about-left">
+      <p class="section-eyebrow">La Cordada</p>
+      <h2 class="section-title">El Origen del Rigor</h2>
+      
+      <div class="about-content">
+        <p>
+          
+Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspides nace en rechazo al turismo comercial y masivo. No vendemos ascensos fáciles ni fotos de cumbre; formamos montañistas autónomos, disciplinados e inquebrantables. 
+        </p>
+        <p class="about-highlight">
+          En nuestros programas de alta exigencia no existen los pasajeros: cada aspirante es un miembro activo y responsable de la cordada. El valor real de nuestra propuesta no está en la cima, sino en los meses de entrenamiento invisible, logística y compromiso previo. </p>
+      </div>
+ 
+        <div class="somos-btns">
           <a href="#programas" class="btn btn--primary">Inscribirme</a>
-          <a href="#pasos" class="btn btn--secondary">Saber más</a>
         </div>
-     
-  </section>
+    </div>
+  
+    <!-- Columna Derecha: Imagen destacada -->
+    <div class="about-right">
+      <div class="about-img-wrapper">
+        <img src="fotos/somos.jpg" class="about-img" alt="Equipo de guías UIAGM de Cúspides en el Fitz Roy" />
+      </div>
+    </div>
+  </div>
+</section>
+  
   
   
   <!-- STATS / CATEGORÍAS -->
@@ -80,38 +117,7 @@
     </div>
   </div>
   
-<!--seccion somos-->
-  <!-- SECCIÓN: QUIÉNES SOMOS -->
-<section class="about-seccion reveal" id="somos">
-  <div class="about-container">
-    
-    <!-- Columna Izquierda: Contenido de texto -->
-    <div class="about-left">
-      <p class="section-eyebrow">La Cordada</p>
-      <h2 class="section-title">El Origen del Rigor</h2>
-      
-      <div class="about-content">
-        <p>
-          
-Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspides nace en rechazo al turismo comercial y masivo. No vendemos ascensos fáciles ni fotos de cumbre; formamos montañistas autónomos, disciplinados e inquebrantables. 
-        </p>
-        <p class="about-highlight">
-          En nuestros programas de alta exigencia no existen los pasajeros: cada aspirante es un miembro activo y responsable de la cordada. El valor real de nuestra propuesta no está en la cima, sino en los meses de entrenamiento invisible, logística y compromiso previo. </p>
-      </div>
- 
-        <div class="somos-btns">
-          <a href="#programas" class="btn btn--primary">Inscribirme</a>
-        </div>
-    </div>
   
-    <!-- Columna Derecha: Imagen destacada -->
-    <div class="about-right">
-      <div class="about-img-wrapper">
-        <img src="fotos/somos.jpg" class="about-img" alt="Equipo de guías UIAGM de Cúspides en el Fitz Roy" />
-      </div>
-    </div>
-  </div>
-</section>
   
 <!-- SECCIÓN: REGISTRO AUDIOVISUAL (BENTO GRID - 5 VIDEOS) -->
 <section class="galeria-seccion reveal" id="registro-audiovisual">
@@ -196,6 +202,7 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
     </div>
 </section>
   <!-- PARA HACER ESTO -->
+  
   <!-- NECESITAS ESTO -->
   <section class="necesitas reveal" id="pasos">
     <div class="necesitas-header">
@@ -359,7 +366,7 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
         </div>
         <div class="protocolos-right">
           <div class="protocolos-img-wrapper">
-            <img src="fotos/gps.jpg" class="protocolos-img" alt="Monitoreo satelital activo enlazado por radio" />
+            <img src="fotos/gps.png" class="protocolos-img" alt="Monitoreo satelital activo enlazado por radio" />
           </div>
         </div>
       </div>
@@ -421,34 +428,29 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
         <img src="fotos/guias.jpg" class="precards-img" alt="Preparación técnica y equipamiento en terreno alpino" />
       </div>
     </div>
-
-    <div class="precards-right">
-      <p class="section-eyebrow">Filosofía de Doctrina</p>
-      <h2 class="section-title">La Cumbre no se Compra.<br>Se Entrena.</h2>
-      <h3 class="precards-subtitle">Programas de Formación Técnica y Autonomía Alpina</h3>
+<div class="precards-right">
+      <p class="section-eyebrow">FILOSOFÍA DE DOCTRINA</p>
+      <h2 class="section-title">LA CUMBRE NO SE COMPRA.<br>SE ENTRENA.</h2>
       
       <p class="precards-text">
-        No vendemos paquetes turísticos ni salidas recreativas. Diseñamos entrenamientos rigurosos con un solo objetivo: erradicar la dependencia del guía y formar montañistas autónomos capaces de gestionar el riesgo en terreno hostil.
+        No vendemos turismo. Formamos montañistas autónomos. Nuestros entrenamientos están diseñados para erradicar la dependencia del guía y capacitarte en la gestión del riesgo en terreno hostil.
       </p>
 
       <div class="precards-regla-box">
-        <span class="regla-tag">Regla Excluyente de Cúspides</span>
+        <span class="regla-tag">REGLA EXCLUYENTE DE CÚSPIDES</span>
         <p>
-          Cada módulo se limita estrictamente a la instrucción teórica, física y de seguridad. Nuestras expediciones de alta montaña no están a la venta al público general; son una fase final exclusiva para quienes aprueben y certifiquen sus competencias.
+          Instrucción teórica, física y de seguridad estricta. Las expediciones de alta montaña no están a la venta al público; son una fase final exclusiva solo para quienes certifiquen competencias.
         </p>
       </div>
 
       <p class="precards-footer-text">
-        Si buscás un ascenso asistido, estás en el lugar equivocado. Si estás listo para pagar el derecho de piso técnico que exige la Patagonia, elegí tu línea abajo.
+        Si buscás un ascenso asistido, estás en el lugar equivocado. Si estás listo para el rigor técnico de la Patagonia, elegí tu línea.
       </p>
-
+    </div>
       <a href="#programas" class="btn-card">Inscribirme</a>
     </div>
-
-  </div>
 </section>
-  
-<section class="cards-seccion reveal" id="programas">
+  <section class="cards-seccion reveal" id="programas">
   <div class="cards-wrapper">
     
     <div class="cards-intro">
@@ -464,9 +466,10 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
 
     <div class="cards-slider">
       
+      <!-- Card 1: No prende dot -->
       <div class="card-item">
         <div class="card-img-box">
-          <img src="fotos/escala2.jpg" alt="Programa de Preparación Técnica para Escalada en Roca" />
+          <img src="fotos/roca.jpg" alt="Programa de Preparación Técnica para Escalada en Roca" />
           <span class="card-badge">Escalada</span>
         </div>
         <span class="card-price">$450.000</span>
@@ -485,9 +488,10 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
         </div>
       </div>
 
-      <div class="card-item">
+      <!-- Card 2: Prende el Dot 0 -->
+      <div class="card-item" data-dot="0">
         <div class="card-img-box">
-          <img src="fotos/kayakk.jpg" alt="Programa de Simulación Logística para Kayak de Mar" />
+          <img src="fotos/kayak1.jpg" alt="Programa de Simulación Logística para Kayak de Mar" />
           <span class="card-badge">Kayak de Mar</span>
         </div>
         <span class="card-price">$280.000</span>
@@ -506,9 +510,10 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
         </div>
       </div>
 
-      <div class="card-item">
+      <!-- Card 3: Prende el Dot 1 -->
+      <div class="card-item" data-dot="1">
         <div class="card-img-box">
-          <img src="fotos/fondosnow.jpg" alt="Programa de Acondicionamiento para Ski & Snowboard de Travesía" />
+          <img src="fotos/2%20(3).jpg" alt="Programa de Acondicionamiento para Ski & Snowboard de Travesía" />
           <span class="card-badge">Ski / Snowboard</span>
         </div>
         <span class="card-price">$370.000</span>
@@ -527,9 +532,10 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
         </div>
       </div>
 
-      <div class="card-item">
+      <!-- Card 4: Prende el Dot 2 -->
+      <div class="card-item" data-dot="2">
         <div class="card-img-box">
-          <img src="fotos/camping.jpg" alt="Programa de Resistencia Mental y Técnicas de Vivac" />
+          <img src="fotos/ca%20(1).jpg" alt="Programa de Resistencia Mental y Técnicas de Vivac" />
           <span class="card-badge">Riesgo & Vivac</span>
         </div>
         <span class="card-price">$175.000</span>
@@ -548,9 +554,10 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
         </div>
       </div>
 
+      <!-- Card 5: No prende dot -->
       <div class="card-item">
         <div class="card-img-box">
-          <img src="fotos/mapa.jpg" alt="Programa de Orientación Instrumental y Cartografía Análoga" />
+          <img src="fotos/map.jpg" alt="Programa de Orientación Instrumental y Cartografía Análoga" />
           <span class="card-badge">Navegación</span>
         </div>
         <span class="card-price">$205.000</span>
@@ -641,7 +648,7 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
       <div class="blog-content">
         <p class="section-eyebrow">Escuela de Guías 2027</p>
         <h2 class="blog-title">Certificaciones Internacionales para Terrenos Hostiles</h2>
-        <p class="blog-text">La preparación técnica no se detiene en la autonomía personal. Con la mirada puesta en 2027, Cúspides expandirá su infraestructura operativa y académica para dar forma a nuestra futura "Escuela de Guías". Un búnker de formación profesional diseñado exclusivamente para quienes buscan hacer de la gestión del riesgo en montaña su forma de vida
+        <p class="blog-text">La preparación técnica no se detiene en la autonomía personal. Con la mirada puesta en 2027, Cúspides expandirá su infraestructura operativa y académica para dar forma a nuestra futura "Escuela de Guías". Un búnker de formación profesional diseñado exclusivamente para quienes buscan hacer de la gestión del riesgo en montaña su forma de vida.
         </p>
         <a href="#" class="blog-link">Leer más</a>
       </div>
@@ -742,7 +749,7 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
   <div class="testimonios-wrapper">
     
     <div class="testimonios-header">
-      <p class="section-eyebrow">La voz de la cordada</p>
+      <p class="section-eyebrow-test">LA VOZ DE LA CORDADA</p>
       <h2 class="section-title">Experiencias en Terreno Real</h2>
     </div>
 
@@ -850,21 +857,21 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
       <div class="footer-col">
         <h4>Formación</h4>
         <ul>
-          <li><a href="#programas">Escalada en Roca</a></li>
-          <li><a href="#programs">Kayak de Mar</a></li>
+          <li><a href="index.html">Escalada en Roca</a></li>
+          <li><a href="index.html">Kayak de Mar</a></li>
           <li><a href="detalle.html">Ski & Snowboard de Travesía</a></li>
-          <li><a href="#programas">Programa de Resistencia</a></li>
-          <li><a href="#programas">Orientación Instrumental </a></li>
+          <li><a href="index.html">Programa de Resistencia</a></li>
+          <li><a href="index.html">Orientación Instrumental </a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Empresa</h4>
         <ul>
-          <li><a href="#somos">Sobre Cúspides</a></li>
-          <li><a href="#nosotros">Nuestro Equipo</a></li>
-          <li><a href="#protocolos">Protocolos de Seguridad</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#escuela">Próximas Expediciones</a></li>
+          <li><a href="index.html">Sobre Cúspides</a></li>
+          <li><a href="index.html">Nuestro Equipo</a></li>
+          <li><a href="index.html">Protocolos de Seguridad</a></li>
+          <li><a href="index.html">Testimonios</a></li>
+          <li><a href="index.html">Próximas Expediciones</a></li>
         </ul>
       </div>
       <div class="footer-col">

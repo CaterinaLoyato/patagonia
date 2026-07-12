@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ── 3. MOTOR MAESTRO PARA CARRUSELES EN LOOP INFINITO (ANTI-BLOQUEO SNAP) ──
-  
   const inicializarSliderInfinito = (config) => {
     const slider = document.querySelector(config.sliderSelector);
     if (!slider) return;
@@ -91,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Calibración inicial para pararse sobre las tarjetas verdaderas
     const calibrarPosicion = () => {
       slider.scrollLeft = obtenerAnchoCelda() * numVisibles;
+      // Le damos un toque al slider para que despierte y agrande la del medio
+      slider.dispatchEvent(new Event('scroll'));
     };
 
     setTimeout(calibrarPosicion, 50);
@@ -122,39 +123,58 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Sincronización matemática de los indicadores inferiores (Dots)
-      const scrollRelativo = slider.scrollLeft - (celdaWidth * numVisibles);
-      let indiceReal = Math.round(scrollRelativo / celdaWidth);
-      
-      if (indiceReal < 0) indiceReal = totalOriginales + indiceReal;
-      indiceReal = indiceReal % totalOriginales;
-
-      const dots = document.querySelectorAll(config.dotSelector);
-      if (dots.length > 0) {
-        let dotIndex = indiceReal;
-        if (config.isCursos) {
-          const indexCentrado = indiceReal + 1;
-          dotIndex = Math.max(0, Math.min(2, indexCentrado - 1));
-        } else {
-          dotIndex = Math.max(0, Math.min(dots.length - 1, indiceReal));
-        }
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === dotIndex));
-      }
-
-      // Escalador dinámico de centro (Exclusivo para tus Cursos)
+      // --- SEPARACIÓN DE LÓGICAS PARA EVITAR CONFLICTOS ---
       if (config.escalarCentro) {
-        const todasLasCards = slider.children;
         const sliderRect = slider.getBoundingClientRect();
         const centroSlider = sliderRect.left + (sliderRect.width / 2);
+        
+        let distanciaMinima = Infinity;
+        let cardGanadora = null;
 
-        Array.from(todasLasCards).forEach((card) => {
+        // 1. Revisamos todas las tarjetas para ver cuál está más cerca del medio
+        Array.from(slider.children).forEach((card) => {
           const cardRect = card.getBoundingClientRect();
           const centroCard = cardRect.left + (cardRect.width / 2);
-          const estaCentrada = Math.abs(centroSlider - centroCard) < (celdaWidth / 2);
-          card.classList.toggle('card-item--selected', estaCentrada);
+          const distancia = Math.abs(centroSlider - centroCard);
+
+          if (distancia < distanciaMinima) {
+            distanciaMinima = distancia;
+            cardGanadora = card;
+          }
+          
+          // Por defecto, apagamos todas
+          card.classList.remove('card-item--selected');
         });
+
+        // 2. Prendemos únicamente la tarjeta ganadora (la más centrada)
+        if (cardGanadora) {
+          cardGanadora.classList.add('card-item--selected');
+
+          // 3. Sincronizamos los puntitos (dots) leyendo el data-dot de la ganadora
+          const dotValue = cardGanadora.getAttribute('data-dot');
+          if (dotValue !== null) {
+            const dotAActivar = parseInt(dotValue, 10);
+            const dots = document.querySelectorAll(config.dotSelector);
+            dots.forEach((dot, index) => {
+              dot.classList.toggle('active', index === dotAActivar);
+            });
+          }
+        }
+      } else {
+        // Lógica Clásica Matemática (Para testimonios y otros que no escalan)
+        const scrollRelativo = slider.scrollLeft - (celdaWidth * numVisibles);
+        let indiceReal = Math.round(scrollRelativo / celdaWidth);
+        
+        if (indiceReal < 0) indiceReal = totalOriginales + indiceReal;
+        indiceReal = indiceReal % totalOriginales;
+
+        const dots = document.querySelectorAll(config.dotSelector);
+        if (dots.length > 0) {
+          const dotIndex = Math.max(0, Math.min(dots.length - 1, indiceReal));
+          dots.forEach((dot, i) => dot.classList.toggle('active', i === dotIndex));
+        }
       }
-    });
+    }); // <-- CIERRE CORRECTO DEL EVENTO SCROLL
 
     // ── 🎯 ARREGLO MAESTRO: DISPARADOR SEGURO POR CLIC DE DOT O FLECHA ──
     window[config.nombreFuncionGlobal] = (index) => {
@@ -213,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gap: 20
   });
 
-  // Carrusel 03: Protocolos de Seguridad (¡Mapeo Inicial!)
+  // Carrusel 03: Protocolos de Seguridad
   inicializarSliderInfinito({
     sliderSelector: '.protocolos-slider',
     dotSelector: '.protocolos-seccion .dot',
@@ -242,10 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
       if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        e.preventDefault(); // Detiene el tironeo nativo de Windows/Mac sobre el ancho entero
+        e.preventDefault(); // Detiene el tironeo nativo de Windows/Mac
         
         const celdaWidth = protocolosSlider.children[0].getBoundingClientRect().width;
-        const scrollRelativo = protocolosSlider.scrollLeft - celdaWidth; // numVisibles es 1
+        const scrollRelativo = protocolosSlider.scrollLeft - celdaWidth; 
         const indiceReal = Math.round(scrollRelativo / celdaWidth);
 
         if (e.key === 'ArrowRight') {
@@ -256,5 +276,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+// Seleccionamos todos los elementos que tienen los números
+const contadores = document.querySelectorAll('.cat-num');
 
+// Configuración de la velocidad
+const velocidad = 100;
+
+// Función que hace la animación de los números
+const animarContador = (contador) => {
+  const actualizarConteo = () => {
+    const objetivo = +contador.getAttribute('data-target');
+    const valorActual = +contador.innerText;
+    const incremento = objetivo / velocidad;
+
+    if (valorActual < objetivo) {
+      contador.innerText = Math.ceil(valorActual + incremento);
+      // Guardamos el timeout en el elemento por si necesitamos frenarlo
+      contador.timeoutID = setTimeout(actualizarConteo, 15); 
+    } else {
+      contador.innerText = objetivo;
+    }
+  };
+  
+  actualizarConteo();
+};
+
+// Creamos el Intersection Observer
+const observer = new IntersectionObserver((entradas) => {
+  entradas.forEach(entrada => {
+    if (entrada.isIntersecting) {
+      // Si la sección entra a la pantalla, arranca a contar
+      animarContador(entrada.target);
+    } else {
+      // Si la sección sale de la pantalla, frenamos el conteo y lo reseteamos a 0
+      clearTimeout(entrada.target.timeoutID);
+      entrada.target.innerText = '0';
+    }
+  });
+}, {
+  threshold: 0.5 // Arranca cuando la sección se ve al menos a la mitad
+});
+
+// Le decimos al observer que empiece a vigilar cada contador
+contadores.forEach(contador => {
+  observer.observe(contador);
+});
 });

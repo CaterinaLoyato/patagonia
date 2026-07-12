@@ -101,40 +101,68 @@ body {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #FF5B04;
+  color: #000000;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.nav-links a:hover { 
-  color: #075058; 
-}
 
 .nav-cta--pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 10px 25px; 
-  font-family: Arial, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: 'inter', sans-serif;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-decoration: none;
   white-space: nowrap; 
   border-radius: 50px; 
-  background: #FF5B04;
-  color: var(--color-bg); 
-  box-shadow: 0 4px 15px rgba(255, 91, 4, 0.4); 
-  transition: transform 0.2s ease, filter 0.2s ease;
-  cursor: pointer;
+  color: #000000;
+  font-weight: 800;
+background-color: transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Mismo truco de luz para el botón claro */
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 2px 10px rgba(255, 255, 255, 0.44);
 }
 
 .nav-cta--pill:hover { 
-  filter: brightness(1.1); 
-}
+  
+   background: linear-gradient(to bottom , #ffffff 50%, #dbdbdb 180%);
+  /* Gradiente blanco translúcido */
+  backdrop-filter: blur(12px);
+  transform: translateY(-2px);
+  color: #075058;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 5px 10px #ffffff;/* Sombra exterior flotante */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px; 
+  font-family: var(--font-cuerpo), sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  white-space: nowrap; 
+  border-radius: 50px; 
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+} 
 
-/* ── 4. BOTONES (SISTEMA INTERACTIVO INVERTIDO — CAPTURA) ── */
+
+
+
+
+/* ── 4. BOTONES (SISTEMA INTERACTIVO INVERTIDO — CAPTURA) ── *//* 1. Base del botón (Solo estructura, sin colores) */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -149,42 +177,68 @@ body {
   white-space: nowrap; 
   border-radius: 50px; 
   box-sizing: border-box;
-  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-/* Botón Principal (Postularse: Base Naranja -> Hover Blanco)[cite: 6] */
-.btn {
-  background-color: #FF5B04; 
-  color: var(--color-white);
-  border: 2px solid #FF5B04;
-  box-shadow: 0 4px 15px rgba(255, 91, 4, 0.35); 
+/* 2. Botón Principal (Cristal Naranja) */
+.btn--primary {
+  color: #ffffff;
+background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
+
+  
+  /* Desenfoque del fondo */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Obligatorio para Safari */
+  
+  
+  /* LA MAGIA AQUÍ: Luz pegando arriba (inset blanco) y sombra abajo (inset negro) */
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.6), /* Brillo superior */
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),     /* Sombra inferior interna */
+    0 5px 10px #FF5B04;       /* Sombra exterior flotante */
 }
 
-.btn:hover {
+.btn--primary:hover {
   transform: translateY(-2px);
-  background-color: var(--color-white);
-  color: #FF5B04;
-  border-color: #FF5B04;
-  box-shadow: 0 6px 20px rgba(255, 91, 4, 0.5); 
+   background: linear-gradient(to bottom , #ffffff 0%, #b1b1b1 180%);
+ color: #075058;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 5px 10px rgba(7, 80, 88, 0.43);
 }
 
-/* Botón Secundario (Saber Más: Base Blanca -> Hover Naranja)[cite: 6] */
+/* 3. Botón Secundario (Cristal Claro/Blanco) */
 .btn--secondary {
-  background-color: var(--color-white) !important; 
-  color: #FF5B04 !important;
-  border: 2px solid #FF5B04 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); 
+  color: #075058;
+  font-weight: 800;
+   background: linear-gradient(to bottom , #ffffff 0%, #b1b1b1 180%);
+  /* Gradiente blanco translúcido */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* Mismo truco de luz para el botón claro */
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 5px 10px rgba(7, 80, 88, 0.43);
 }
 
 .btn--secondary:hover {
-  transform: translateY(-2px) !important;
-  background-color: #FF5B04 !important;
-  color: var(--color-white) !important;
-  border-color: #FF5B04 !important;
-  box-shadow: 0 6px 20px rgba(255, 91, 4, 0.4) !important;
-}
+  color: #ffffff;
+background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
 
+  
+  /* Desenfoque del fondo */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Obligatorio para Safari */
+  /* LA MAGIA AQUÍ: Luz pegando arriba (inset blanco) y sombra abajo (inset negro) */
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.6), /* Brillo superior */
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),     /* Sombra inferior interna */
+    0 5px 10px #FF5B04;     
+}
 /* ── 5. SECCIONES TIPO PERSIANA Y CABECERAS ── */
 section { 
   position: relative;
@@ -254,35 +308,55 @@ section {
   will-change: transform;
   backface-visibility: hidden;
 }
-
 .hero-content {
-  position: relative;
+  position: absolute;
+  width: 100%;        
+  left: 0;            
+  top: 50vh;          
   z-index: 3;
-  text-align: center;
-  color: #075058; 
-  opacity: 0;
-  
-  /* Agrega esta línea para bajar el bloque de texto */
-  margin-top: 50vh; /* Puedes probar con 100px, 150px o 30vh según qué tan abajo lo quieras */
-  
-  animation: fadeInUpText 1.5s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
-}
-.hero-content h1 {
-  font-family: 'Playfair Display', serif; 
-  font-size: 6rem;
-  bottom: 10%;
-  margin: 0;
-  letter-spacing: 1px;
+  color: #000000; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;  
+  /* BORRAMOS EL OPACITY Y LA ANIMATION DE ACÁ */
 }
 
+/* 1. El título aparece primero (espera 1.2s) */
+.hero-content h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 7rem;
+  margin: 0;
+  color: #000000;
+  letter-spacing: 1px;
+  margin-bottom: -20px;
+  opacity: 0;
+  animation: fadeInUpText 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
+}
+
+/* 2. El párrafo aparece un toque después (espera 1.4s) */
 .hero-content p {
   font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  color: #000000;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 5px;
-  max-width: 800px;
+  line-height: 1.5;
+  margin: 5px auto -1px;
+  max-width: 700px;
+  font-weight: 400;
+  opacity: 0;
+  animation: fadeInUpText 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.4s forwards;
+}
+
+/* 3. Los botones aparecen al final (esperan 1.6s) */
+.hero-btns {
+  display: flex;
+  gap: 20px;
+  margin-top: 25px;
+  justify-content: center;
+  
+  opacity: 0;
+  animation: fadeInUpText 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.6s forwards;
 }
 
 /* --- ANIMACIONES KEYFRAMES --- */
@@ -489,19 +563,19 @@ section {
 }
 
 /* ── 11. RESTO DE COMPONENTES DEL COMPLEMENTO DE PÁGINA (CATEGORÍAS, BENTO, STAFF, ETC.) ── */
-.categories { position: relative; z-index: 30; background: var(--color-titles); width: 100%; height: auto !important; min-height: auto; overflow: visible !important; padding: 2.7rem 2rem; border-bottom: 2px solid var(--color-titles); }
+.categories { position: relative; z-index: 30; background: var(--color-titles); width: 100%; height: 200px !important; min-height: 50px; overflow: visible !important; padding: 1.5rem 0.5rem; border-bottom: 2px solid var(--color-titles); }
 .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-.cat-item { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; cursor: default; border-right: 2px solid var(--color-bg); }
+.cat-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; cursor: default; border-right: 2px solid var(--color-bg); }
 .cat-item:last-child { border-right: none; }
-.cat-circle { width: 86px; height: 86px; border-radius: 50%; border: 3px solid var(--color-white) ; display: flex; align-items: center; justify-content: center; background-color: transparent; transition: background 0.5s, border-color 0.3s; }
+.cat-circle { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--color-white) ; display: flex; align-items: center; justify-content: center; background-color: transparent; transition: background 0.5s, border-color 0.3s; }
 .cat-item:hover .cat-circle { background: var(--color-bg) ; border-color: var(--color-accent); }
-.cat-num { font-family: var(--font-titulos); font-size: 2rem; letter-spacing: 0.04em; color: var(--color-white); line-height: 1; }
+.cat-num { font-family: var(--font-titulos); font-size: 1.8rem; letter-spacing: 0.04em; color: var(--color-white); line-height: 1; }
 .cat-item:hover .cat-num { color: var(--color-accent); }
 .cat-item:hover .cat-tag { color: var(--color-accent); }
 .cat-tag { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 200; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-titles); text-align: center; background: var(--color-white); padding: 0.3rem 0.55rem; }
-.cat-label { font-family: var(--font-cuerpo); font-size: 1.3rem; font-weight: 500; color: var(--color-bg); text-align: center; line-height: 1; }
+.cat-label { font-family: var(--font-cuerpo); font-size: 1.2rem; font-weight: 500; color: var(--color-bg); text-align: center; line-height: 1; }
 
-.galeria-seccion { background-color: var(--color-white); padding: 1rem 0.2rem; width: 100%; box-sizing: border-box; }
+.galeria-seccion { background-color: var(--color-white); width: 100%; box-sizing: border-box; }
 .galeria-container { max-width: 1200px; width: 100%; margin: auto; }
 .galeria-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 270px; gap: 10px; }
 .galeria-item.item-vertical-izq { grid-column: 1; grid-row: span 2; }
@@ -779,6 +853,20 @@ width:  610px; color: #FF5B04; font-style: italic; margin-top: 1.1rem; }
   color: #000000; margin: 0; }
 
 .btn-card{
+  color: #ffffff;
+background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
+
+  
+  /* Desenfoque del fondo */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Obligatorio para Safari */
+  
+  
+  /* LA MAGIA AQUÍ: Luz pegando arriba (inset blanco) y sombra abajo (inset negro) */
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.6), /* Brillo superior */
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),     /* Sombra inferior interna */
+    0 5px 10px #FF5B04;       /* Sombra exterior flotante */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -795,18 +883,16 @@ width:  610px; color: #FF5B04; font-style: italic; margin-top: 1.1rem; }
   transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
   margin-top: 20px;
-  background-color: #FF5B04; 
-  color: var(--color-white);
-  border: 2px solid #FF5B04;
-  box-shadow: 0 4px 15px rgba(255, 91, 4, 0.35); 
 }
 
 .btn-card:hover {
   transform: translateY(-2px);
-  background-color: var(--color-white);
-  color: #FF5B04;
-  border-color: #FF5B04;
-  box-shadow: 0 6px 20px rgba(255, 91, 4, 0.5); 
+   background: linear-gradient(to bottom , #ffffff 0%, #b1b1b1 180%);
+ color: #075058;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 5px 10px rgba(7, 80, 88, 0.43);
 }
 
 
@@ -816,7 +902,7 @@ width:  610px; color: #FF5B04; font-style: italic; margin-top: 1.1rem; }
    ======================================================================== */
 .cards-seccion { background-color: var(--color-white); padding: 4rem 0; overflow: hidden; position: relative; }
 .cards-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 ; position: relative; }
-.cards-intro { margin-bottom: -1.8rem; }
+.cards-intro { margin-bottom: 3rem; }
 .cards-slider { display: flex !important; gap: 20px !important; overflow-x: auto !important; overflow-y: hidden !important; scroll-snap-type: x mandatory !important; scroll-behavior: auto!important; padding: 15px 0 35px 0 !important; width: 100% !important; -ms-overflow-style: none; scrollbar-width: none; }
 .cards-slider::-webkit-scrollbar { display: none; }
 
@@ -874,36 +960,45 @@ width:  610px; color: #FF5B04; font-style: italic; margin-top: 1.1rem; }
   border-left: 3px solid #FF5B04 !important; margin: 0 !important; }
 
 .cards-wrapper .cards-dots { position: absolute; top: 100%; right: 50%; display: flex; gap: 10px; z-index: 5; }
-.cards-wrapper .card-dot { width: 12px; height: 12px; border-radius: 50%; background-color: transparent; border: 2px solid #FF5B04; cursor: pointer; padding: 0; outline: none; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-.cards-wrapper .card-dot.active { background-color: #FF5B04; border-color: #FF5B04; transform: scale(1.25); }
+.cards-wrapper .card-dot { width: 12px; height: 12px; border-radius: 50%; background-color: transparent; border: 2px solid #075058; cursor: pointer; padding: 0; outline: none; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+.cards-wrapper .card-dot.active { background-color: #075058; border-color: #075058; transform: scale(1.25); }
 
 /* Botón transparente con borde naranja definido */
-.card-btn {
-  display: inline-flex; 
-  align-items: center; 
-  justify-content: center; 
-  width: 100%; 
-  padding: 10px 10px; 
-  margin-top: 0.5rem; 
-  border: 2px solid #FF5B04 !important; 
-  background-color: #ffffff!important; 
-  color: #FF5B04 !important; 
-  font-family: var(--font-cuerpo); 
-  font-size: 0.9rem; 
-  font-weight: 600; 
-  text-transform: uppercase; 
-  letter-spacing: 0.08em; 
-  text-decoration: none; 
-  border-radius: 20px; 
-  box-sizing: border-box; 
-  transition: background-color 0.25s ease, color 0.25s ease; 
-  cursor: pointer; 
+.card-btn {   
+  
+  transform: translateY(-2px);
+  color: #ffffff;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 5px 10px rgba(255, 255, 255, 0.4);/* Sombra exterior flotante */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 35px; 
+  font-family: var(--font-cuerpo), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  white-space: nowrap; 
+  border-radius: 50px; 
+  box-sizing: border-box;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  margin-top: 20px;
 }
-
-/* Al pasar el mouse por la tarjeta, el botón muta a fondo naranja y texto blanco */
-.card-item:hover .card-btn { 
-  background-color: #FF5B04 !important; 
-  color: var(--color-white) !important; 
+/* Al pasar el mouse por la tarjeta O cuando la tarjeta frena en el medio, el botón se activa */
+.card-item:hover .card-btn,
+.card-item--selected .card-btn { 
+  transform: translateY(-2px);
+  background: linear-gradient(to bottom, #ffffff 0%, #b1b1b1 180%);
+  color: #075058;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 3px 10px rgba(255, 255, 255, 0.4);
 }
 /* ── BOTÓN DE PRECIO FLOTANTE (TOP LEFT) ── */
 .card-price {
@@ -912,8 +1007,8 @@ width:  610px; color: #FF5B04; font-style: italic; margin-top: 1.1rem; }
   left: 10px;
   z-index: 10; /* Se planta por encima de la imagen y el gradiente */
   /* Estética editorial alpina */
-  background-color: #075058; /* Tu verde oscuro identitario */
-  color: #ffffff;
+  background-color: #ffffff; /* Tu verde oscuro identitario */
+  color: #075058;
   font-family: 'inter', monospace; /* Tipografía técnica */
   font-size: 1rem;
   font-weight: 700;
@@ -985,7 +1080,7 @@ width:  610px; color: #FF5B04; font-style: italic; margin-top: 1.1rem; }
   }
 }
 
-.staff-header .section-title { color: #FF5B04; }   
+.staff-header .section-title { color: #075058; }   
 .staff-header { color: var(--color-white); text-align: center; margin-bottom: -1.3rem; }
 .staff-mosaic { display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 240px 260px; gap: 5px; border-radius: 20px; }
 .staff-cell { position: relative; overflow: hidden; cursor: pointer; border-radius: 20px; }
@@ -1261,6 +1356,538 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
 @supports (scrollbar-color: auto) {
   html { scrollbar-color: var(--color-muted) transparent; scrollbar-width: auto; }
 }
+/* ========================================================================
+   ── MEDIA QUERIES (MOBILE RESPONSIVE - MAX 768px) ──
+   ======================================================================== */
 
+@media (max-width: 768px) {
+  
+  /* 1. AJUSTES GENERALES Y NAVEGACIÓN */
+  section {
+    padding: 4rem 1.5rem !important;
+    min-height: auto;
+  }
+  
+  .header {
+    padding: 0 1.5rem;
+  }
+  
+  /* Ocultamos los links en mobile para evitar que rompan el header, dejamos solo el logo y el botón CTA */
+  .nav-links {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 2.5rem !important;
+  }
+/* Corrección: Mantiene el Hero visible con pantalla completa */
+  .hero {
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+  
+  .hero-content {
+    top: 45vh; /* Lo subimos un poquito para que los botones y el texto queden centrados en celulares */
+    padding: 0 1.5rem;
+  }
+  /* 2. HERO / CABECERA: Botones apilados uno debajo del otro */
+  .hero-content h1 {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+/* BOTONES: Ancho total de la pantalla */
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%; /* Le sacamos el límite de 300px */
+    gap: 15px;
+  }
+
+  /* Esto aplica al hero, a las secciones y a las tarjetas */
+  .btn, 
+  .btn-card, 
+  .card-btn,
+  .somos-btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .hero-btns .btn {
+    width: 100%;
+  }
+
+  /* 3. SECCIONES CON SCROLL NATURAL (El Origen del Rigor) */
+  .about-container {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .about-img-wrapper {
+    aspect-ratio: 4/3;
+  }
+
+  /* 4. GRILLA DE CATEGORÍAS/STATS: 2 columnas, 2 en fila */
+  .categories {
+    height: auto !important;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
+  }
+
+  .cat-item {
+    border-right: none;
+  }/* 5. EL TERRENO REAL (Galería): Horizontal arriba, cuadrados al medio, verticales juntos abajo */
+  .galeria-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-rows: 200px !important;
+    gap: 10px;
+    display: grid !important;
+  }
+
+  /* 1. Horizontal primero (ocupa las 2 columnas) */
+  .galeria-item.item-ancho-centro { 
+    grid-column: span 2 !important; 
+    grid-row: span 1 !important; 
+    order: 1; 
+  }
+
+  /* 2. Los dos cuadrados abajo (cada uno ocupa 1 columna, se ponen lado a lado solos) */
+  .galeria-item.item-cuadrado { 
+    grid-column: span 1 !important; 
+    grid-row: span 1 !important; 
+    order: 2; 
+  }
+
+  /* 3. Primer vertical abajo a la izquierda (ocupa 1 columna y 2 filas de alto) */
+  .galeria-item.item-vertical-izq { 
+    grid-column: span 1 !important; 
+    grid-row: span 2 !important; 
+    order: 3; 
+  }
+  
+  /* 4. Segundo vertical abajo a la derecha (ocupa 1 columna y 2 filas de alto) */
+  .galeria-item.item-vertical-der { 
+    grid-column: span 1 !important; 
+    grid-row: span 2 !important; 
+    order: 4; 
+  }
+  /* 6. PRIMERO TENÉS QUE RESPETARLA (Pasos): Carrousel horizontal */
+  .cards-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding-bottom: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .cards-grid::-webkit-scrollbar { display: none; }
+  
+  .cards-grid .card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+
+  /* 7. PROTOCOLOS: Scroll natural hacia abajo *//* 7. PROTOCOLOS: Scroll natural hacia abajo */
+/* 7. PROTOCOLOS: Scroll vertical natural (sin carrusel ni dots) */
+  .protocolos-seccion {
+    height: auto !important; /* Liberamos el alto para que entre todo */
+    padding: 6rem 1.5rem !important;
+  }
+
+  .protocolos-dots {
+    display: none !important; /* Borramos los puntitos */
+  }
+
+  /* Rompemos el carrusel horizontal y apilamos todo en columna */
+  .protocolos-slider {
+    flex-direction: column !important;
+    overflow-x: hidden !important; 
+    scroll-snap-type: none !important; /* Apaga el arrastre lateral */
+    gap: 4rem !important; /* Espacio gigante entre el protocolo 1, el 2 y el 3 */
+  }
+/* Apagamos los clones del JS en mobile porque ya no es un slider infinito */
+  .protocolos-slider .is-clone {
+    display: none !important;
+  }
+  .protocolos-slide {
+    height: auto !important; 
+    flex: none !important; 
+  }
+
+  /* El interior de cada protocolo (ya lo tenías, lo mantenemos) */
+  .protocolos-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+/* Centrar Título, Subtítulo y Párrafo introductorio en Protocolos */
+  .protocolos-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los bloques en el medio de la pantalla */
+    text-align: center;  /* Centra el texto internamente */
+  }
+
+  /* Aseguramos que la linita decorativa debajo del subtítulo también quede en el medio */
+  .eyebrow-accent-line {
+    margin: 0 auto 1.5rem auto !important;
+  }
+
+  /* Forzamos a que la lista de íconos de abajo siga alineada a la izquierda para no romper el paso anterior */
+  .protocolos-details {
+    text-align: left;
+    width: 90%;
+  }
+
+/* --- ACHICAR TÍTULOS Y SUBTÍTULOS SOLO EN PROTOCOLOS --- */
+  
+  /* 1. Título principal ("LA INDUMENTARIA COMO...") */
+  .protocolos-slide .section-title {
+    font-size: 2rem !important; 
+    line-height: 1.2 !important;
+  }
+
+  /* 2. Subtítulo naranjita de arriba ("Protocolos de Seguridad // 01") */
+  .protocolos-slide .section-eyebrow {
+    font-size: 0.9rem !important; 
+    margin-bottom: -1rem;
+  }
+
+  /* 3. Subtítulos verdes de cada ítem ("GESTIÓN DE HUMEDAD", etc.) */
+  .protocolos-detail-title {
+    font-size: 0.9rem !important; 
+    padding: 0.15rem 0.4rem !important; /* Ajustamos apenitas el fondito verde para que no quede enorme con la letra más chica */
+  }
+  /* Alineación de ícono y texto */
+  .protocolos-details li {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.7rem; 
+  }
+
+ /* Evita que el párrafo de protocolos se corte en los bordes */
+  .protocolos-text {
+    width: 90% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    padding: 0 0.5rem; /* Le damos un mini margen extra a los lados por las dudas */
+  }
+  .protocolos-detail-text {
+    width: 100%;
+     font-size: 1rem !important; 
+  }
+
+  /* Ajuste de la imagen para que no desborde */
+  .protocolos-right {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .protocolos-img-wrapper {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9; 
+    border-radius: 15px;
+  }
+  /* LA CUMBRE NO SE COMPRA (Precards) - Scroll Vertical *//* Contenedor principal alineado al centro */
+  .precards-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .precards-right {
+    width: 100%;
+  }
+/* Acomodar la imagen y bajar el texto (eyebrow) */
+  .precards-left {
+    width: 100%;
+    margin-bottom: 2rem !important; /* Esto empuja el "FILOSOFÍA DE DOCTRINA" hacia abajo, despegándolo de la foto */
+  }
+
+  .precards-img-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 4 / 3 !important; /* Pasa de ser muy vertical a un formato más apaisado/rectangular */
+    border-radius: 15px !important;
+  }  
+  /* 1. Título en 2 renglones: Achicamos el tamaño y forzamos con !important */
+  .precards-right .section-title {
+    width: 100%;
+    font-size: 2.2rem !important; /* Tamaño ideal para que "LA CUMBRE NO SE COMPRA." entre en una sola línea */
+    line-height: 1.1 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* 2. Párrafo principal achicado */
+  .precards-text {
+    font-size: 0.94rem !important;
+    padding: 0 8px; /* Un poquito de respiro en los costados */
+  }
+
+  /* 3. Título de la regla ("REGLA EXCLUYENTE...") */
+  .regla-tag {
+    font-size: 1rem !important;
+  }
+
+  /* 4. Texto descriptivo de la regla */
+  .precards-regla-box p {
+    font-size: 0.9rem !important;
+    padding: 0 5px;
+    line-height: 1.3;
+  }
+
+  /* 5. Texto naranja del final achicado */
+  .precards-footer-text {
+    width: 100%;
+    font-size: 0.85rem !important;
+    line-height: 1.3 !important;
+    padding: 0 10px;
+    margin-bottom: -1rem  !important;
+  }
+/* 8. PROGRAMAS DE ENTRENAMIENTO (Carrousel) */
+  
+  /* Convertimos el contenedor en una columna flex para poder reordenar los elementos */
+  .cards-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  /* --- REDUCIR ESPACIO ENTRE TÍTULO Y CARDS --- */
+/* --- CENTRAR TÍTULO Y ACHICAR ESPACIOS (PROGRAMAS) --- */
+  
+  .cards-intro {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* Centra los elementos hijo */
+    text-align: center !important;  /* Centra el texto por las dudas */
+    margin-bottom: 0 !important;    /* Mata el margen inferior gigante */
+    width: 100% !important;
+  }
+
+  .cards-intro .section-eyebrow {
+    text-align: center !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .cards-intro .section-title {
+    text-align: center !important;
+    margin-bottom: 0.5rem !important; /* Achica el margen hacia las tarjetas */
+  }
+
+  .cards-slider {
+    padding-top: 10px !important; /* Saca el relleno extra de arriba */
+  }
+  
+  .cards-wrapper .cards-dots {
+    order: 3 !important; /* Dots al final */
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+    justify-content: center !important;
+    margin-top: 0.5rem !important; /* Separación con las tarjetas */
+    margin-bottom: 1rem !important; /* Un poco de aire abajo de todo */
+  }
+
+  .card-item {
+    flex: 0 0 75% !important; /* Le damos un 25% de espacio libre para que asomen bien las de los costados */
+    height: auto !important;
+    min-height: 480px !important;
+    scroll-snap-align: center !important; /* LA MAGIA: Obliga a que la tarjeta frene exacto en el medio */
+    transform: scale(0.92) !important; /* Achica las tarjetas por defecto (las que quedan en los costados) */
+  }
+
+  /* El JS le agrega esta clase a la que queda en el medio: la agrandamos para dar el efecto de foco */
+  .card-item.card-item--selected {
+    transform: scale(1.02) !important; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .card-content {
+    padding: 2rem 1.2rem 1rem 1.2rem !important;
+  }
+
+  .card-content h3 {
+    font-size: 1rem !important;
+  }
+
+  /* 3. Acomodar el botón para que el texto no se corte */
+  .card-btn {
+    width: 100% !important; 
+    padding: 12px 10px !important; /* Achicamos el padding lateral para ganar espacio */
+    font-size: 0.75rem !important; /* Letra un poco más chica */
+    white-space: normal !important; /* Permite que el texto baje a un segundo renglón si la pantalla es muy chica */
+    text-align: center !important;
+    line-height: 1.2 !important;
+    margin-top: 15px !important;
+  }
+  /* 9. EL EQUIPO DE CÚSPIDES (Staff): Cuadrados primero, Verticales abajo */
+  .staff-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 180px;
+  }
+  
+  /* Los que por defecto son cuadrados (roles de 1 fila) van arriba */
+  .staff-cell {
+    order: 1;
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+
+  /* Los que tienen foto vertical (Martín y Valeria, items 1 y 5) los mandamos abajo */
+  .staff-cell:nth-child(1),
+  .staff-cell:nth-child(5) {
+    order: 2;
+    grid-column: span 1 !important;
+    grid-row: span 2 !important;
+  }
+
+  /* ESCUELA DE GUÍAS (Certificaciones) */
+  /* --- ESCUELA DE GUÍAS (Certificaciones) --- */
+  .blog-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-content {
+    /* Agregamos Flexbox para centrar absolutamente todos los elementos internos */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    
+    /* MAGIA: Ponemos el padding lateral en 0 para que el texto ocupe el 100% igual que la foto[cite: 3] */
+    padding: 2rem 0 1.5rem 0 !important; 
+  }
+
+  .blog-content .section-eyebrow {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .blog-title {
+    width: 100%;
+    font-size: 1.8rem !important; /* Tamaño de título móvil ajustado */
+    line-height: 1.1 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .blog-text {
+    width: 100%;
+    font-size: 0.85rem !important; /* Achicamos un poco el párrafo para que no sature */
+    margin-bottom: 1.5rem !important;
+  }
+
+  .blog-img {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important; /* Le damos una forma un poco más rectangular */
+    border-radius: 15px !important;
+  }
+  /* 10. PREGUNTAS FRECUENTES (FAQ): Scroll y apretar */
+  /* --- 10. PREGUNTAS FRECUENTES (FAQ) --- */
+  
+  .faq-seccion {
+    padding-top: 4rem !important;
+  }
+
+  .faq-pregunta {
+    font-size: 0.95rem !important;
+    padding: 1.2rem !important;
+  }
+  
+  /* Cierra el corte/espacio en blanco entre la pregunta y la respuesta */
+  .faq-respuesta {
+    margin-top: 0 !important; 
+  }
+
+  .faq-respuesta p {
+    font-size: 0.85rem !important;
+    padding: 0 1.2rem 1.2rem 1.2rem !important;
+    margin-top: 0 !important; /* Aseguramos que el párrafo interno tampoco empuje */
+  }
+
+  /* 11. EXPERIENCIAS EN TERRENO REAL (Testimonios Carrousel) *//* --- 11. EXPERIENCIAS EN TERRENO REAL (Testimonios) --- */
+
+  /* 1. Centrar título y eyebrow */
+  .testimonios-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 0 !important; /* Eliminamos el margen inferior del contenedor */
+  }
+  .testimonios-slider {
+    padding-top: 10px !important; 
+     margin-bottom: 0.2rem !important; /* Le sacamos el relleno superior extra que traía de escritorio */
+  }
+
+  .testimonios-header .section-title {
+    text-align: center !important;
+  }
+  
+  /* --- PRUEBA NUCLEAR PARA EL EYEBROW --- */
+.section-eyebrow-test {
+  color: #FF5B04;
+  font-family: var(--font-mono);
+  font-size: 1.2rem !important; /* Le ponemos azul solo un segundo para ver si reacciona */
+}
+  
+  /* 2. Ajuste de tarjetas para que asomen los bordes (Efecto Carrusel) */
+  .testimonio-card {
+    flex: 0 0 80% !important; /* Bajamos el ancho al 80% para que asomen las demás */
+    height: auto !important;
+    padding: 1.8rem 1.5rem !important;
+    scroll-snap-align: center !important; /* Fundamental: obliga a la tarjeta a frenar exacto en el medio */
+  }
+
+  /* 3. Centrar los dots abajo de todo */
+  .testimonios-dots {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 1.5rem !important;
+    width: 100% !important;
+  }
+/* --- BOTÓN DE CERTIFICADO SIEMPRE "PRENDIDO" EN MÓVIL --- */
+  /* --- BOTÓN DE CERTIFICADO EN MÓVIL --- */
+  
+  a.testimonio-badge,
+  .testimonios-seccion a.testimonio-badge {
+    background-color: #FF5B04 !important; 
+    color: #ffffff !important;            
+    display: inline-block !important;
+    font-size: 0.75rem !important; /* Achicamos la letra para que ocupe menos espacio */
+    padding: 8px 12px !important;  /* Ajustamos los bordes naranjas para que abrazen bien al texto */
+    line-height: 1.3 !important;
+    white-space: normal !important; /* Le damos permiso para bajar de renglón de forma prolija */
+    text-align: center !important; /* Centramos el texto adentro del botón */
+    border-radius: 4px !important; /* Le damos apenas una curvita a los bordes para que parezca etiqueta */
+    margin-top: 10px !important;
+  }
+  /* 12. FOOTER */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .logo {
+    width: 70%;
+    margin-top: 0;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
 .reveal { opacity:0; transform:translateY(26px); transition: opacity 0.75s ease, transform 0.75s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
