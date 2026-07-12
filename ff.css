@@ -1359,7 +1359,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
 /* ========================================================================
    ── MEDIA QUERIES (MOBILE RESPONSIVE - MAX 768px) ──
    ======================================================================== */
-
 @media (max-width: 768px) {
   
   /* 1. AJUSTES GENERALES Y NAVEGACIÓN */
@@ -1367,16 +1366,13 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     padding: 4rem 1.5rem !important;
     min-height: auto;
   }
-  
   .header {
     padding: 0 1.5rem;
   }
-  
   /* Ocultamos los links en mobile para evitar que rompan el header, dejamos solo el logo y el botón CTA */
   .nav-links {
     display: none;
   }
-
   .section-title {
     font-size: 2.5rem !important;
   }
@@ -1385,7 +1381,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     height: 100vh !important;
     min-height: 100vh !important;
   }
-  
   .hero-content {
     top: 45vh; /* Lo subimos un poquito para que los botones y el texto queden centrados en celulares */
     padding: 0 1.5rem;
@@ -1403,7 +1398,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     max-width: 100%; /* Le sacamos el límite de 300px */
     gap: 15px;
   }
-
   /* Esto aplica al hero, a las secciones y a las tarjetas */
   .btn, 
   .btn-card, 
@@ -1417,28 +1411,23 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   .hero-btns .btn {
     width: 100%;
   }
-
   /* 3. SECCIONES CON SCROLL NATURAL (El Origen del Rigor) */
   .about-container {
     flex-direction: column;
     gap: 2.5rem;
   }
-
   .about-img-wrapper {
     aspect-ratio: 4/3;
   }
-
   /* 4. GRILLA DE CATEGORÍAS/STATS: 2 columnas, 2 en fila */
   .categories {
     height: auto !important;
     padding: 2.5rem 1.5rem;
   }
-
   .categories-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1rem;
   }
-
   .cat-item {
     border-right: none;
   }/* 5. EL TERRENO REAL (Galería): Horizontal arriba, cuadrados al medio, verticales juntos abajo */
@@ -1448,21 +1437,18 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     gap: 10px;
     display: grid !important;
   }
-
   /* 1. Horizontal primero (ocupa las 2 columnas) */
   .galeria-item.item-ancho-centro { 
     grid-column: span 2 !important; 
     grid-row: span 1 !important; 
     order: 1; 
   }
-
   /* 2. Los dos cuadrados abajo (cada uno ocupa 1 columna, se ponen lado a lado solos) */
   .galeria-item.item-cuadrado { 
     grid-column: span 1 !important; 
     grid-row: span 1 !important; 
     order: 2; 
   }
-
   /* 3. Primer vertical abajo a la izquierda (ocupa 1 columna y 2 filas de alto) */
   .galeria-item.item-vertical-izq { 
     grid-column: span 1 !important; 
@@ -1487,25 +1473,19 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
   .cards-grid::-webkit-scrollbar { display: none; }
-  
   .cards-grid .card {
     flex: 0 0 85%;
     scroll-snap-align: center;
   }
-
-  /* 7. PROTOCOLOS: Scroll natural hacia abajo *//* 7. PROTOCOLOS: Scroll natural hacia abajo */
 /* 7. PROTOCOLOS: Scroll vertical natural (sin carrusel ni dots) */
   .protocolos-seccion {
     height: auto !important; /* Liberamos el alto para que entre todo */
     padding: 6rem 1.5rem !important;
   }
-
   .protocolos-dots {
     display: none !important; /* Borramos los puntitos */
   }
-
   /* Rompemos el carrusel horizontal y apilamos todo en columna */
   .protocolos-slider {
     flex-direction: column !important;
@@ -1521,7 +1501,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     height: auto !important; 
     flex: none !important; 
   }
-
   /* El interior de cada protocolo (ya lo tenías, lo mantenemos) */
   .protocolos-container {
     flex-direction: column;
@@ -1534,32 +1513,26 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     align-items: center; /* Centra los bloques en el medio de la pantalla */
     text-align: center;  /* Centra el texto internamente */
   }
-
   /* Aseguramos que la linita decorativa debajo del subtítulo también quede en el medio */
   .eyebrow-accent-line {
     margin: 0 auto 1.5rem auto !important;
   }
-
   /* Forzamos a que la lista de íconos de abajo siga alineada a la izquierda para no romper el paso anterior */
   .protocolos-details {
     text-align: left;
     width: 90%;
   }
-
 /* --- ACHICAR TÍTULOS Y SUBTÍTULOS SOLO EN PROTOCOLOS --- */
-  
   /* 1. Título principal ("LA INDUMENTARIA COMO...") */
   .protocolos-slide .section-title {
     font-size: 2rem !important; 
     line-height: 1.2 !important;
   }
-
   /* 2. Subtítulo naranjita de arriba ("Protocolos de Seguridad // 01") */
   .protocolos-slide .section-eyebrow {
     font-size: 0.9rem !important; 
     margin-bottom: -1rem;
   }
-
   /* 3. Subtítulos verdes de cada ítem ("GESTIÓN DE HUMEDAD", etc.) */
   .protocolos-detail-title {
     font-size: 0.9rem !important; 
@@ -1571,7 +1544,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     align-items: flex-start;
     gap: 0.7rem; 
   }
-
  /* Evita que el párrafo de protocolos se corte en los bordes */
   .protocolos-text {
     width: 90% !important;
@@ -1583,13 +1555,11 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     width: 100%;
      font-size: 1rem !important; 
   }
-
   /* Ajuste de la imagen para que no desborde */
   .protocolos-right {
     width: 100%;
     box-sizing: border-box;
   }
-
   .protocolos-img-wrapper {
     width: 100%;
     max-width: 100%;
@@ -1601,7 +1571,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     flex-direction: column;
     text-align: center;
   }
-
   .precards-right {
     width: 100%;
   }
@@ -1610,7 +1579,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     width: 100%;
     margin-bottom: 2rem !important; /* Esto empuja el "FILOSOFÍA DE DOCTRINA" hacia abajo, despegándolo de la foto */
   }
-
   .precards-img-wrapper {
     width: 100% !important;
     max-width: 100% !important;
@@ -1624,25 +1592,21 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     line-height: 1.1 !important;
     margin-bottom: 0.5rem !important;
   }
-
   /* 2. Párrafo principal achicado */
   .precards-text {
     font-size: 0.94rem !important;
     padding: 0 8px; /* Un poquito de respiro en los costados */
   }
-
   /* 3. Título de la regla ("REGLA EXCLUYENTE...") */
   .regla-tag {
     font-size: 1rem !important;
   }
-
   /* 4. Texto descriptivo de la regla */
   .precards-regla-box p {
     font-size: 0.9rem !important;
     padding: 0 5px;
     line-height: 1.3;
   }
-
   /* 5. Texto naranja del final achicado */
   .precards-footer-text {
     width: 100%;
@@ -1652,7 +1616,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     margin-bottom: -1rem  !important;
   }
 /* 8. PROGRAMAS DE ENTRENAMIENTO (Carrousel) */
-  
   /* Convertimos el contenedor en una columna flex para poder reordenar los elementos */
   .cards-wrapper {
     display: flex !important;
@@ -1660,7 +1623,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   }
   /* --- REDUCIR ESPACIO ENTRE TÍTULO Y CARDS --- */
 /* --- CENTRAR TÍTULO Y ACHICAR ESPACIOS (PROGRAMAS) --- */
-  
   .cards-intro {
     display: flex !important;
     flex-direction: column !important;
@@ -1669,21 +1631,17 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     margin-bottom: 0 !important;    /* Mata el margen inferior gigante */
     width: 100% !important;
   }
-
   .cards-intro .section-eyebrow {
     text-align: center !important;
     margin-bottom: 0.4rem !important;
   }
-
   .cards-intro .section-title {
     text-align: center !important;
     margin-bottom: 0.5rem !important; /* Achica el margen hacia las tarjetas */
   }
-
   .cards-slider {
     padding-top: 10px !important; /* Saca el relleno extra de arriba */
   }
-  
   .cards-wrapper .cards-dots {
     order: 3 !important; /* Dots al final */
     position: relative !important;
@@ -1694,7 +1652,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     margin-top: 0.5rem !important; /* Separación con las tarjetas */
     margin-bottom: 1rem !important; /* Un poco de aire abajo de todo */
   }
-
   .card-item {
     flex: 0 0 75% !important; /* Le damos un 25% de espacio libre para que asomen bien las de los costados */
     height: auto !important;
@@ -1702,21 +1659,17 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     scroll-snap-align: center !important; /* LA MAGIA: Obliga a que la tarjeta frene exacto en el medio */
     transform: scale(0.92) !important; /* Achica las tarjetas por defecto (las que quedan en los costados) */
   }
-
   /* El JS le agrega esta clase a la que queda en el medio: la agrandamos para dar el efecto de foco */
   .card-item.card-item--selected {
     transform: scale(1.02) !important; 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
   }
-
   .card-content {
     padding: 2rem 1.2rem 1rem 1.2rem !important;
   }
-
   .card-content h3 {
     font-size: 1rem !important;
   }
-
   /* 3. Acomodar el botón para que el texto no se corte */
   .card-btn {
     width: 100% !important; 
@@ -1732,14 +1685,12 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 180px;
   }
-  
   /* Los que por defecto son cuadrados (roles de 1 fila) van arriba */
   .staff-cell {
     order: 1;
     grid-column: span 1 !important;
     grid-row: span 1 !important;
   }
-
   /* Los que tienen foto vertical (Martín y Valeria, items 1 y 5) los mandamos abajo */
   .staff-cell:nth-child(1),
   .staff-cell:nth-child(5) {
@@ -1747,14 +1698,11 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     grid-column: span 1 !important;
     grid-row: span 2 !important;
   }
-
-  /* ESCUELA DE GUÍAS (Certificaciones) */
   /* --- ESCUELA DE GUÍAS (Certificaciones) --- */
   .blog-inner {
     display: flex;
     flex-direction: column;
   }
-
   .blog-content {
     /* Agregamos Flexbox para centrar absolutamente todos los elementos internos */
     display: flex !important;
@@ -1765,24 +1713,20 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     /* MAGIA: Ponemos el padding lateral en 0 para que el texto ocupe el 100% igual que la foto[cite: 3] */
     padding: 2rem 0 1.5rem 0 !important; 
   }
-
   .blog-content .section-eyebrow {
     margin-bottom: 0.5rem !important;
   }
-
   .blog-title {
     width: 100%;
     font-size: 1.8rem !important; /* Tamaño de título móvil ajustado */
     line-height: 1.1 !important;
     margin-bottom: 1rem !important;
   }
-
   .blog-text {
     width: 100%;
     font-size: 0.85rem !important; /* Achicamos un poco el párrafo para que no sature */
     margin-bottom: 1.5rem !important;
   }
-
   .blog-img {
     width: 100% !important;
     max-width: 100% !important;
@@ -1792,30 +1736,23 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     border-radius: 15px !important;
   }
   /* 10. PREGUNTAS FRECUENTES (FAQ): Scroll y apretar */
-  /* --- 10. PREGUNTAS FRECUENTES (FAQ) --- */
-  
   .faq-seccion {
     padding-top: 4rem !important;
   }
-
   .faq-pregunta {
     font-size: 0.95rem !important;
     padding: 1.2rem !important;
   }
-  
   /* Cierra el corte/espacio en blanco entre la pregunta y la respuesta */
   .faq-respuesta {
     margin-top: 0 !important; 
   }
-
   .faq-respuesta p {
     font-size: 0.85rem !important;
     padding: 0 1.2rem 1.2rem 1.2rem !important;
     margin-top: 0 !important; /* Aseguramos que el párrafo interno tampoco empuje */
   }
-
   /* 11. EXPERIENCIAS EN TERRENO REAL (Testimonios Carrousel) *//* --- 11. EXPERIENCIAS EN TERRENO REAL (Testimonios) --- */
-
   /* 1. Centrar título y eyebrow */
   .testimonios-header {
     display: flex !important;
@@ -1829,18 +1766,15 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     padding-top: 10px !important; 
      margin-bottom: 0.2rem !important; /* Le sacamos el relleno superior extra que traía de escritorio */
   }
-
   .testimonios-header .section-title {
     text-align: center !important;
   }
-  
   /* --- PRUEBA NUCLEAR PARA EL EYEBROW --- */
 .section-eyebrow-test {
   color: #FF5B04;
   font-family: var(--font-mono);
   font-size: 1.2rem !important; /* Le ponemos azul solo un segundo para ver si reacciona */
 }
-  
   /* 2. Ajuste de tarjetas para que asomen los bordes (Efecto Carrusel) */
   .testimonio-card {
     flex: 0 0 80% !important; /* Bajamos el ancho al 80% para que asomen las demás */
@@ -1848,7 +1782,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     padding: 1.8rem 1.5rem !important;
     scroll-snap-align: center !important; /* Fundamental: obliga a la tarjeta a frenar exacto en el medio */
   }
-
   /* 3. Centrar los dots abajo de todo */
   .testimonios-dots {
     display: flex !important;
@@ -1857,8 +1790,6 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     width: 100% !important;
   }
 /* --- BOTÓN DE CERTIFICADO SIEMPRE "PRENDIDO" EN MÓVIL --- */
-  /* --- BOTÓN DE CERTIFICADO EN MÓVIL --- */
-  
   a.testimonio-badge,
   .testimonios-seccion a.testimonio-badge {
     background-color: #FF5B04 !important; 
@@ -1877,12 +1808,10 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-
   .logo {
     width: 70%;
     margin-top: 0;
   }
-
   .footer-bottom {
     flex-direction: column;
     text-align: center;
