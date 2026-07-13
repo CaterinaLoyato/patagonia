@@ -958,3 +958,162 @@ footer.kit-footer{
   color:var(--color-titles);
   opacity:0.6;
 }
+
+/* ============================================================
+   MOBILE — hasta 640px
+   ============================================================ */
+@media (max-width:640px){
+
+  .kit-shell{
+    padding:32px 16px 70px;
+  }
+
+  /* Header */
+  .kit-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+    margin-bottom:28px;
+  }
+  .kit-header h1{ font-size:2rem; }
+  .kit-guidelines-btn{
+    width:100%;
+    padding:12px 24px;
+  }
+
+  /* Panel */
+  .kit-panel{
+    padding:22px 18px;
+    border-radius:18px;
+    margin-bottom:16px;
+  }
+  .kit-panel-title{
+    font-size:1.25rem;
+    margin-bottom:18px;
+  }
+
+  /* Typography panel */
+  .kit-type-row{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:18px 0;
+  }
+  .kit-type-sample-titulos{ font-size:1.9rem; }
+  .kit-type-sample-cuerpo{ font-size:0.9rem; max-width:100%; }
+
+  /* Buttons rows */
+  .kit-row{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:14px 12px;
+  }
+  .kit-row-items{ gap:10px; }
+  .kit-row-items .btn,
+  .kit-row-items .nav-cta--pill,
+  .kit-row-items .btn-dark{
+    flex:1 1 auto;
+    text-align:center;
+  }
+
+  /* Grid de 2 columnas → 1 columna */
+  .kit-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  /* Icons */
+  .kit-icons-grid{
+    grid-template-columns:repeat(auto-fill,minmax(58px,1fr));
+    gap:10px;
+  }
+  .kit-icon-box svg{ width:18px; height:18px; }
+
+  /* Decorative elements */
+  .kit-deco-grid{
+    gap:18px;
+    justify-content:space-between;
+  }
+
+  /* Módulos acordeón */
+  .demo-modulo-q{
+    font-size:0.85rem;
+    padding:0.8rem 0;
+  }
+  .demo-modulo-a{ font-size:0.8rem; }
+
+  /* Fechas y cupos */
+  .kit-fechas-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .curso-fecha-card{ padding:1.4rem; }
+  .curso-fecha-card h3{ font-size:1.2rem; }
+
+  /* Hotspots — en mobile el tooltip lateral no entra: se reubica debajo del punto */
+  .kit-hotspot-demo{
+    height:auto;
+    aspect-ratio:4/3;
+  }
+  .kit-gear-tooltip{
+    position:static;
+    transform:none;
+    width:100%;
+    margin-top:14px;
+    display:block;
+  }
+  .kit-hotspot{
+    position:relative;
+    left:auto !important;
+    top:auto !important;
+    transform:none;
+    display:inline-flex;
+  }
+  .kit-hotspot-demo{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:0;
+    padding:20px;
+    height:auto;
+    aspect-ratio:auto;
+  }
+  .kit-hotspot:not(.is-active){ display:none; }
+
+  /* Cards & Other */
+  .kit-cards-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .demo-course-card{ height:300px; }
+  .demo-program-photo{ height:130px; }
+  .demo-program-body{ padding:16px 16px 18px; }
+  .demo-program-body h3{ font-size:0.92rem; }
+
+  .demo-faq-q{
+    padding:1rem 1.1rem;
+    font-size:0.85rem;
+  }
+
+  .demo-testimonio{ padding:1.3rem 1.4rem; }
+  .demo-testimonio-text{ font-size:0.85rem; }
+
+  .demo-staff-cell{ height:130px; }
+
+  /* Inputs */
+  .kit-input-newsletter{ max-width:100%; }
+
+  /* Footer */
+  footer.kit-footer{ font-size:0.62rem; }
+}
+
+/* ============================================================
+   MOBILE PEQUEÑO — hasta 380px
+   ============================================================ */
+@media (max-width:380px){
+  .kit-header h1{ font-size:1.7rem; }
+  .kit-panel-title{ font-size:1.1rem; }
+  .kit-type-sample-titulos{ font-size:1.6rem; }
+  .kit-icons-grid{ grid-template-columns:repeat(auto-fill,minmax(50px,1fr)); }
+  .curso-fecha-card{ padding:1.1rem; }
+}
