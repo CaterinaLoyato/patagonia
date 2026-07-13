@@ -324,8 +324,8 @@ section {
 
 /* 1. El título aparece primero (espera 1.2s) */
 .hero-content h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 7rem;
+  font-family: 'Bebas Neue', serif;
+  font-size: 8rem;
   margin: 0;
   color: #000000;
   letter-spacing: 1px;
@@ -575,23 +575,63 @@ section {
 .cat-tag { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 200; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-titles); text-align: center; background: var(--color-white); padding: 0.3rem 0.55rem; }
 .cat-label { font-family: var(--font-cuerpo); font-size: 1.2rem; font-weight: 500; color: var(--color-bg); text-align: center; line-height: 1; }
 
+/* --- CONTENEDORES Y GRILLA --- */
 .galeria-seccion { background-color: var(--color-white); width: 100%; box-sizing: border-box; }
 .galeria-container { max-width: 1200px; width: 100%; margin: auto; }
 .galeria-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 270px; gap: 10px; }
+
 .galeria-item.item-vertical-izq { grid-column: 1; grid-row: span 2; }
 .galeria-item.item-cuadrado { grid-column: span 1; grid-row: span 1; }
 .galeria-item.item-ancho-centro { grid-column: 2 / span 2; grid-row: 2; }
 .galeria-item.item-vertical-der { grid-column: 4; grid-row: span 2; }
+
 .galeria-item { position: relative; border-radius: 20px; overflow: hidden; background-color: #c8d4d0; }
-.galeria-video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75) saturate(0.85); transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s ease; }
+
 .galeria-intro { margin-bottom: 0.7rem; }
 .galeria-intro h2, .galeria-intro .section-title { margin-top: 0.2rem; margin-bottom: 0; }
-.galeria-overlay { position: absolute; inset: 0; background: linear-gradient(to top, var(--color-titles) 0%, var(--color-white) 60%, transparent 100%); padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end; pointer-events: none; opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+
+/* --- 1. ESTRUCTURA DEL VIDEO (Arranca oscuro) --- */
+.galeria-video {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;
+  filter: brightness(0.6) saturate(0.85) !important; 
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s ease !important; 
+}
+
+/* --- 2. ESTRUCTURA DEL DEGRADADO Y TEXTO (Visible por defecto) --- */
+.galeria-overlay {
+  position: absolute; 
+  inset: 0; 
+  /* Este es el degradado exacto de la foto: oscuro abajo, luz al medio, transparente arriba */
+  background: linear-gradient(to top, var(--color-titles) -5%, rgba(255,255,255,0.8) 5%, transparent 30%); 
+  padding: 2rem; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-end; /* Tira el texto al fondo */
+  pointer-events: none; 
+  
+  /* VISIBLE POR DEFECTO */
+  opacity: 1 !important; 
+  transform: translateY(0) !important; 
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+}
+
+/* Textos internos */
 .galeria-location { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.10em; color: var(--color-white); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 3px; }
 .geo-icon { width: 14px; height: 14px; fill: var(--color-white); }
 .galeria-overlay h3 { font-size: 1.2rem; font-weight: 500; color: var(--color-titles); letter-spacing: 0.01em; line-height: 1.25; margin: 0; }
-.galeria-item:hover .galeria-video { transform: scale(1.03); filter: brightness(0.6) saturate(1); }
-.galeria-item:hover .galeria-overlay { opacity: 1; transform: translateY(0); }
+
+/* --- 3. EFECTO HOVER / TOUCH (Oculta texto, ilumina video) --- */
+.galeria-item:hover .galeria-overlay { 
+  opacity: 0 !important; 
+  transform: translateY(10px) !important; 
+}
+
+.galeria-item:hover .galeria-video { 
+  transform: scale(1.03) !important; 
+  filter: brightness(1) saturate(1) !important; /* Video a todo color y luz */
+}
 
 .about-seccion { background-color: var(--color-bg); padding: 3.5rem 2rem; width: 100%; box-sizing: border-box; }
 .about-container { display: flex; align-items: center; gap: 5rem; max-width: 1200px; width: 100%; margin: 0 auto; }
@@ -1367,6 +1407,8 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
 @supports (scrollbar-color: auto) {
   html { scrollbar-color: var(--color-muted) transparent; scrollbar-width: auto; }
 }
+.reveal { opacity:0; transform:translateY(26px); transition: opacity 0.75s ease, transform 0.75s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
 /* ========================================================================
    ── MEDIA QUERIES (MOBILE RESPONSIVE - MAX 768px) ──
    ======================================================================== */
@@ -1815,7 +1857,12 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     grid-row: span 1 !important;
   }
   /* --- FORZAR ACTIVACIÓN CON TOQUE RÁPIDO (TAP) --- */
-  
+  /* Asegurar que el celular los lea como botones */
+  .staff-cell,
+  .cards-grid .card {
+    cursor: pointer !important; 
+    -webkit-tap-highlight-color: transparent !important; 
+  }
   .staff-cell,
   .staff-overlay { /* Cambiá esto por la clase de tus tarjetas de "Necesitás" */
     cursor: pointer !important; 
@@ -1956,6 +2003,26 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   .hamburger-btn {
     margin-right: 0 !important; 
   }
+  /* --- CENTRAR TÍTULOS Y EYEBROWS (Origen, Galería y Precards) --- */
+  
+  .about-left,
+  .galeria-intro,
+  .precards-right {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .about-left .section-eyebrow,
+  .about-left .section-title,
+  .galeria-intro .section-eyebrow,
+  .galeria-intro .section-title,
+  .precards-right .section-eyebrow,
+  .precards-right .section-title {
+    text-align: center !important;
+    align-self: center !important; /* Asegura que el bloque no se tire a la izquierda */
+    width: 100% !important;
+  }
 }
-.reveal { opacity:0; transform:translateY(26px); transition: opacity 0.75s ease, transform 0.75s ease; }
-.reveal.visible { opacity:1; transform:translateY(0); }

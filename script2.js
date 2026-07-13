@@ -194,14 +194,61 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   contadores.forEach(contador => { observerStats.observe(contador); });
 
-  // ── 6. MENÚ HAMBURGUESA ──
+// ── CONTROL DE REPRODUCCIÓN DE VIDEOS (HOVER Y TOUCH) ──
+  const galeriaItems = document.querySelectorAll('.galeria-item');
+
+  galeriaItems.forEach(item => {
+    const video = item.querySelector('.galeria-video');
+
+    if (video) {
+      // 1. Escritorio: Reproducir al pasar el mouse
+      item.addEventListener('mouseenter', () => {
+        // El .catch ataja el error si el navegador bloquea el autoplay rápido
+        video.play().catch(err => console.log("Interacción requerida:", err));
+      });
+
+      // 2. Escritorio: Pausar al sacar el mouse
+      item.addEventListener('mouseleave', () => {
+        video.pause();
+      });
+
+      // 3. Móvil: Reproducir/Pausar al tocar la pantalla
+      item.addEventListener('touchstart', () => {
+        // Opcional: Pausamos todos los demás videos de la grilla para que solo corra uno
+        document.querySelectorAll('.galeria-video').forEach(v => {
+          if (v !== video) v.pause();
+        });
+
+        // Alternamos el estado (Play / Pausa) del video que tocamos
+        if (video.paused) {
+          video.play().catch(err => console.log("Touch bloqueado:", err));
+        } else {
+          video.pause();
+        }
+      }, { passive: true });
+    }
+  });
+  document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('#hamburger');
-  const navMenu = document.querySelector('#nav-menu');
+  const navMenu = document.querySelector('#nav-menu'); // Asegurate que este ID exista en tu nav
+
   if (hamburger && navMenu) {
+    // 1. Abrir/Cerrar menú
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('activo');
       navMenu.classList.toggle('activo');
     });
-  }
 
+    // 2. Cerrar menú al hacer clic fuera (en la pantalla)
+    document.addEventListener('click', (event) => {
+      if (navMenu.classList.contains('activo') && 
+          !hamburger.contains(event.target) && 
+          !navMenu.contains(event.target)) {
+        
+        hamburger.classList.remove('activo');
+        navMenu.classList.remove('activo');
+      }
+    });
+  }
+});
 });// <--- ESTA ES LA LLAVE QUE FALTABA PARA CERRAR EL DOMContentLoaded

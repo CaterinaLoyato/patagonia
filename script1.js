@@ -98,29 +98,15 @@ subnavLinks.forEach(link => {
   });
 }); 
 
-
-// ── MENÚ HAMBURGUESA FULLSCREEN (CORREGIDO) ──
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburgerBtn = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  if (hamburgerBtn && navMenu) {
-    // Abrir/Cerrar menú al tocar las rayitas
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    // Cerrar el menú si se toca un enlace
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        hamburgerBtn.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
+  // ── 6. MENÚ HAMBURGUESA ──
+  const hamburger = document.querySelector('#hamburger');
+  const navMenu = document.querySelector('#nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('activo');
+      navMenu.classList.toggle('activo');
     });
   }
-});
 
 
 // ── HOTSPOTS DE EQUIPAMIENTO (TOUCH PARA MOBILE) ──
@@ -206,4 +192,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     iniciarAutoScroll();
   }
+  // ── CERRAR MENÚ AL TOCAR CUALQUIER PARTE ──
+document.addEventListener('click', (event) => {
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  // Si el menú está abierto Y el clic NO fue en el botón Y NO fue dentro del menú
+  if (navMenu.classList.contains('active') && 
+      !hamburger.contains(event.target) && 
+      !navMenu.contains(event.target)) {
+    
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+  }
+});
 });

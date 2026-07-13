@@ -1,0 +1,359 @@
+/* ========================================================================
+   CÚSPIDES — UI KIT & DESIGN SYSTEM COMPONENT LIBRARY
+   ======================================================================== */
+
+/* ── TOKENS NATIVOS DE CÚSPIDES[cite: 6, 7] ── */
+:root {
+  --color-bg: #ffffff;
+  --color-titles: #075058;
+  --color-eyebrow: #FF5B04;
+  --color-text: #000000;
+  --color-accent: #FF5B04;
+  --color-white: #ffffff;
+  --color-muted: #075058;
+  --color-primary: #4e7da9;
+  
+  --font-titulos: 'Bebas Neue', sans-serif;
+  --font-cuerpo: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: #e5e7eb; /* Fondo de escritorio para que resalte el kit */
+  font-family: var(--font-cuerpo);
+  padding: 40px;
+}
+/* --- COMPONENTE: BANNER MARQUEE --- */
+.ui-banner-marquee {
+  width: 100%;
+  background-color: var(--color-accent);
+  padding: 0.8rem 0;
+  overflow: hidden;
+  display: flex;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+.ui-marquee-track { display: flex; width: max-content; animation: scrollMarquee 20s linear infinite; }
+.ui-marquee-data span {
+  font-family: var(--font-titulos);
+  font-size: 2rem;
+  color: white;
+  padding: 0 2rem;
+}
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- COMPONENTE: STAFF MOSAIC (Bento Grid) --- */
+.ui-staff-mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+.ui-staff-cell { position: relative; overflow: hidden; border-radius: 15px; aspect-ratio: 1/1; }
+.ui-staff-cell img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); transition: 0.4s; }
+.ui-staff-cell:hover img { filter: brightness(1); }
+.ui-staff-overlay { position: absolute; bottom: 10px; left: 10px; color: white; }
+
+/* --- COMPONENTE: CHECK LIST (Requisitos) --- */
+.ui-check-lista { list-style: none; padding: 0; }
+.ui-check-lista li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-family: var(--font-cuerpo); }
+.ui-check-icon { width: 22px; height: 22px; background: var(--color-accent); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+
+/* --- COMPONENTE: PRICE BADGE --- */
+.ui-price-badge {
+  background: white;
+  color: var(--color-titles);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+/* --- SEGURIDAD ANTI-DESBORDE --- */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Esto es lo que mata el scroll horizontal molesto */
+}
+
+  .ui-split-layout {
+    grid-template-columns: 1fr !important; /* Pasa a 1 columna en pantallas chicas */
+  }
+  
+  .ui-kit-wrapper {
+    padding: 20px 15px !important; /* Reduce márgenes internos en mobile */
+    border-radius: 20px;
+  }
+
+/* Ajuste para el Banner Marquee */
+.ui-banner-marquee {
+  width: 100%;
+  max-width: 100%; /* Asegura que nunca crezca más que su contenedor */
+}
+/* ========================================================================
+   1. ESTRUCTURA DEL TABLERO DEL UI KIT (EL MARCO GRIS)
+   ======================================================================== */
+.ui-kit-wrapper {
+  background-color: #f3f4f6;
+  border-radius: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.ui-kit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.ui-kit-header h1 {
+  font-family: var(--font-titulos);
+  font-size: 3rem;
+  color: var(--color-titles);
+  letter-spacing: 0.05em;
+}
+
+.ui-guidelines-btn {
+  background: transparent;
+  border: 2px solid var(--color-titles);
+  color: var(--color-titles);
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ui-box {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 30px;
+  margin-bottom: 24px;
+}
+
+.ui-section-title {
+  font-family: var(--font-cuerpo);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-titles);
+  margin-bottom: 25px;
+}
+
+.ui-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.ui-column { display: flex; flex-direction: column; }
+
+.ui-states-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.ui-state-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ui-components-row { display: flex; gap: 20px; align-items: center; }
+.ui-components-row.wrap { flex-wrap: wrap; }
+.ui-cards-container { display: flex; flex-direction: column; gap: 20px; }
+
+
+/* ========================================================================
+   2. COMPONENTES NATIVOS DE CÚSPIDES (EXTRAÍDOS DE TU CÓDIGO)
+   ======================================================================== */
+
+/* --- BOTONES BASE Y VARIANTES[cite: 6, 7] --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 35px; 
+  font-family: var(--font-cuerpo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  white-space: nowrap; 
+  border-radius: 50px; 
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn--primary {
+  color: #ffffff;
+  background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.15), 0 5px 10px #FF5B04;
+}
+
+.btn--secondary {
+  color: #075058;
+  background: linear-gradient(to bottom , #ffffff 0%, #b1b1b1 180%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -2px 4px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(7, 80, 88, 0.43);
+}
+
+.nav-cta--pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px; 
+  font-family: 'inter', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  white-space: nowrap; 
+  border-radius: 50px; 
+  color: #000000;
+  font-weight: 800;
+  background-color: transparent;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -2px 4px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(255, 255, 255, 0.44);
+}
+
+/* Forzado de Hover para el UI Kit */
+.btn--primary.hover-state, .btn--primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(to bottom , #ffffff 0%, #b1b1b1 180%);
+  color: #075058;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -2px 4px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(7, 80, 88, 0.43);
+}
+
+.btn--secondary.hover-state, .btn--secondary:hover {
+  color: #ffffff;
+  background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.15), 0 5px 10px #FF5B04;     
+}
+
+/* Enlace Fantasma / Certificados[cite: 6, 7] */
+a.testimonio-badge {
+  background-color: transparent; 
+  color: #FF5B04;                
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px; 
+  border-radius: 4px;
+  text-decoration: none; 
+  transition: all 0.25s ease-in-out; 
+}
+a.testimonio-badge.hover-state, a.testimonio-badge:hover {
+  background-color: #FF5B04; 
+  color: #ffffff;            
+}
+
+/* --- ELEMENTOS DECORATIVOS TIPOGRÁFICOS[cite: 6, 7] --- */
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;         
+  font-weight: 700;
+  letter-spacing: 0.15em;     
+  text-transform: uppercase;  
+  color: var(--color-eyebrow); 
+}
+
+.regla-tag {
+  display: block; 
+  font-family: var(--font-mono); 
+  font-size: 1rem; 
+  text-transform: uppercase; 
+  letter-spacing: 0.05rem; 
+  color: var(--color-titles); 
+  font-weight: bold; 
+}
+
+.curso-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--color-titles);
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+}
+
+/* Círculo de Estadísticas[cite: 6, 7] */
+.cat-item { display: flex; flex-direction: column; align-items: center; }
+.cat-circle { 
+  width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--color-white); 
+  display: flex; align-items: center; justify-content: center; 
+}
+.cat-num { font-family: var(--font-titulos); font-size: 1.8rem; color: var(--color-white); line-height: 1; }
+
+/* Contenedor Círculo SVG[cite: 6] */
+.protocolos-icon-circle {
+  width: 50px; height: 50px; border-radius: 50%; border: 3px solid #ffffff;
+  display: flex; align-items: center; justify-content: center; color: #ffffff;
+}
+
+/* --- INPUTS FOOTER[cite: 6, 7] --- */
+.footer-newsletter { display:flex; width: 100%; max-width: 300px; }
+.footer-input { 
+  flex: 1; padding: 0.65rem 1rem; 
+  background: rgba(255, 91, 4, 0.46); 
+  border: 1px solid #FF5B04; border-right: none; 
+  color: var(--color-white); font-family: var(--font-cuerpo); font-size: 0.76rem; outline: none; 
+}
+.footer-input::placeholder { color: var(--color-white); }
+.footer-btn { 
+  padding: 0.65rem 1rem; background: var(--color-accent); border: none; 
+  color: var(--color-white); font-weight: 700; cursor: pointer; transition: opacity 0.2s; 
+}
+
+/* --- TARJETAS COMPLETAS[cite: 6, 7] --- */
+/* Testimonio Card */
+.testimonio-card {
+  background-color: var(--color-titles);   
+  border-radius: 20px;
+  padding: 1.8rem 2rem;        
+  display: flex; flex-direction: column;
+  box-shadow: 0 4px 15px rgba(7, 80, 88, 0.05);
+}
+.testimonio-text { font-family: var(--font-cuerpo); font-size: 1rem; line-height: 1.5; color: #ffffff; margin-bottom: 1rem; }
+.quote-mark { font-family: var(--font-titulos); font-size: 3rem; color: var(--color-accent); line-height: 0; display: inline-block; }
+.quote-mark.open { vertical-align: -1.3rem; margin-right: 0.25rem; }
+.quote-mark.close { vertical-align: -1.3rem; margin-left: 0.15rem; }
+.testimonio-footer { display: flex; flex-direction: column; gap: 0.8rem; border-top: 2px solid var(--color-accent); padding-top: 1rem; }
+.testimonio-author { font-family: var(--font-cuerpo); font-size: 0.95rem; font-weight: 600; color: #ffffff; }
+.testimonio-location { font-family: var(--font-cuerpo); font-size: 0.78rem; color: #ffffff; display: block; }
+
+/* FAQ Accordion[cite: 6, 7] */
+.faq-item { border-bottom: 2px solid var(--color-accent); }
+.faq-pregunta {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  background: none; border: none; padding: 0.9rem 0;
+  color: var(--color-text); font-family: var(--font-cuerpo); font-size: 1.15rem; font-weight: 600;
+  cursor: pointer; text-align: left;
+}
+.faq-icono { position: relative; width: 14px; height: 14px; margin-left: 1.5rem; transition: transform 0.3s ease; }
+.faq-icono::before, .faq-icono::after { content: ''; position: absolute; background-color: #000000; transition: background-color 0.25s ease, transform 0.3s ease; }
+.faq-icono::before { top: 6px; left: 0; width: 14px; height: 2px; }
+.faq-icono::after { top: 0; left: 6px; width: 2px; height: 14px; }
+.faq-item.active .faq-pregunta { color: var(--color-accent); }
+.faq-item.active .faq-icono { transform: rotate(180deg); }
+.faq-item.active .faq-icono::before, .faq-item.active .faq-icono::after { background-color: var(--color-accent); }
+.faq-item.active .faq-icono::after { transform: scaleY(0); }
+.faq-respuesta p { font-family: var(--font-cuerpo); font-size: 1rem; line-height: 1.3; color: var(--color-text); margin-top: 5px; }

@@ -190,7 +190,7 @@ background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
 }
 
 /* El botón hamburguesa NO debe verse en desktop */
-.hamburger-btn {
+.hamburger {
   display: none !important; 
 }
 .nav-toggle {
@@ -1111,85 +1111,12 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   display: none;
 }
 
-/* Estilo para las 3 rayitas */
-.hamburger-btn .line {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #FF5B04;
-  margin: 5px auto;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Animación cuando el menú se abre (transforma a una X) */
-.hamburger-btn.active .line:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.hamburger-btn.active .line:nth-child(2) {
-  opacity: 0;
-}
-.hamburger-btn.active .line:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
 /* ── RESPONSIVE COMPLETO (Ajustado a 768px) ── */
 @media (max-width: 768px) {
   /* Oculta el botón de la barra superior y muestra el del menú interno */
   .desktop-cta { display: none !important; }
   .mobile-cta-item { display: block !important; }
-/* Restauramos el efecto vidrio en el menú mobile */
-  /* Forzamos el efecto de vidrio en el botón dentro del menú mobile */
-  .nav-links .btn.btn--primary.nav-link {
-    
-  color: #075058;
-  font-weight: 800;
-   background: linear-gradient(to bottom , #ffffff 0%, #b1b1b1 180%);
-  /* Gradiente blanco translúcido */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
- font-size: 1rem !important; 
-  /* Mismo truco de luz para el botón claro */
-  box-shadow: 
-    inset 0 2px 4px rgba(255, 255, 255, 0.8),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
-    0 5px 10px rgba(7, 80, 88, 0.43);
-  }
-
-  /* Cambiar el tamaño de los enlaces en el menú mobile */
-.nav-links a {
-    font-size: 1.2rem !important; /* Ajustá este valor según lo que necesites */
-    font-weight: 600;
-  color: #075058/* Opcional: para hacerlo más fino o más negrita */
-}
-
   
-  /* Hacemos aparecer el botón hamburguesa */
-  .hamburger-btn {
-    display: flex !important;
-  }
-
-  /* Sobrescribimos el estilo del menú para mobile */
-  .nav-links {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--color-bg);
-    flex-direction: column; /* Cambiamos a columna */
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    transform: translateY(-100%); /* Oculto por defecto */
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
-  }
-
-  /* La clase que agrega el JS cuando clickeas */
-  .nav-links.activo {
-    transform: translateY(0) !important;
-  }
-
-  /* 2. Hero Section: Forzado manual hacia abajo */
   /* 2. Hero Section: Contenedor como Flexbox real */
 .curso-hero {
   height: 100vh;
@@ -1375,8 +1302,8 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   .hotspot::after { display: none !important; }
 
   /* Ajuste tamaño hotspot */
-  .hotspot { width: 25px; height: 25px; }
-  .dot-pulse { width: 20px; height: 20px; }
+  .hotspot { width: 15px; height: 15px; }
+  .dot-pulse { width: 15px; height: 15px; }
 /* FORZAMOS EL CENTRADO TOTAL */
   /* 1. Anulamos las reglas del padre que puedan cortar el tooltip */
   .gear-stage { overflow: visible !important; }
@@ -1419,7 +1346,7 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
 
   .hotspot[data-col="right"] .gear-tooltip {
     right: auto !important;
-    left: -150% !important;
+    left: -180% !important;
     transform: translate(-50%, -50%) !important;
     opacity: 1 !important;
   }
@@ -1431,25 +1358,25 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
 
 /* Cambiar fondo a versión vertical para mobile */
   .equipamiento::before {
-    background-image: url("fotos/p.png") !important; /* ⬅️ Cambiá este nombre por el archivo de tu foto vertical */
+    background-image: url("fotos/mobile.png") !important; /* ⬅️ Cambiá este nombre por el archivo de tu foto vertical */
     background-size: cover;
     background-position: center center;
   }
   /* Coordenadas móviles: Solo edita el top y left aquí abajo */
   /* 1. Mochila */
-  .hotspot:nth-child(2) { left: 21% !important; top: 8% !important; }
+  .hotspot:nth-child(2) { left: 25% !important; top: 12% !important; }
   /* 2. ARVA */
-  .hotspot:nth-child(3) { left: 30% !important; top: 12% !important; }
+  .hotspot:nth-child(3) { left: 30% !important; top: 16% !important; }
   /* 3. Gorro */
-  .hotspot:nth-child(4) { left: 18% !important; top: 51% !important; }
+  .hotspot:nth-child(4) { left: 25% !important; top: 53% !important; }
   /* 4. Gafas */
-  .hotspot:nth-child(5) { left: 25% !important; top: 40% !important; }
+  .hotspot:nth-child(5) { left: 25% !important; top: 45% !important; }
   /* 5. Vincha */
-  .hotspot:nth-child(6) { left: 20% !important; top: 60% !important; }
+  .hotspot:nth-child(6) { left: 25% !important; top: 62% !important; }
   /* 6. Ski straps */
-  .hotspot:nth-child(7) { left: 20% !important; top: 68% !important; }
+  .hotspot:nth-child(7) { left: 25% !important; top: 68% !important; }
   /* 7. Guantes */
-  .hotspot:nth-child(8) { left: 22% !important; top: 28% !important; }
+  .hotspot:nth-child(8) { left: 26% !important; top: 33% !important; }
   /* 8. Plumón */
   .hotspot:nth-child(9) { left: 57% !important; top: 11% !important; }
   /* 9. Sonda */
@@ -1457,19 +1384,19 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   /* 10. Splitboard */
   .hotspot:nth-child(11) { left: 45% !important; top: 45% !important; }
   /* 11. Piolet */
-  .hotspot:nth-child(12) { left: 59% !important; top: 50% !important; }
+  .hotspot:nth-child(12) { left: 60% !important; top: 50% !important; }
   /* 12. Mosquetones */
-  .hotspot:nth-child(13) { left: 62% !important; top: 37% !important; }
+  .hotspot:nth-child(13) { left: 62% !important; top: 40% !important; }
   /* 13. Pala */
-  .hotspot:nth-child(14) { left: 79% !important; top: 25% !important; }
+  .hotspot:nth-child(14) { left: 79% !important; top: 20% !important; }
   /* 14. Pieles */
-  .hotspot:nth-child(15) { left: 82% !important; top: 45% !important; }
+  .hotspot:nth-child(15) { left: 77% !important; top: 40% !important; }
   /* 15. Indumentaria */
-  .hotspot:nth-child(16) { left: 40% !important; top: 81% !important; }
+  .hotspot:nth-child(16) { left: 67% !important; top: 65% !important; }
   /* 16. Capa intermedia */
-  .hotspot:nth-child(17) { left: 70% !important; top: 65% !important; }
+  .hotspot:nth-child(17) { left: 40% !important; top: 80% !important; }
   /* 17. Pantalón */
-  .hotspot:nth-child(18) { left: 70% !important; top: 90% !important; }
+  .hotspot:nth-child(18) { left: 67% !important; top: 85% !important; }
   
   .staff-title {
     margin-top: 0.5rem;
@@ -1551,4 +1478,93 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
   .footer-tagline { margin: 0 auto 1.5rem; }
   .footer-socials { justify-content: center; }
   .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+  /* Forzamos al menú a ser visible cuando tiene la clase activo */
+  /* --- DEBUG: Forzado total --- */
+  /* --- 1. BOTÓN HAMBURGUESA --- */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.hamburger-btn .line {
+  width: 100%;
+  height: 3px;
+  background-color: #075058;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Animación X del botón */
+.hamburger-btn.activo .line:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.hamburger-btn.activo .line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.activo .line:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* --- 2. MENÚ DESPLEGABLE (NAV-LINKS) --- */
+.nav-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transform: translateY(-100%); /* Oculto por defecto arriba */
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  display: none; /* Aseguramos que empiece oculto */
+}
+
+/* Menú activo (visible) */
+.nav-links.activo {
+  transform: translateY(0) !important;
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Estilos de los enlaces dentro del menú activo */
+.nav-links.activo li {
+  display: block !important;
+  margin: 20px 0 !important;
+}
+
+.nav-links.activo a {
+  color: #075058 !important;
+  font-size: 1.2rem !important;
+  font-weight: 600;
+  display: block !important;
+}
+
+/* --- 3. ESTILO BOTÓN PRIMARIO (ENLACE) --- */
+.nav-links .btn.btn--primary.nav-link {
+  color: #075058;
+  font-weight: 800;
+  background: linear-gradient(to bottom, #ffffff 0%, #b1b1b1 180%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 1rem !important;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 5px 10px rgba(7, 80, 88, 0.43);
+}
 }
