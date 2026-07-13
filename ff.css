@@ -829,7 +829,19 @@ section {
 .precards-seccion {  padding: 2rem; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .precards-container { display: flex; align-items: center; gap: 1rem; max-width: 1200px; width: 100%; margin: 0 auto; }
 .precards-left { flex: 0 0 45%; }
-.precards-right { flex: 0 0 55%; }
+.precards-right { 
+  flex: 0 0 55%; 
+  display: flex !important; /* Forzamos flex */
+  flex-direction: column !important; /* Forzamos columna */
+  align-items: flex-start !important; /* Alineamos todo a la izquierda */
+  justify-content: flex-start; /* Alineamos desde arriba */
+  width: 100%;
+
+  /* Espaciado uniforme entre título, texto y botón */
+  gap: 1rem; 
+  
+}
+
 .precards-img-wrapper { width: 80%; aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 20px var(--color-primary); }
 .precards-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.85) contrast(1.05); transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
 .precards-img-wrapper:hover .precards-img { transform: scale(1.03); }
@@ -853,21 +865,21 @@ width:  610px; color: #FF5B04; font-style: italic; margin-top: 1.1rem; }
   color: #000000; margin: 0; }
 
 .btn-card{
+  display: flex !important; /* Cambiamos inline-flex por flex */
+  width: fit-content !important; /* Esto evita que el botón se estire o se comporte raro */
+  margin-top: 20px !important;
+  /* El resto de tus estilos se quedan igual */
+
   color: #ffffff;
 background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
-
-  
   /* Desenfoque del fondo */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px); /* Obligatorio para Safari */
-  
-  
   /* LA MAGIA AQUÍ: Luz pegando arriba (inset blanco) y sombra abajo (inset negro) */
   box-shadow: 
     inset 0 2px 4px rgba(255, 255, 255, 0.6), /* Brillo superior */
     inset 0 -2px 4px rgba(0, 0, 0, 0.15),     /* Sombra inferior interna */
-    0 5px 10px #FF5B04;       /* Sombra exterior flotante */
-  display: inline-flex;
+    0 5px 10px #FF5B04;
   align-items: center;
   justify-content: center;
   padding: 14px 35px; 
@@ -882,7 +894,6 @@ background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
   box-sizing: border-box;
   transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 .btn-card:hover {
@@ -1370,9 +1381,101 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     padding: 0 1.5rem;
   }
   /* Ocultamos los links en mobile para evitar que rompan el header, dejamos solo el logo y el botón CTA */
-  .nav-links {
-    display: none;
+ /* --- BOTÓN HAMBURGUESA --- */
+/* --- ESTO DEBE IR DENTRO DE UN MEDIA QUERY --- */
+  
+  .hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    -webkit-tap-highlight-color: transparent;
+    margin-left: auto;
+    margin-right: 15px;
   }
+
+  .hamburger-btn .line {
+    width: 100%;
+    height: 3px;
+    background-color: #075058;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-bg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .nav-links.activo {
+    transform: translateY(0) !important;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem !important;
+    font-weight: 600;
+    color: #075058; /* Agregué el punto y coma que faltaba */
+  }
+
+  /* CORRECCIÓN DEL SELECTOR DEL BOTÓN */
+  /* Los puntos son obligatorios y deben ir pegados si son clases del mismo elemento */
+  .nav-cta.nav-cta--pill {
+    color: #075058;
+    font-weight: 800;
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 180%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-size: 1rem !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+        0 5px 10px rgba(7, 80, 88, 0.43);
+  }
+
+  /* Animación X */
+  .hamburger-btn.activo .line:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+    background-color: #ffffff;
+  }
+  .hamburger-btn.activo .line:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-btn.activo .line:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+    background-color: #ffffff;
+  }
+/* Esto fuerza a que el botón aparezca siempre dentro del menú mobile */
+.nav-links .mobile-cta {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-top: 20px !important;
+    text-align: center !important;
+}
+
+/* Y esto asegura que el enlace dentro tenga tamaño */
+.nav-links .mobile-cta a {
+    display: inline-block !important;
+    padding: 15px 30px !important;
+    background: #ffffff !important; /* Probemos con naranja sólido para ver si aparece */
+    color: #075058 !important;
+}
   .section-title {
     font-size: 2.5rem !important;
   }
@@ -1843,6 +1946,15 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+  }
+  /* Ocultamos el botón CTA de la cabecera móvil */
+  .header .nav-cta {
+    display: none !important;
+  }
+  
+  /* Pegamos la hamburguesa bien a la derecha */
+  .hamburger-btn {
+    margin-right: 0 !important; 
   }
 }
 .reveal { opacity:0; transform:translateY(26px); transition: opacity 0.75s ease, transform 0.75s ease; }

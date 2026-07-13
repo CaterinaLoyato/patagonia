@@ -179,15 +179,23 @@ background: linear-gradient(to bottom , #ff5b04a5 0%, #FF5B04 100%);
   width: auto;
   display: block;
 }
+/* --- ESTILOS DE ESCRITORIO (BASE) --- */
 
 .nav-links {
   display: flex;
   gap: 2.2rem;
   list-style: none;
-  padding: 0;                     
-  margin: 0;                      
+  padding: 0;
+  margin: 0;
 }
 
+/* El botón hamburguesa NO debe verse en desktop */
+.hamburger-btn {
+  display: none !important; 
+}
+.nav-toggle {
+  display: none;
+}
 .nav-links a {
   font-family: var(--font-sans);
   font-size: 0.8rem;
@@ -252,22 +260,6 @@ background-color: transparent;
 } 
 
 
-/* Control responsive para que no colapse en pantallas chicas */
-@media (max-width: 992px) {
-  .header {
-    justify-content: space-between;
-    padding: 0 1.5rem;
-  }
-  .nav-spacer { display: none; }
-  .nav-logo { flex: initial; }
-  .curso-subnav-container { 
-    flex: initial; 
-    overflow-x: auto; 
-    max-width: 75%;
-  }
-  .curso-subnav-container::-webkit-scrollbar { display: none; }
-}
-
 
 /* ── HERO DEL CURSO ── */
 .curso-hero {
@@ -297,7 +289,6 @@ background-color: transparent;
 .curso-hero-content {
   position: relative;
   z-index: 2;
-top:-100px;
   padding: 4rem 3rem 4.2rem;
   max-width: 1200px;
 }
@@ -738,7 +729,7 @@ color: var(--color-eyebrow);
   position: relative;
   width: 100%;
   max-width: 1400px;
-  height: 75vh;
+  height: 80vh;
   margin: 0 auto;
   user-select: none;
   z-index: 10; /* Los hotspots y tooltips quedan en esta capa operativa segura */
@@ -808,7 +799,7 @@ color: var(--color-eyebrow);
 }
 
 .hotspot[data-col="right"]::after {
-  left: calc(100% - 6px);
+  left: calc(100% - 9px);
   width: 6vw;
   transform: translateY(-50%);
 }
@@ -846,8 +837,8 @@ color: var(--color-eyebrow);
 }
 
 .hotspot[data-col="right"] .gear-tooltip {
-  left: calc(100% + 6vw + 8px);
-  transform: translateY(-50%) translateX(-6px);
+  left: calc(90% + 6vw - 30px);
+  transform: translateY(-50%) translateX(-2px);
 }
 .hotspot[data-col="right"]:hover .gear-tooltip,
 .hotspot[data-col="right"].active .gear-tooltip {
@@ -948,12 +939,24 @@ color: var(--color-eyebrow);
   max-width: 900px;
   margin: 0 auto;
 }
+.curso-fechas-gridd {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
 .curso-fecha-card {
   background: #ffffff;
   border-radius: 18px;
   padding: 1.8rem;
 }
 
+.curso-fecha-cardd {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.8rem;
+}
 .curso-fecha-tag {
   display: inline-block;
   font-family: 'inter';
@@ -1103,27 +1106,449 @@ footer { background: var(--color-muted); border-top: 1px solid rgba(255,255,255,
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; }
 .footer-legal { font-family: var(--font-cuerpo); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--color-white); }
 .footer-warning { font-family: var(--font-cuerpo); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-white); }
+/* Oculta el botón del menú móvil en la PC */
+.mobile-cta-item {
+  display: none;
+}
 
+/* Estilo para las 3 rayitas */
+.hamburger-btn .line {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #FF5B04;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+}
 
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .curso-breadcrumb { padding: 5.6rem 1.4rem 0.8rem; }
-  .curso-seccion,
-  .curso-requisitos-seccion,
-  .curso-equipo-seccion,
-  .curso-staff-seccion { padding: 3.5rem 1.4rem; }
-  .curso-modulos-seccion,
-  .curso-fechas-seccion { padding: 3.5rem 1.4rem; }
-  .curso-hero-content { padding: 3rem 1.4rem 3rem; }
-  .curso-specsbar { grid-template-columns: repeat(2, 1fr); }
-  .curso-spec:nth-child(2) { border-right: none; }
-  .curso-subnav { padding: 0 1.4rem; gap: 1.2rem; }
+/* Animación cuando el menú se abre (transforma a una X) */
+.hamburger-btn.active .line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger-btn.active .line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.active .line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+/* ── RESPONSIVE COMPLETO (Ajustado a 768px) ── */
+@media (max-width: 768px) {
+  /* Oculta el botón de la barra superior y muestra el del menú interno */
+  .desktop-cta { display: none !important; }
+  .mobile-cta-item { display: block !important; }
+/* Restauramos el efecto vidrio en el menú mobile */
+  /* Forzamos el efecto de vidrio en el botón dentro del menú mobile */
+  .nav-links .btn.btn--primary.nav-link {
+    
+  color: #075058;
+  font-weight: 800;
+   background: linear-gradient(to bottom , #ffffff 0%, #b1b1b1 180%);
+  /* Gradiente blanco translúcido */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+ font-size: 1rem !important; 
+  /* Mismo truco de luz para el botón claro */
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 5px 10px rgba(7, 80, 88, 0.43);
+  }
+
+  /* Cambiar el tamaño de los enlaces en el menú mobile */
+.nav-links a {
+    font-size: 1.2rem !important; /* Ajustá este valor según lo que necesites */
+    font-weight: 600;
+  color: #075058/* Opcional: para hacerlo más fino o más negrita */
+}
+
+  
+  /* Hacemos aparecer el botón hamburguesa */
+  .hamburger-btn {
+    display: flex !important;
+  }
+
+  /* Sobrescribimos el estilo del menú para mobile */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-bg);
+    flex-direction: column; /* Cambiamos a columna */
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    transform: translateY(-100%); /* Oculto por defecto */
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  /* La clase que agrega el JS cuando clickeas */
+  .nav-links.activo {
+    transform: translateY(0) !important;
+  }
+
+  /* 2. Hero Section: Forzado manual hacia abajo */
+  /* 2. Hero Section: Contenedor como Flexbox real */
+.curso-hero {
+  height: 100vh;
+  display: flex !important;      /* Forzamos flexbox */
+  flex-direction: column;        /* Apilamos elementos */
+  justify-content: flex-end;     /* Empujamos todo al fondo */
+  padding-bottom: 1rem;          /* Espacio desde abajo */
+  overflow: hidden;
+}
+
+.curso-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding:  2rem;             /* Sin padding arriba */
+  margin-top: auto;              /* Se empuja hacia abajo por el flex del padre */
+}
+
+/* IMPORTANTE: Si tenías un 'top' o 'margin-top' fijo en alguna parte, anúlalo: */
+.curso-hero-content {
+  margin-top: auto !important; 
+}
+  
+  .curso-hero-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .curso-hero-img {
+    width: 100%;
+    height: 100%; /* Ocupa el 100% del contenedor padre */
+    object-fit: cover;
+    object-position: 80% center; /* Mantiene tu encuadre hacia la derecha */
+    display: block; /* Elimina espacios residuales de línea */
+  }
+  .curso-hero-title { 
+    width: 100%; 
+    font-size: 2.3rem; /* ⬅️ Título más chico (antes estaba en 3rem) */
+    line-height: 1.05;
+    margin-bottom: 0.8rem;
+  }
+  .curso-hero-sub { 
+    font-size: 0.95rem; /* ⬅️ Texto de abajo más chico (antes estaba en 1.2rem) */
+    line-height: 1.4;
+    margin: 0 auto 1.5rem; 
+    padding: 0 0.5rem; /* Le da un poquito de aire a los costados */
+  }
+  .curso-hero-btns { 
+    flex-direction: column; 
+    width: 100%; 
+    gap: 1rem;
+  }
+  .curso-hero-btns .btn { 
+    width: 100%; 
+  }
+ /* 3. Carrusel Horizontal Automático para Especificaciones Rápidas */
+  .categories { 
+    height: auto; 
+    padding: 1.5rem 0 0; /* ⬅️ Sacamos el espacio de abajo del contenedor general */
+  }
+  
+  .categories-grid { 
+    display: flex; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1.5rem; /* ⬅️ Este va a ser el único espacio visible entre el texto y la línea final */
+    gap: 0.5rem; 
+    padding-left: 1.5rem; 
+    padding-right: 1.5rem; 
+  }
+  
+  .categories-grid::-webkit-scrollbar { 
+    display: none; 
+  }
+  
+  .cat-item { 
+    min-width: 75vw; 
+    scroll-snap-align: center; 
+    border: none; /* ⬅️ Eliminamos la sombra/línea tenue individual de la tarjeta */
+    padding: 0; /* ⬅️ Sacamos el relleno extra para que no empuje la línea hacia abajo */
+    flex-shrink: 0; 
+  }
+  /* 4. Alinear Grillas de Contenido a 1 Columna */
+  
+  /* Ajustes para la sección Programa en móvil */
+  .curso-programa-left {
+    text-align: center;
+  }
+
+  /* Achicar el eyebrow "SOBRE EL ENTRENAMIENTO" y su margen */
+  .curso-sub {
+    font-size: 1rem; /* Texto más chico */
+    margin-bottom: 0.2rem; /* Línea más arriba */
+  }
+
+  /* Achicar el título principal */
+  .curso-title {
+    font-size: 3rem; /* Título más compacto */
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  /* Achicar textos descriptivos */
+  .curso-programa-texto p {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Ajustes para "INFORMACIÓN IMPORTANTE DE ADMISIÓN" */
+  .curso-regla-box {
+    margin-top: 1rem;
+  }
+
+  .regla-tag {
+    font-size: 1rem; /* Eyebrow más chico */
+    margin-bottom: 0.3rem; /* Línea mucho más cerca del párrafo */
+    line-height: 1.2;
+  }
+
+  .curso-regla-box p {
+    font-size: 0.9rem; /* Texto de admisión más compacto */
+    line-height: 1.3;
+  }
+  
+  /* Ajuste de título para Módulos */
+  .modulos-title {
+    font-size: 3rem;    /* Achicamos el tamaño de fuente */
+    line-height: 1;    /* Cerramos el espacio entre líneas */
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;/* Achicamos el margen inferior para subir la línea naranja */
+  }
+  /* Ajuste para la lista de Requisitos de Admisión */
+  .curso-check-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los ítems al inicio del bloque */
+    max-width: 340px;        /* Contiene el ancho para que quede prolijo y centrado en el celu */
+    margin: 1.5rem auto;     /* Centra todo el bloque de la lista en la pantalla */
+  }
+
+  .curso-check-lista li {
+    display: flex;
+    align-items: flex-start; /* Alinea el check exactamente con la primera línea de cada texto */
+    text-align: left;        /* Fuerza al texto a ir a la izquierda junto al check */
+    line-height: 1.25;       /* ⬅️ Achica la línea del texto (interlineado más cerrado) */
+    gap: 0.8rem;             /* Espacio horizontal entre el check y el texto */
+    margin-bottom: 0.8rem;   /* Espacio vertical entre cada requisito */
+    font-size: 0.9rem;       /* Un pelín más chico para que sintonice con el resto */
+  }
+
+  .curso-check {
+    margin-top: 0.1rem;      /* Ajuste milimétrico para centrar el círculo con la primera palabra */
+    flex-shrink: 0;          /* Evita que el círculo se aplaste si el texto es largo */
+  }
   .curso-programa-container,
-  .curso-requisitos-container { grid-template-columns: 1fr; gap: 2.2rem; }
+  .curso-requisitos-container { grid-template-columns: 1fr; gap: 2.2rem; text-align: center; }
   .curso-requisitos-container { direction: ltr; }
   .curso-equipo-grid,
   .curso-staff-grid,
-  .curso-fechas-grid { grid-template-columns: 1fr; }
-  .curso-cta-btns { flex-direction: column; align-items: stretch; }
+  .curso-fechas-grid { grid-template-columns: 1fr; gap: 2rem; }
+  
+  /* Ajustes de Padding de Secciones */
+  .curso-seccion,
+  .curso-requisitos-seccion,
+  .curso-staff-seccion,
+  .curso-modulos-seccion,
+  .curso-fechas-seccion { padding: 3.5rem 1.5rem; }
+  
+  /* Cta Final: Botones apilados al 100% */
+  .curso-cta-texto { width: 100%; }
+  .curso-cta-btns { flex-direction: column; align-items: stretch; width: 100%; }
+  .curso-cta-btns .btn { width: 100%; }
+
+  /* Equipamiento Interactivo */
+  .equipamiento { padding: 2rem 0; }
+ 
+  .hotspot::after { display: none !important; }
+
+  /* Ajuste tamaño hotspot */
+  .hotspot { width: 25px; height: 25px; }
+  .dot-pulse { width: 20px; height: 20px; }
+/* FORZAMOS EL CENTRADO TOTAL */
+  /* 1. Anulamos las reglas del padre que puedan cortar el tooltip */
+  .gear-stage { overflow: visible !important; }
+
+  /* 2. El tooltip ahora es soberano: se centra en la pantalla, no en el punto */
+  .gear-tooltip {
+    /* Reset total de posiciones desktop */
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    /* Dimensiones */
+    width: 60vw !important;
+    max-height: 70vh !important;
+    /* Estilos */
+    overflow-y: auto !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+    border-radius: 20px !important;
+    background: #ffffff !important;
+    border: 2px solid #D96B27 !important;
+    z-index: 99999 !important;
+    /* Aseguramos visibilidad */
+    display: none !important; 
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: none !important;
+  }
+
+  /* 3. Anulamos los estilos de desktop que separaban izquierda/derecha */
+  .hotspot[data-col="left"] .gear-tooltip {
+    right: auto !important;
+    left: 250% !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 1 !important;
+  }
+
+  .hotspot[data-col="right"] .gear-tooltip {
+    right: auto !important;
+    left: -150% !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 1 !important;
+  }
+
+  /* 4. Activación: Solo necesitamos esto */
+  .hotspot.active .gear-tooltip {
+    display: block !important;
+  }
+
+/* Cambiar fondo a versión vertical para mobile */
+  .equipamiento::before {
+    background-image: url("fotos/p.png") !important; /* ⬅️ Cambiá este nombre por el archivo de tu foto vertical */
+    background-size: cover;
+    background-position: center center;
+  }
+  /* Coordenadas móviles: Solo edita el top y left aquí abajo */
+  /* 1. Mochila */
+  .hotspot:nth-child(2) { left: 21% !important; top: 8% !important; }
+  /* 2. ARVA */
+  .hotspot:nth-child(3) { left: 30% !important; top: 12% !important; }
+  /* 3. Gorro */
+  .hotspot:nth-child(4) { left: 18% !important; top: 51% !important; }
+  /* 4. Gafas */
+  .hotspot:nth-child(5) { left: 25% !important; top: 40% !important; }
+  /* 5. Vincha */
+  .hotspot:nth-child(6) { left: 20% !important; top: 60% !important; }
+  /* 6. Ski straps */
+  .hotspot:nth-child(7) { left: 20% !important; top: 68% !important; }
+  /* 7. Guantes */
+  .hotspot:nth-child(8) { left: 22% !important; top: 28% !important; }
+  /* 8. Plumón */
+  .hotspot:nth-child(9) { left: 57% !important; top: 11% !important; }
+  /* 9. Sonda */
+  .hotspot:nth-child(10) { left: 62% !important; top: 28% !important; }
+  /* 10. Splitboard */
+  .hotspot:nth-child(11) { left: 45% !important; top: 45% !important; }
+  /* 11. Piolet */
+  .hotspot:nth-child(12) { left: 59% !important; top: 50% !important; }
+  /* 12. Mosquetones */
+  .hotspot:nth-child(13) { left: 62% !important; top: 37% !important; }
+  /* 13. Pala */
+  .hotspot:nth-child(14) { left: 79% !important; top: 25% !important; }
+  /* 14. Pieles */
+  .hotspot:nth-child(15) { left: 82% !important; top: 45% !important; }
+  /* 15. Indumentaria */
+  .hotspot:nth-child(16) { left: 40% !important; top: 81% !important; }
+  /* 16. Capa intermedia */
+  .hotspot:nth-child(17) { left: 70% !important; top: 65% !important; }
+  /* 17. Pantalón */
+  .hotspot:nth-child(18) { left: 70% !important; top: 90% !important; }
+  
+  .staff-title {
+    margin-top: 0.5rem;
+  line-height: 1.1; /* Reduce el espacio entre líneas de texto */
+  margin-bottom: 0.5rem; /* Reduce el espacio con el siguiente elemento */
+}
+ /* Ajuste del contenedor que agrupa las tarjetas */
+.curso-fechas-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Aumenta este número para separar más una tarjeta de la otra */
+  padding: 0 2px; /* Esto le da aire a los lados para que no toquen el borde de la pantalla */
 }
 
+/* Ajuste del contenedor grande */
+.curso-fecha-card {
+  /* Si necesitas que las tarjetas no sean tan anchas en escritorio, podés agregar esto: */
+  max-width: 550px; 
+  margin: 0 auto; /* Esto las mantiene centradas si les das un ancho máximo */
+  
+  /* Mantenemos tu padding interno para que el contenido respire */
+  padding: 20px; 
+}
+/* Usamos el contenedor padre para dar más fuerza a la regla */
+.curso-fechas-grid .curso-fecha-card {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important; /* Forzamos ancho completo */
+  max-width: 500px !important;
+  margin: 0 auto 10px auto !important; /* Margen inferior para separarlas */
+  padding: 25px !important;
+  box-sizing: border-box !important;
+}
+/* Ajuste del título */
+.curso-fecha-card h3 {
+  font-size: 1.5rem; /* Achicamos un poco para mobile */
+  margin: 0 1;
+  line-height: 1.1;
+}
+
+/* Ajuste del detalle */
+.curso-fecha-detalle {
+  font-size: 1rem;
+  color: #000000;
+  margin: 0 1;
+}
+/* Ajuste del contenedor de cupos */
+.curso-fecha-cupo {
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+}
+  .curso-cta-container {
+    width: 100% !important;       /* Ocupa casi todo el ancho de la pantalla */
+    max-width: 100% !important;  /* Eliminamos límites estrictos */
+    padding: 0 5px !important;  /* Reducimos el aire a los lados para ganar espacio */
+    margin: 0 auto !important;   /* Mantiene el centrado */
+  }
+  /* Ajustes para la sección CTA en mobile */
+  .curso-cta-seccion .section-eyebrow {
+    font-size: 1rem !important; /* Achicamos el eyebrow */
+    letter-spacing: 1px;
+  }
+
+  .curso-cta-title {
+    font-size: 2rem !important; /* Achicamos el título */
+    line-height: 1 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .curso-cta-texto {
+    font-size: 0.9rem !important; /* Achicamos el párrafo */
+    line-height: 1.2 !important;
+    margin-bottom: 20px !important;
+  }
+  /* Footer a 1 Columna Centrado */
+  .footer-top { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+  .logo { width: 120px; margin: 0 auto 1rem; }
+  .footer-tagline { margin: 0 auto 1.5rem; }
+  .footer-socials { justify-content: center; }
+  .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+}

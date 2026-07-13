@@ -11,25 +11,38 @@
 </head>
 <body>
 
+<header class="header">
+  <a href="index.html" class="nav-logo"><img src="fotos/marca2.png" alt="Cúspides" class="logo-img"/></a>
   
- <header class="header">
-    <a href="#home" class="nav-logo"><img src="fotos/marca2.png" alt="Cúspides" class="logo-img"/></a>
-    <ul class="nav-links">
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="index.html">PROTOCOLOS</a></li>
-      <li><a href="index.html">PROGRAMAS</a></li>
-      <li><a href="index.html">NOSOTROS</a></li>
-      <li><a href="index.html">ESCUELA</a></li>
-    </ul>
-    <a href="#fechas" class="nav-cta nav-cta--pill">Inscribirme</a>
-  </header>
-
+  <!-- 1. Botón Hamburguesa animable -->
+  <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </button>
   
+  <!-- 2. Menú de enlaces -->
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="index.html" class="nav-link">HOME</a></li>
+    <li><a href="index.html" class="nav-link">PROTOCOLOS</a></li>
+    <li><a href="index.html" class="nav-link">PROGRAMAS</a></li>
+    <li><a href="index.html" class="nav-link">NOSOTROS</a></li>
+    <li><a href="index.html" class="nav-link">ESCUELA</a></li>
+    
+    <!-- Botón para el menú de celular -->
+    <li class="mobile-cta-item" style="margin-top: 1.5rem; display: none;">
+      <a href="#fechas" class="btn btn--primary nav-link">Inscribirme</a>
+    </li>
+  </ul>
+  
+  <!-- Botón clásico (visible solo en PC) -->
+  <a href="#fechas" class="nav-cta nav-cta--pill desktop-cta">Inscribirme</a>
+</header>  
   
   <!-- HERO DEL CURSO -->
   <section class="curso-hero" id="home"> 
     <div class="curso-hero-media">
-      <img src="fotos/33.png" alt="Rider ascendiendo una pendiente de nieve virgen con pieles de foca en Bariloche" class="curso-hero-img"/>
+      <img src="fotos/2%20(1).jpg" alt="Rider ascendiendo una pendiente de nieve virgen con pieles de foca en Bariloche" class="curso-hero-img"/>
       <div class="curso-hero-fade"></div>
     </div>
     <div class="curso-hero-content">
@@ -83,11 +96,9 @@
         <h2 class="curso-title">Autonomía Real Fuera de Pistas</h2>
         <div class="curso-programa-texto">
           <p>
-            Módulo de instrucción técnica y preparación física crítica enfocado en darte las herramientas operativas indispensables para moverte con autonomía y seguridad en el backcountry patagónico. No es una guiada recreativa.
-          </p>
+           <strong>Instrucción técnica y física crítica</strong> para operar con autonomía en el backcountry patagónico. Este programa no es una guiada recreativa.</p>
           <p>
-            Consta de doce semanas remotas de entrenamiento biomecánico y fundamentos nivo-meteorológicos, seguidas de una inmersión alpina intensiva para consolidar destrezas mediante simulacros cronometrados en terreno.
-          </p>
+            Combina <strong>doce semanas remotas</strong> de entrenamiento biomecánico y nivo-meteorológico, seguidas de una inmersión alpina intensiva con simulacros cronometrados en terreno.</p>
         </div>
         <div class="precards-regla-box curso-regla-box">
           <span class="regla-tag">INFORMACIÓN IMPORTANTE DE ADMISIÓN</span>
@@ -109,67 +120,71 @@
 
   <!-- MÓDULOS (ACORDEÓN) -->
 <section class="curso-modulos-seccion reveal" id="modulos">
-    <div class="faq-container curso-modulos-container">
-      <div class="curso-modulos-header">
-        <p class="modulos-eyebrow">ESTRUCTURA CURRICULAR</p>
-        <h2 class="modulos-title">Fases Críticas de Formación</h2>
-      </div>
-      <div class="faq-lista curso-modulos-lista">
-
-        <div class="faq-item active">
-          <button class="faq-pregunta">
-            <span><span class="curso-modulo-num">01</span> Módulo Físico y Biomecánico (Semanas 1 a 12)</span>
-            <span class="faq-icono"></span>
-          </button>
-          <div class="faq-respuesta">
-            <p>Entrenamiento específico de potencia aeróbica y resistencia muscular excéntrica (foco estricto en cuádriceps, rodillas y zona media) para soportar con solvencia el peso de la mochila técnica durante el ascenso prolongado y mantener el control preciso del cuerpo en condiciones de nieve suelta.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-pregunta">
-            <span><span class="curso-modulo-num">02</span> Módulo Nivo-Meteorológico Analítico (Virtual)</span>
-            <span class="faq-icono"></span>
-          </button>
-          <div class="faq-respuesta">
-            <p>Introducción teórica y analítica a la lectura de capas de nieve, interpretación de boletines de peligro oficiales, análisis de frentes de tormenta patagónicos y protocolos mecánicos de trazado de ruta segura en laderas expuestas para evitar gatillar avalanchas de placa.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-pregunta">
-            <span><span class="curso-modulo-num">03</span> Estabilidad del Manto Nivoso (Virtual y Casos)</span>
-            <span class="faq-icono"></span>
-          </button>
-          <div class="faq-respuesta">
-            <p>Estudio de los tests de estabilidad de mantos (compresión, fractura y palas). Metodología de descarte de pendientes por orientación térmica, análisis del histórico de viento local y diseño de planes de contingencia operativa ante atrapamientos en alta montaña.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-pregunta">
-            <span><span class="curso-modulo-num">04</span> Clínicas de Nieve y Transiciones (Días 1 a 3 en Terreno)</span>
-            <span class="faq-icono"></span>
-          </button>
-          <div class="faq-respuesta">
-            <p>Despliegue alpino e inmersión en los exigentes entornos de los refugios Frey y Jakob en Bariloche. Prácticas reales en el terreno de transiciones dinámicas (pasar de modo caminar a modo descender con velocidad), y perfeccionamiento de las técnicas de ascenso en vueltas de maría (kick turns) en pendientes empinadas.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-pregunta">
-            <span><span class="curso-modulo-num">05</span> Rescate Cronometrado y Validación Final (Días 4 a 6 en Terreno)</span>
-            <span class="faq-icono"></span>
-          </button>
-          <div class="faq-respuesta">
-            <p>Simulacros reales en terreno no controlado: protocolos de búsqueda con ARVA, paleado técnico, ensamblaje de sondas y rescate de compañeros bajo el reloj. Evaluación final de la autonomía técnica del aspirante y control de descenso técnico fluido sobre líneas complejas elegidas por el staff.</p>
-          </div>
-        </div>
-
-      </div>
+  <div class="faq-container curso-modulos-container">
+    <div class="curso-modulos-header">
+      <p class="modulos-eyebrow">ESTRUCTURA CURRICULAR</p>
+      <h2 class="modulos-title">Fases Críticas de Formación</h2>
     </div>
-  </section>
+    <div class="faq-lista curso-modulos-lista">
 
+      <!-- Módulo 01 -->
+      <div class="faq-item active">
+        <button class="faq-pregunta">
+          <span><span class="curso-modulo-num">01</span> Módulo Físico y Biomecánico (Semanas 1 a 12)</span>
+          <span class="faq-icono"></span>
+        </button>
+        <div class="faq-respuesta">
+          <p>Entrenamiento de potencia aeróbica y resistencia (foco en cuádriceps y zona media). Preparación crítica para cargar equipo técnico y mantener control en nieve honda durante ascensos prolongados.</p>
+        </div>
+      </div>
+
+      <!-- Módulo 02 -->
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          <span><span class="curso-modulo-num">02</span> Módulo Nivo-Meteorológico Analítico (Virtual)</span>
+          <span class="faq-icono"></span>
+        </button>
+        <div class="faq-respuesta">
+          <p>Lectura de mantos y boletines oficiales. Análisis de frentes de tormenta patagónicos y protocolos para el trazado de rutas seguras en laderas críticas.</p>
+        </div>
+      </div>
+
+      <!-- Módulo 03 -->
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          <span><span class="curso-modulo-num">03</span> Estabilidad del Manto Nivoso (Virtual y Casos)</span>
+          <span class="faq-icono"></span>
+        </button>
+        <div class="faq-respuesta">
+          <p>Aplicación de tests de estabilidad (compresión, fractura). Metodología de descarte de pendientes por orientación y viento. Diseño de planes de contingencia ante incidentes.</p>
+        </div>
+      </div>
+
+      <!-- Módulo 04 -->
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          <span><span class="curso-modulo-num">04</span> Clínicas de Nieve y Transiciones (Días 1 a 3)</span>
+          <span class="faq-icono"></span>
+        </button>
+        <div class="faq-respuesta">
+          <p>Inmersión técnica en Refugios Frey y Jakob. Prácticas de transiciones dinámicas (ascenso-descenso) y optimización de técnicas de progresión (kick turns) en terreno vertical.</p>
+        </div>
+      </div>
+
+      <!-- Módulo 05 -->
+      <div class="faq-item">
+        <button class="faq-pregunta">
+          <span><span class="curso-modulo-num">05</span> Rescate Cronometrado y Validación Final (Días 4 a 6)</span>
+          <span class="faq-icono"></span>
+        </button>
+        <div class="faq-respuesta">
+          <p>Simulacros en terreno no controlado: protocolos ARVA, técnicas de paleado y rescate bajo cronómetro. Evaluación final de autonomía técnica y fluidez sobre líneas complejas.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
   <!-- REQUISITOS DE ADMISIÓN -->
   <section class="curso-requisitos-seccion reveal" id="requisitos">
     <div class="curso-requisitos-container">

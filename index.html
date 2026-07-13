@@ -15,17 +15,30 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAV --><!-- NAV -->
   <header class="header">
     <a href="#" class="nav-logo"><img src="fotos/marca2.png" alt="Cúspides" class="logo-img"/></a>
-    <ul class="nav-links">
-      <li><a href="#">HOME</a></li>
-      <li><a href="#protocolos">PROTOCOLOS</a></li>
-      <li><a href="#programas">PROGRAMAS</a></li>
-      <li><a href="#nosotros">NOSOTROS</a></li>
-      <li><a href="#escuela">ESCUELA</a></li>
-    </ul>
+    
+    <!-- Botón de las 3 rayitas (Hamburguesa) -->
+    <button class="hamburger-btn" id="hamburger">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+
+    <!-- Tu lista de enlaces original, ahora con ID y clases para el touch -->
+<ul class="nav-links" id="nav-menu">
+  <li><a href="#" class="nav-link">HOME</a></li>
+  <li><a href="#protocolos" class="nav-link">PROTOCOLOS</a></li>
+  <li><a href="#programas" class="nav-link">PROGRAMAS</a></li>
+  <li><a href="#nosotros" class="nav-link">NOSOTROS</a></li>
+  <li><a href="#escuela" class="nav-link">ESCUELA</a></li>
+  
+  <!-- ESTE ES EL BOTÓN PARA MOBILE -->
+  <li class="mobile-cta">
     <a href="#programas" class="nav-cta nav-cta--pill">Inscribirme</a>
+  </li>
+</ul>
   </header>
 
   <!-- HERO -->
@@ -680,9 +693,7 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
 </div>
   
   
-  
-  
-<section class="faq-seccion reveal" id="faq">
+  <section class="faq-seccion reveal" id="faq">
   <div class="faq-container">
     
     <div class="faq-header">
@@ -692,50 +703,54 @@ Fundada en 2022 por guías certificados UIAGM y rescatistas patagónicos, Cúspi
 
     <div class="faq-lista">
       
+      <!-- FAQ 1 -->
       <div class="faq-item">
         <button class="faq-pregunta">
-          <span>¿Los programas incluyen los ascensos comerciales a las cumbres?</span>
+          <span>¿Los programas incluyen ascensos comerciales?</span>
           <span class="faq-icono"></span>
         </button>
         <div class="faq-respuesta">
           <p>
-            No. Como dictaminamos en nuestra doctrina, el alcance de cada módulo corresponde estrictamente a la instrucción teórica, el acondicionamiento físico guiado y la validación mecánica de seguridad. Las expediciones de alta montaña de Cúspides están estrictamente reservadas como una fase final opcional y exclusiva para quienes aprueben y certifiquen las competencias de estos programas.
+            <strong>No.</strong> Nuestros programas son de instrucción técnica y acondicionamiento. Las expediciones de cumbre son una fase final opcional, exclusiva para quienes certifiquen las competencias necesarias.
           </p>
         </div>
       </div>
 
+      <!-- FAQ 2 -->
       <div class="faq-item">
         <button class="faq-pregunta">
-          <span>¿Qué nivel de preparación física necesito para ingresar?</span>
+          <span>¿Qué preparación física necesito para ingresar?</span>
           <span class="faq-icono"></span>
         </button>
         <div class="faq-respuesta">
           <p>
-            Exigimos una base aeróbica y de fuerza previa. Nuestros programas son sistemas de entrenamiento rigurosos en entornos hostiles, no salidas turísticas. Al postularte, pasarás por una entrevista técnica y una evaluación de rendimiento para asegurar que estás apto para tolerar las jornadas de aislamiento bajo cero.
+            Exigimos una base aeróbica y de fuerza previa. Tras tu postulación, realizarás una entrevista técnica y una evaluación de rendimiento para asegurar que tolerarás jornadas de aislamiento bajo cero.
           </p>
         </div>
       </div>
 
+      <!-- FAQ 3 -->
       <div class="faq-item">
         <button class="faq-pregunta">
-          <span>¿Es obligatorio contar con equipo técnico propio desde el primer día?</span>
+          <span>¿Debo traer equipo técnico propio?</span>
           <span class="faq-icono"></span>
         </button>
         <div class="faq-respuesta">
           <p>
-            Para las fases virtuales y workshops logísticos no es necesario. Durante las jornadas de validación obligatoria en terreno (como en el Valle de Los Condoritos o Refugio Frey), Cúspides provee el equipamiento de seguridad crítico de la cordada (cuerdas, arneses, mosquetones, DVA). Recibirás asesoramiento especializado antes de adquirir tus botas o vestimenta técnica.
+            No para las fases iniciales. En terreno, <strong>Cúspides provee el equipamiento de seguridad crítico</strong> (cuerdas, arneses, DVA). Recibirás asesoramiento especializado antes de cualquier compra personal.
           </p>
         </div>
       </div>
 
+      <!-- FAQ 4 -->
       <div class="faq-item">
         <button class="faq-pregunta">
-          <span>¿Qué certificación obtengo al aprobar un programa?</span>
+          <span>¿Qué certificación obtengo al aprobar?</span>
           <span class="faq-icono"></span>
         </button>
         <div class="faq-respuesta">
           <p>
-            Obtenés la Certificación de Autonomía Operativa de Cúspides para la disciplina correspondiente. Esta credencial avala de forma interna que contás con los conocimientos avanzados de autorrescate, lectura cartográfica analógica IGN y gestión del riesgo necesarios para operar de forma independiente en terreno patagónico o aplicar a nuestras expediciones complejas.
+            Obtenés la <strong>Certificación de Autonomía Operativa de Cúspides</strong>. Esta credencial avala tus competencias avanzadas en autorrescate, cartografía analógica y gestión de riesgo independiente.
           </p>
         </div>
       </div>
